@@ -1,0 +1,29 @@
+//Global
+
+//Frameworks
+@import "compass";
+
+
+//variables
+
+$main-color: #5391ff;
+$base-color: #e5e5e5;
+
+//Mixins
+@mixin main-font($weight: 300, $size:18px) {
+
+	font-family: 'Lato', sans-serif;
+	font-weight: $weight;
+	font-size: $size;
+}
+
+// @mixin main-color($color:"blue",$type:"normal") {	
+// }
+
+
+
+
+
+
+//Global Reset
+@include global-reset();
