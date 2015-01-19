@@ -1,0 +1,11 @@
+<div>LOGIN:</div>
+
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, msg, :id => "flash-#{name}" %>
+		<% end %>	
+
+<%= form_tag('/authentificate') do %>
+	Usuario:<%= text_field_tag(:email) %> <br>
+	Contraseña: <%= password_field_tag(:password) %> <br>
+	<%= submit_tag('Login') %>
+<% end %>

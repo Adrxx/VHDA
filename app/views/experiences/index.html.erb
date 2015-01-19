@@ -1,0 +1,12 @@
+<div id="experiences">
+
+<%= link_to 'Agregar experiencia', new_experience_path, :id =>'new-experience' %>
+
+    <% @experiences.each do |experience| %>
+          <%= render 'experience_as_list', :experience => experience%>
+    <% end %>
+
+    <!-- SPACERS -->
+    <%= echo_spacers(4) %>
+
+</div>

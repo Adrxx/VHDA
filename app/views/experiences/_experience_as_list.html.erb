@@ -1,0 +1,11 @@
+<div id="experience-as-list">
+	
+	<div id="title"><%= experience.title %></div>
+
+	<div id="buttons">
+        <%= link_to 'Show', experience %>
+        <%= link_to 'Edit', edit_experience_path(experience) %>
+        <%= link_to 'Destroy', experience, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+
+</div>

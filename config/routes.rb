@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
 
-  root 'statics#index'
+  get '/admin' => 'experiences#index'
+
+  get '/login' => 'session#login', as: 'login'
+
+
+
+  post '/logout' => 'session#logout'
+
+  post '/authentificate' => 'session#authentificate'
+
+  resources :experiences
 
   get 'servicios' => 'statics#services'
 
   get 'contacto' => 'statics#contact'
+
+  root 'statics#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

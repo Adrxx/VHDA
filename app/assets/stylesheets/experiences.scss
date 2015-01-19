@@ -1,0 +1,94 @@
+// Place all the styles related to the Experiences controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$list-block-width: 200px;
+
+
+#admin-bar
+{
+	width: 100%;
+	height: 44px;
+	background-color: $blue-disabled;
+}
+
+#new-experience
+{
+	position: relative;
+
+	text-align: center;
+	width: $list-block-width * 5;
+	padding: 10px;
+	margin: 10px;
+	margin-top: 20px;
+	@include border-radius(5px);
+	background-color: $blue-normal;
+	color: $gray-normal;
+	text-decoration: none;
+	@include flex-grow(1);
+
+}
+
+#experiences
+{
+	//background-color: red;
+	@include display-flex();
+  	@include align-items(flex-start);
+  	//@include align-content(space-around);
+	@include flex-flow(row);
+	@include flex-wrap(wrap);
+  	@include justify-content(flex-start);
+  	color: $gray-normal;
+
+
+
+}
+
+.spacer
+{
+	height: 1px;
+	width: $list-block-width;
+	margin-left: 20px;
+	@include flex-grow(1);
+}
+
+#experience-as-list
+{
+	@include flex-grow(1);
+
+	position: relative;
+	margin: 10px;
+	@include border-radius(5px);
+
+	height: 160px;
+	width: $list-block-width;
+
+	background-color: $blue-normal;
+
+	@include box-shadow();
+
+	#buttons
+	{
+		position: absolute;
+		background-color: $blue-disabled;
+		bottom: 0px;
+		width: 100%;
+
+
+		@include display-flex();
+		@include justify-content(space-around);
+
+		a
+		{
+			color: $gray-normal;
+			text-decoration: none; 
+
+		}
+
+	}
+
+	
+}
+
+
+

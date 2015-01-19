@@ -14,14 +14,22 @@
  */
 
  @import "global";
-
  @import "statics";
+ @import "admin";
+ @import "experiences";
+ @import "session";
+
+
+html
+{
+	height: 100%;
+}
 
 body
 {
-	//@include display-flex();
-	@include main-font();
+	height:100%;
+	@include main-font(400);
 
-	background-color: $base-color;
+	background-color: $gray-normal;
 
 }

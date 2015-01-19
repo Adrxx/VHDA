@@ -2,16 +2,28 @@
 
 //Frameworks
 @import "compass";
+@import "bourbon";
 
+//Variables
 
-//variables
+//Colors
+$blue-hover: #4279FD;
+$blue-normal: #3762C8;
+$blue-selected: #304E96;
+$blue-disabled: #233150;
 
-$main-color: #5391ff;
-$base-color: #e5e5e5;
+$cyan-hover: #4BD0FE;
+$cyan-normal: #4AB8FE;
+$cyan-selected: #1E5C83;
+$cyan-disabled: #0E485D;
+
+$gray-hover: #fff;
+$gray-normal: #DEDEDE;
+$gray-selected: #3F3F3F;
+$gray-disabled: #2B2B2B;
 
 //Mixins
 @mixin main-font($weight: 300, $size:18px) {
-
 	font-family: 'Lato', sans-serif;
 	font-weight: $weight;
 	font-size: $size;
@@ -19,11 +31,6 @@ $base-color: #e5e5e5;
 
 // @mixin main-color($color:"blue",$type:"normal") {	
 // }
-
-
-
-
-
 
 //Global Reset
 @include global-reset();
