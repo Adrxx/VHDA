@@ -4,7 +4,14 @@
 @import "compass";
 @import "bourbon";
 
+//Compass default overrides
+
+$default-box-shadow-h-offset: 8px;
+$default-box-shadow-blur: 1px;
+
 //Variables
+$global-border-radius: 6px;
+
 
 //Colors
 $blue-hover: #4279FD;

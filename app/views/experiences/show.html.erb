@@ -11,6 +11,13 @@
 </p>
 
 <p>
+  <strong>IMAGES:</strong>
+  <% @experience.media.each do |med|  %>
+  	  <%= image_tag med.file %>
+  <% end %>
+</p>
+
+<p>
   <strong>Place:</strong>
   <%= @experience.place %>
 </p>

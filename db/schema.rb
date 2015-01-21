@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150118220122) do
+ActiveRecord::Schema.define(version: 20150119191743) do
 
   create_table "experiences", force: true do |t|
     t.string   "title"
@@ -20,6 +20,22 @@ ActiveRecord::Schema.define(version: 20150118220122) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "media", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "time"
+    t.string   "place"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "experience_id"
+  end
+
+  add_index "media", ["experience_id"], name: "index_media_on_experience_id"
 
   create_table "users", force: true do |t|
     t.string   "email"

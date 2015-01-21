@@ -1,3 +1,20 @@
+h1
+{
+	padding: 20px;
+	@include main-font(700,2em);
+	color: $gray-selected;
+}
+
+
+#experience-form
+{
+	@include border-radius($global-border-radius);
+	background-color: $blue-disabled;
+	@include single-box-shadow();
+}
+
+
+
 #content-wrapper
 {
 	position: relative;
@@ -8,7 +25,6 @@
 	margin-left: auto;
 	margin-right: auto;
 
-	//background-color: transparentize($blue-normal, 0.5) ;
 }
 
 footer

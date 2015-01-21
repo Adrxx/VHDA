@@ -5,6 +5,14 @@ class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
   before_action :check_permission
 
+
+  def destroy_media
+    @experience.media.find(params[:medium_id])
+  end
+
+  def new_media
+    @experience.media.build
+  end
   # GET /experiences
   # GET /experiences.json
   def index
@@ -33,10 +41,8 @@ class ExperiencesController < ApplicationController
     respond_to do |format|
       if @experience.save
         format.html { redirect_to @experience, notice: 'Experience was successfully created.' }
-        format.json { render :show, status: :created, location: @experience }
       else
         format.html { render :new }
-        format.json { render json: @experience.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,10 +53,8 @@ class ExperiencesController < ApplicationController
     respond_to do |format|
       if @experience.update(experience_params)
         format.html { redirect_to @experience, notice: 'Experience was successfully updated.' }
-        format.json { render :show, status: :ok, location: @experience }
       else
         format.html { render :edit }
-        format.json { render json: @experience.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,7 +65,6 @@ class ExperiencesController < ApplicationController
     @experience.destroy
     respond_to do |format|
       format.html { redirect_to experiences_url, notice: 'Experience was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -73,7 +76,7 @@ class ExperiencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
-      params.require(:experience).permit(:title, :description, :place)
+      params.require(:experience).permit(:title, :description, :place , media_attributes: [ :title,:description,:file,:time,:place ])
     end
 
     def check_permission
