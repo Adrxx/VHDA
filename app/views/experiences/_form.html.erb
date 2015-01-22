@@ -1,7 +1,8 @@
 <%= form_for(@experience, :html => {:id => "experience-form"} ) do |f| %>
+
   <% if @experience.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@experience.errors.count, "error") %> prohibited this experience from being saved:</h2>
+    <div id="form-error">
+      <div><%= pluralize(@experience.errors.count, "error", "errores") %>:</div>
 
       <ul>
       <% @experience.errors.full_messages.each do |message| %>
@@ -11,14 +12,29 @@
     </div>
   <% end %>
 
+
+  <div id="experience-form-text-data">
+    <div class='text-field-container'>
+      <%= f.text_field :title, :placeholder => 'Título' %>
+    </div>
+    <div class="multi-field">
+      <%= f.text_field :place, placeholder: 'Lugar' %>
+      <%= f.text_field :time, placeholder: 'Fecha' %>  
+    </div>
+    <div class="text-area-container">
+      <%= f.text_area :description, :placeholder => 'Descripción'  %>
+    </div>
+
+  </div><div id="experience-form-media-data">
+  </div>
+   <%= f.submit %>
+<!-- 
   <div class="">
-    <%= f.text_field :title, :placeholder => 'Título' %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :placeholder => 'Descripción'  %>
   </div>
-<!--   <div class="field">
+  <div class="field">
       <%= f.fields_for :media do |media_form| %>
       <div id="special">
         <%= media_form.label :title  %> <br>
@@ -37,12 +53,11 @@
         <%= media_form.text_field :place %> <br>
       </div>
     <% end %>
-  </div> -->
+  </div>
   <div class="field">
-    <%= f.label :place %><br>
     <%= f.text_field :place %>
   </div>
   <div class="actions">
     <%= f.submit %>
-  </div>
+  </div> -->
 <% end %>

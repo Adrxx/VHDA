@@ -6,11 +6,16 @@
 
 //Compass default overrides
 
-$default-box-shadow-h-offset: 8px;
+$default-box-shadow-v-offset: 1px;
 $default-box-shadow-blur: 1px;
 
 //Variables
-$global-border-radius: 6px;
+$global-border-radius: 2px;
+
+
+//Lalo's cut
+$primary-color: #2D384D;
+$secondary-color: #CD9B50;
 
 
 //Colors
@@ -31,7 +36,7 @@ $gray-disabled: #2B2B2B;
 
 //Mixins
 @mixin main-font($weight: 300, $size:18px) {
-	font-family: 'Lato', sans-serif;
+	font-family: 'Helvetica', sans-serif;
 	font-weight: $weight;
 	font-size: $size;
 }

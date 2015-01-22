@@ -1,16 +1,23 @@
+#admin-bar
+{
+	width: 100%;
+	height: 44px;
+	background-color: $secondary-color;
+}
+
 h1
 {
 	padding: 20px;
 	@include main-font(700,2em);
-	color: $gray-selected;
+	color: $gray-normal;
 }
 
 
 #experience-form
 {
 	@include border-radius($global-border-radius);
-	background-color: $blue-disabled;
-	@include single-box-shadow();
+	//background-color: $gray-normal;
+	//@include single-box-shadow();
 }
 
 

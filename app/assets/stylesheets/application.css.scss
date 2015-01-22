@@ -20,6 +20,8 @@
  @import "session";
 
 
+
+
 html
 {
 	height: 100%;
@@ -30,18 +32,17 @@ body
 	height:100%;
 	@include main-font(400);
 
-	background-color: $gray-normal;
+	background-color: $primary-color;
 
 }
 
+textarea:focus, input:focus{
 
-input[type='text']
+    outline: 0;
+
+}
+ 
+textarea
 {
-	display: inline-block;
-	padding: 10px;
-	margin: 4px;
-	border: solid 2px transparentize($gray-disabled, 0.1);
-	@include border-radius($global-border-radius);
-	@include main-font(700,1.1em);
-	background-color: transparentize(white, 0.1);
+	resize: none;
 }
