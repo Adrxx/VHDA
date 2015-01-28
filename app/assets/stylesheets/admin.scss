@@ -1,24 +1,66 @@
+
+
 #admin-bar
 {
-	width: 100%;
+
+	@include display-flex();
+	@include align-items(center);
+  		//@include align-content(space-around);
+	@include flex-flow(row);
+	@include flex-wrap(wrap);
+	@include justify-content(flex-end);
+		//background-color: purple;
+
+	position: relative;
 	height: 44px;
 	background-color: $secondary-color;
+
+	padding-left: 8px;
+
+	@include box-shadow(0px 2px 0px 0px rgba(0,0,0,0.13));
+
+	//border-bottom: solid rgba(0, 0, 0, .4) 2px;
+
 }
+
+
+.nav-bar-button
+{
+
+	@include border-radius(4px);
+	padding: 8px;
+	margin-right: 8px;
+
+	color: white;
+	text-decoration: none;
+
+	@include main-font(400);
+	@include transition-property(background-color);
+	@include transition-duration(0.5s);
+
+	background-color: transparentize(black, 0.5);
+
+
+
+	&:hover
+	{
+		background-color: $primary-color;
+		//border-bottom: solid #fff 3px;
+
+	}
+}
+
+
 
 h1
 {
 	padding: 20px;
 	@include main-font(700,2em);
 	color: $gray-normal;
+	text-align: center;
+	//background-color: $gray-selected;
 }
 
-
-#experience-form
-{
-	@include border-radius($global-border-radius);
-	//background-color: $gray-normal;
-	//@include single-box-shadow();
-}
 
 
 

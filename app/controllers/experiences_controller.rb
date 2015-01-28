@@ -5,14 +5,6 @@ class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
   before_action :check_permission
 
-
-  def destroy_media
-    @experience.media.find(params[:medium_id])
-  end
-
-  def new_media
-    @experience.media.build
-  end
   # GET /experiences
   # GET /experiences.json
   def index
@@ -40,7 +32,7 @@ class ExperiencesController < ApplicationController
 
     respond_to do |format|
       if @experience.save
-        format.html { redirect_to @experience, notice: 'Experience was successfully created.' }
+        format.html { redirect_to @experience, notice: "Experience was successfully created. #{params}" }
       else
         format.html { render :new }
       end
@@ -76,7 +68,7 @@ class ExperiencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
-      params.require(:experience).permit(:title, :description, :place , :time, media_attributes: [ :title,:description,:file,:time,:place ])
+      params.require(:experience).permit(:title, :description, :place , :time, media_attributes: [:id,:description,:file,:_destroy])
     end
 
     def check_permission

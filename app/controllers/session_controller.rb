@@ -3,6 +3,14 @@ class SessionController < ApplicationController
   def login
   end
 
+  def check_session
+    if current_user.nil?
+      redirect_to login_url
+    else
+      redirect_to experiences_url
+    end
+  end
+
   def authentificate
     email = authentification_params[:email]
     password = authentification_params[:password]
@@ -27,6 +35,10 @@ class SessionController < ApplicationController
 
   def authentification_params
     params.permit(:email, :password)
+  end
+
+  def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
 

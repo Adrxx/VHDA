@@ -12,8 +12,8 @@
     </div>
   <% end %>
 
-
   <div id="experience-form-text-data">
+
     <div class='text-field-container'>
       <%= f.text_field :title, :placeholder => 'Título' %>
     </div>
@@ -25,39 +25,20 @@
       <%= f.text_area :description, :placeholder => 'Descripción'  %>
     </div>
 
-  </div><div id="experience-form-media-data">
   </div>
-   <%= f.submit %>
-<!-- 
-  <div class="">
-  </div>
-  <div class="field">
-    <%= f.text_area :description, :placeholder => 'Descripción'  %>
-  </div>
-  <div class="field">
-      <%= f.fields_for :media do |media_form| %>
-      <div id="special">
-        <%= media_form.label :title  %> <br>
-        <%= media_form.text_field :title %> <br>
+  <div id="experience-form-media-data">
 
-        <%= media_form.label :description %> <br>
-        <%= media_form.text_area :description %> <br>
+    <div id="experience-form-photos">
+      <%= link_to_add_association 'add task', f, :media,
+        :class => 'photo-as-list',
+        :'data-association-insertion-method' => 'after',
+        :'data-association-insertion-node' => 'this'
+      %>
+    </div>
 
-        <%= media_form.label :file %> <br>
-        <%= media_form.file_field :file %> <br>
+      <%= f.submit "Crear experiencia", :id => 'submit-experience' %>
 
-        <%= media_form.label :time %> <br>
-        <%= media_form.date_field :time %> <br>
-
-        <%= media_form.label :place %> <br>
-        <%= media_form.text_field :place %> <br>
-      </div>
-    <% end %>
   </div>
-  <div class="field">
-    <%= f.text_field :place %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div> -->
+
+
 <% end %>

@@ -1,20 +1,18 @@
 Rails.application.routes.draw do
 
-  get '/admin' => 'experiences#index'
+  get '/admin' => 'session#check_session'
 
-  get '/login' => 'session#login', as: 'login'
+  get '/admin/login' => 'session#login', as: 'login'
 
+  delete '/admin/logout' => 'session#logout', as: 'logout'
 
-
-  post '/logout' => 'session#logout'
-
-  post '/authentificate' => 'session#authentificate'
+  post 'admin/authentificate' => 'session#authentificate', as: 'authentificate'
 
   resources :experiences
 
-  get 'servicios' => 'statics#services'
+  get '/servicios' => 'statics#services'
 
-  get 'contacto' => 'statics#contact'
+  get '/contacto' => 'statics#contact'
 
   root 'statics#index'
 

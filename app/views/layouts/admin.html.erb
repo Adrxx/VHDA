@@ -15,11 +15,21 @@
 
 </head>
 <body>
+
+
+<div id="admin-bar" >
+    <div id="logo-container"></div>
+    
+      <%= link_to("Cerrar sesión", logout_path, method: :delete, :class => 'nav-bar-button') %>
+
+  </div>
+
 <div id="content-wrapper">
 
 	<%= yield %>
 	
 	<footer>
+    Ment
 	</footer>
 </div>
 

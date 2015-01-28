@@ -15,7 +15,7 @@ $global-border-radius: 2px;
 
 //Lalo's cut
 $primary-color: #2D384D;
-$secondary-color: #CD9B50;
+$secondary-color: #A3CFE1;
 
 
 //Colors
@@ -36,7 +36,7 @@ $gray-disabled: #2B2B2B;
 
 //Mixins
 @mixin main-font($weight: 300, $size:18px) {
-	font-family: 'Helvetica', sans-serif;
+	font-family: 'Lato', sans-serif;
 	font-weight: $weight;
 	font-size: $size;
 }

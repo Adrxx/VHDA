@@ -35,17 +35,18 @@ $list-block-width: 200px;
   	@include justify-content(flex-start);
   	color: $gray-normal;
 
-
-
-}
-
-.spacer
-{
+	.spacer
+	{
 	height: 1px;
 	width: $list-block-width;
 	margin-left: 20px;
 	@include flex-grow(1);
+	}
+
+
 }
+
+
 
 #experience-as-list
 {
