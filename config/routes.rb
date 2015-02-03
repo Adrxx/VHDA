@@ -8,7 +8,10 @@ Rails.application.routes.draw do
 
   post 'admin/authentificate' => 'session#authentificate', as: 'authentificate'
 
-  resources :experiences
+
+  scope '/admin' do
+    resources :experiences
+  end
 
   get '/servicios' => 'statics#services'
 

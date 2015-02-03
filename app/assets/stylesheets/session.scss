@@ -3,24 +3,172 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-#login {
-	color: white;
+
+$login-form-width: 500px;
+$login-form-height: 400px;
+
+$login-fields-width: 300px;
+
+%flashes
+{
+	display: block;
+	width: 50%;
+	margin: 10px auto;
+	text-align: center;
+
+	@include border-radius($global-border-radius);
+	padding: 10px;
+
 }
 
-.login-field {
+#flash-alert
+{
+	@extend %flashes;
+
+	color: tomato;
+	border: solid 2px tomato;
+	background-color: transparentize(tomato, .9);
+}
+
+#flash-notice
+{
+	@extend %flashes;
+
+	color: $secondary-color;
+	border: solid 2px $secondary-color;
+	background-color: transparentize($secondary-color, .6);
+}
+
+#login-form 
+{
+
+	position: absolute;
+	width: $login-form-width;
+	height: $login-form-height;
+	left: 50%;
+	top :50%;
+
+	margin-left: -$login-form-width/2;
+	margin-top: -$login-form-height/2;
+
+	overflow: hidden;
+	@include border-radius(4px);
+
+	@include animation-delay(0.1s);
+	//background-color: red;
+
+	.spacer
+	{
+		width: 95%;
+		height: 1px;
+		margin-right: auto;
+		margin-left: auto;
+		background-color: transparentize(black, 0.9);
+	}
+	
+}
+
+
+#login-logo {
+	
+	height: 30%;
+	width: auto;
+	
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: auto 100%;
+	background-image: image-url("logo-big.png");
+	//background-color: cyan;
+	
+}
+
+
+#login-greet {
+    display: block;
+	position: relative;
+
+	width: auto;
+	width: auto;
+	text-align: left;
+	
+	margin: 10px auto;
+
+
+	@include main-font(300,20px);
+    
+    text-align: center;
+    opacity: .9;
+    //background-color: tomato;
+	
+  	color: white;   
+ } 
+
+
+
+#login-fields 
+{	
+	width: $login-fields-width;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+
+
+	border: solid 1px black;
+  	@include border-radius(4px);
+  	overflow: hidden;
+	
+	background-color: white;
+}
+
+
+.login-field 
+{
 	display: block;
 	position: relative;
 
-	width: 80%;
+	width: 85%;
 	height: 50%;
 	text-align: left;
 	
 	margin: 0px auto;
- 	padding: 0px 10%;
+ 	padding: 10px;
 	border: 0px;
+
+	@include input-placeholder 
+	{
+		@include main-font();
+
+    	font-style: italic;
+  	}
+
+	@include main-font(300,20px);
+	color: $primary-color;
 	
-  	color: #525252;
-  	background-color: transparent;
-	
-	
+}
+
+
+#login-button
+{
+
+
+	display: block;
+	width: $login-fields-width - 100;
+	padding: 8px;
+	margin: 10px auto;
+
+	@include main-font(400,18px);
+	@include border-radius(6px);
+
+	border: solid 2px $secondary-color;
+	color: $secondary-color;
+	background-color: $primary-color;
+
+	&:hover
+	{
+		//color: $secondary-color;
+
+		background-color: lighten($primary-color , 30%);
+	}
+
+
 }

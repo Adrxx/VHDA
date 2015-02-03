@@ -1,13 +1,19 @@
-<div id="login">LOGIN:
+<%= form_tag authentificate_url ,autocomplete: 'off', id: 'login-form' ,class: 'animated fadeIn' do %>
 
-		<% flash.each do |name, msg| %>
-			<%= content_tag :div, msg, :id => "flash-#{name}" %>
-		<% end %>	
+	<div id="login-logo"></div>
 
-<%= form_tag( authentificate_url ) do %>
-	<%= text_field_tag :email, nil , :class => "login-field" %>
-	<%= password_field_tag :password, nil , :class => "login-field"%>
-	<%= submit_tag('Login') %>
+	<div id="login-greet">Sistema administrador</div>
+
+	<% flash.each do |name, msg| %>
+		<%= content_tag :div, msg, :id => "flash-#{name}" , class: 'animated shake' %>
+	<% end %>	
+	<div id='login-fields'>
+		<%= text_field_tag :email, nil, autocomplete: 'off',placeholder: 'E-mail', class: "login-field" %>
+		<div class="spacer"></div>
+		<%= password_field_tag :password, nil , placeholder: 'Password', class: "login-field" %>
+	</div>
+
+	<%= submit_tag 'Iniciar sesión', id: 'login-button' %>
+
 <% end %>
 
-</div>

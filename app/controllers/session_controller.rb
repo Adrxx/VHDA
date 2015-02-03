@@ -19,17 +19,17 @@ class SessionController < ApplicationController
 
     unless user.nil?
       session[:user_id] = user.id
-      redirect_to experiences_url, :notice => "Logged in!"
+      redirect_to experiences_url
     else
-      redirect_to login_url,:notice => "NOT CORRECT"
+
+      redirect_to login_url, :alert => "El usuario o la contraseña no son correctos."
     end
   end
 
   def logout
     session[:user_id] = nil
-    redirect_to login_url, :notice => 'Sesión terminada correctamente'
+    redirect_to login_url
   end
-  
 
   private #_________________________________Private:
 

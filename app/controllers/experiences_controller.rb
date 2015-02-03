@@ -73,7 +73,7 @@ class ExperiencesController < ApplicationController
 
     def check_permission
       if current_user.nil?
-        redirect_to login_url, notice: 'No tienes permiso!' 
+        redirect_to login_url, alert: 'No tienes permiso!' 
       end
     end
 
