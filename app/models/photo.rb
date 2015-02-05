@@ -1,4 +1,4 @@
-class Medium < ActiveRecord::Base
+class Photo < ActiveRecord::Base
 
 	belongs_to :experience
 

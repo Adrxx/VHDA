@@ -16,6 +16,7 @@ $login-fields-width: 300px;
 	margin: 10px auto;
 	text-align: center;
 
+	@include animation-duration(0.75s);
 	@include border-radius($global-border-radius);
 	padding: 10px;
 

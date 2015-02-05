@@ -6,4 +6,12 @@ module ExperiencesHelper
 		result.html_safe
 	end
 
+	def animation_options(flash)
+		if flash.empty?
+			'animated fadeIn'
+		else
+			''
+		end
+	end
+
 end

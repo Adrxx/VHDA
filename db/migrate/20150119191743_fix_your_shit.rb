@@ -1,5 +1,5 @@
 class FixYourShit < ActiveRecord::Migration
   def change
-  	add_reference :media, :experience, index: true  	
+  	add_reference :photos, :experience, index: true  	
   end
 end

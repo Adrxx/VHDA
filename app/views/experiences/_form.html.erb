@@ -1,6 +1,4 @@
-<%= form_for(@experience, :html => {:id => "experience-form"} ) do |f| %>
-
-  <% if @experience.errors.any? %>
+<% if @experience.errors.any? %>
     <div id="form-error">
       <div><%= pluralize(@experience.errors.count, "error", "errores") %>:</div>
 
@@ -11,6 +9,7 @@
       </ul>
     </div>
   <% end %>
+<%= form_for(@experience, :html => {:id => "experience-form"} ) do |f| %>
 
   <div id="experience-form-text-data">
 
@@ -19,17 +18,37 @@
     </div>
     <div class="multi-field">
       <%= f.text_field :place, placeholder: 'Lugar' %>
-      <%= f.text_field :time, placeholder: 'Fecha' %>  
+      <%= f.text_field :date, placeholder: 'Fecha' %>  
     </div>
     <div class="text-area-container">
       <%= f.text_area :description, :placeholder => 'Descripción'  %>
     </div>
 
+
   </div>
+
   <div id="experience-form-media-data">
+    <%#= image_tag "imgTag" , id: "img-tag" %>
+    <%#= file_field_tag "image-input" , id: 'cicme' %>
+    <%= link_to "Agregar foto", "#" , id: 'photo-adder'%>
 
     <div id="experience-form-photos">
-      <%= link_to_add_association 'add task', f, :media,
+
+      <%= f.fields_for :photos do |p| %>
+        <%= p.file_field :file %>
+        <%#= p.text_area :description %>
+      <% end %>
+
+
+
+  
+
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+      <%#= link_to_add_association 'add task', f, :photos,
         :class => 'photo-as-list',
         :'data-association-insertion-method' => 'after',
         :'data-association-insertion-node' => 'this'

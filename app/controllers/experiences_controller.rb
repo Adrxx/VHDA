@@ -4,10 +4,10 @@ class ExperiencesController < ApplicationController
 
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
   before_action :check_permission
-
   # GET /experiences
   # GET /experiences.json
   def index
+
     @experiences = Experience.all
   end
 
@@ -19,6 +19,10 @@ class ExperiencesController < ApplicationController
   # GET /experiences/new
   def new
     @experience = Experience.new
+
+    1.times {@experience.photos.build}
+
+
   end
 
   # GET /experiences/1/edit
@@ -26,7 +30,6 @@ class ExperiencesController < ApplicationController
   end
 
   # POST /experiences
-  # POST /experiences.json
   def create
     @experience = Experience.new(experience_params)
 
@@ -40,7 +43,6 @@ class ExperiencesController < ApplicationController
   end
 
   # PATCH/PUT /experiences/1
-  # PATCH/PUT /experiences/1.json
   def update
     respond_to do |format|
       if @experience.update(experience_params)
@@ -52,7 +54,6 @@ class ExperiencesController < ApplicationController
   end
 
   # DELETE /experiences/1
-  # DELETE /experiences/1.json
   def destroy
     @experience.destroy
     respond_to do |format|
@@ -68,12 +69,12 @@ class ExperiencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def experience_params
-      params.require(:experience).permit(:title, :description, :place , :time, media_attributes: [:id,:description,:file,:_destroy])
+      params.require(:experience).permit(:title, :description, :place , :date, :sphere, photos_attributes: [:id,:file,:description,:_destroy])
     end
 
     def check_permission
       if current_user.nil?
-        redirect_to login_url, alert: 'No tienes permiso!' 
+        redirect_to login_url, alert: 'Por favor inicia sesión' 
       end
     end
 

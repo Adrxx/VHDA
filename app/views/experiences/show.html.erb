@@ -12,8 +12,8 @@
 
 <p>
   <strong>IMAGES:</strong>
-  <% @experience.media.each do |med|  %>
-  	  <%= image_tag med.file %>
+  <% @experience.photos.each do |ph|  %>
+  	  <%= image_tag ph.file %>
   <% end %>
 </p>
 

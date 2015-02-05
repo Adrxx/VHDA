@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+  #post '/ajaxy' => 'photos#create'
   get '/admin' => 'session#check_session'
 
   get '/admin/login' => 'session#login', as: 'login'
@@ -10,7 +12,9 @@ Rails.application.routes.draw do
 
 
   scope '/admin' do
-    resources :experiences
+    resources :experiences do
+      resources :photos
+    end
   end
 
   get '/servicios' => 'statics#services'

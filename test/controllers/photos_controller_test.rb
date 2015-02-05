@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MediumTest < ActiveSupport::TestCase
+class PhotosControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

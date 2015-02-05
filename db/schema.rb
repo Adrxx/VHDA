@@ -11,15 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126015248) do
+ActiveRecord::Schema.define(version: 20150119191743) do
 
-# Could not dump table "experiences" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
-
-  create_table "media", force: true do |t|
+  create_table "experiences", force: true do |t|
+    t.string   "title"
     t.text     "description"
-    t.datetime "time"
     t.string   "place"
+    t.string   "sphere"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", force: true do |t|
+    t.text     "description"
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
@@ -29,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150126015248) do
     t.integer  "experience_id"
   end
 
-  add_index "media", ["experience_id"], name: "index_media_on_experience_id"
+  add_index "photos", ["experience_id"], name: "index_photos_on_experience_id"
 
   create_table "users", force: true do |t|
     t.string   "email"

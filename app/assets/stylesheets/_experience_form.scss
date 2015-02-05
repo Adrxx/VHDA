@@ -141,43 +141,80 @@
 }
 
 
+$photo-as-list-width: 100px;
+$photo-as-list-margin: 30px;
 #experience-form-photos
 {
-	background-color: orange;
+	//background-color: red;
 	height: auto;
 	padding: 5px;
-}
+	@include display-flex();
+  	@include align-items(flex-start);
+  	//@include align-content(space-around);
+	@include flex-flow(row);
+	@include flex-wrap(wrap);
+  	@include justify-content(flex-start);
+  	color: $gray-normal;
 
+	.spacer
+	{
+		background-color: red;
+		height: 1px;
+		width: $photo-as-list-width;
+		margin-left: $photo-as-list-margin * 2;
+		@include flex-grow(1);
+	}
+
+
+}
 
 
 .photo-as-list
 {
-	display: block;
+	@include flex-grow(1);
+
 	position: relative;
-	padding: 5px;
-	margin: 4px;
+	margin: $photo-as-list-margin;
 
-	@include border-radius();
+	@include border-radius($photo-as-list-width / 2 + 1);
 
-	background-color: red;
+	height: $photo-as-list-width;
+	width: $photo-as-list-width;
 
-	#remove-photo
+	background-color: $blue-normal;
+
+	//@include box-shadow();
+
+	#buttons
 	{
 		position: absolute;
-		right: 0px;
-		top:0px;
+		background-color: $blue-disabled;
+		bottom: 0px;
+		width: 100%;
 
-		display: block;
-		width: 70px;
-		height: 100%;
 
-		background-color: green;
+		@include display-flex();
+		@include justify-content(space-around);
+
+		a
+		{
+			color: $gray-normal;
+			text-decoration: none; 
+
+		}
+
 	}
+	
 }
 
 #submit-experience
 {
 	display: block;
+}
+
+[id^="experience_photos_attributes"]
+{
+	display: none;	
 }
 
 
