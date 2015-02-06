@@ -18,7 +18,7 @@
 	position: relative;
 	@include border-radius($global-border-radius*2);
 	//background-color: tomato;
-	border: solid 2px transparentize(white, 0.6);;
+	border: solid 2px transparentize(white, 0.6);
 	height: 500px;
 	//@include box-shadow();
 }
@@ -141,11 +141,15 @@
 }
 
 
-$photo-as-list-width: 100px;
-$photo-as-list-margin: 30px;
+
+$photo-as-list-ratio: (4/3);
+$photo-as-list-width: 150px;
+$photo-as-list-height: $photo-as-list-width / $photo-as-list-ratio;
+$photo-as-list-margin: 20px;
+
 #experience-form-photos
 {
-	//background-color: red;
+	background-color: red;
 	height: auto;
 	padding: 5px;
 	@include display-flex();
@@ -158,7 +162,7 @@ $photo-as-list-margin: 30px;
 
 	.spacer
 	{
-		background-color: red;
+		background-color: blue;
 		height: 1px;
 		width: $photo-as-list-width;
 		margin-left: $photo-as-list-margin * 2;
@@ -176,16 +180,25 @@ $photo-as-list-margin: 30px;
 	position: relative;
 	margin: $photo-as-list-margin;
 
-	@include border-radius($photo-as-list-width / 2 + 1);
+	@include border-radius(2px);
 
-	height: $photo-as-list-width;
+	height: $photo-as-list-height;
+
 	width: $photo-as-list-width;
 
 	background-color: $blue-normal;
+	overflow: hidden;
 
 	//@include box-shadow();
 
-	#buttons
+	[id^="img-tag"]
+	{
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.photo-options
 	{
 		position: absolute;
 		background-color: $blue-disabled;
@@ -200,7 +213,11 @@ $photo-as-list-margin: 30px;
 		{
 			color: $gray-normal;
 			text-decoration: none; 
+		}
 
+		.file-field
+		{
+			width: 50%;
 		}
 
 	}
@@ -210,11 +227,13 @@ $photo-as-list-margin: 30px;
 #submit-experience
 {
 	display: block;
+	margin: 20%;
+	width: 80%;
 }
 
 [id^="experience_photos_attributes"]
 {
-	display: none;	
+	//display: none;	
 }
 
 

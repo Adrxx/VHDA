@@ -12,9 +12,7 @@ Rails.application.routes.draw do
 
 
   scope '/admin' do
-    resources :experiences do
-      resources :photos
-    end
+    resources :experiences
   end
 
   get '/servicios' => 'statics#services'

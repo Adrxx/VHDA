@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 20150119191743) do
   end
 
   create_table "photos", force: true do |t|
-    t.text     "description"
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "experience_id"

@@ -34,16 +34,20 @@
 
     <div id="experience-form-photos">
 
-      <%= f.fields_for :photos do |p| %>
-        <%= p.file_field :file %>
-        <%#= p.text_area :description %>
-      <% end %>
+      <div class="photo-as-list" style="display:none">
+        <img id="img-tag-0" src="">
+        <div class="photo-options">
+          <%= f.fields_for :photos do |p| %>
+            <%= p.file_field :file, class: 'file-field'%>
+            <%#= p.text_area :description %>
+           <% end %>
+        </div>
+      </div>
+
+ 
 
 
 
-  
-
-      <div class="spacer"></div>
       <div class="spacer"></div>
       <div class="spacer"></div>
       <div class="spacer"></div>
