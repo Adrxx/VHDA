@@ -1,0 +1,286 @@
+Test Commiting From Sublime
+
+# --------------
+# Please enter the commit message for your changes. Everything below
+# this paragraph is ignored, and an empty message aborts the commit.
+# Just close the window to accept your message.
+diff --git a/app/assets/javascripts/experiences.js.coffee b/app/assets/javascripts/experiences.js.coffee
+index bfd2f6a..c71c14b 100644
+--- a/app/assets/javascripts/experiences.js.coffee
++++ b/app/assets/javascripts/experiences.js.coffee
+@@ -1,12 +1,10 @@
+ # Place all the behaviors and hooks related to the matching controller here.
+ # All this logic will automatically be available in application.js.
+ # You can use CoffeeScript in this file: http://coffeescript.org/
+-
+-
+-
+ ready = () ->
++
+   imageCount = 0
+-  console.log "READDDJDAKSJDLKASJDLKASJLDKJASLDKJASLKDJLAKSJDLKASJLD"
++  #console.log "READDDJDAKSJDLKASJDLKASJLDKJASLDKJASLKDJLAKSJDLKASJLD"
+   changeUrlImage = (input) ->
+     #console.log $(input).parent().parent("img")
+     reader = new FileReader()
+@@ -14,6 +12,17 @@ ready = () ->
+       $(input).parent().parent().find("img").attr('src', e.target.result)
+     reader.readAsDataURL(input.files[0])
+ 
++  addImage = (input) ->
++    #console.log "HEY"
++    if (input.file && input.file[0])
++      reader = new FileReader()
++      reader.onload = (e) ->
++        $("#img-tag-#{imageCount}").attr('src', e.target.result)
++        $("#experience_photos_attributes_#{imageCount}_file").on "change", (event) ->
++          changeUrlImage(this)
++        imageCount++
++      reader.readAsDataURL(input.files[0])
++
+   addImageInput = () ->
+     #console.log "PORQUI"
+     if imageCount > 0 
+@@ -24,15 +33,6 @@ ready = () ->
+       addImage(this)
+     $("#experience_photos_attributes_#{imageCount}_file").click()
+ 
+-  addImage = (input) ->
+-    #console.log "HEY"
+-    reader = new FileReader()
+-    reader.onload = (e) ->
+-      $("#img-tag-#{imageCount}").attr('src', e.target.result)
+-      $("#experience_photos_attributes_#{imageCount}_file").on "change", (event) ->
+-        changeUrlImage(this)
+-      imageCount++
+-    reader.readAsDataURL(input.files[0])
+ 
+   $("#photo-adder").on "click", (event) ->
+     addImageInput()
+diff --git a/app/assets/stylesheets/_global.scss b/app/assets/stylesheets/_global.scss
+index d68e9f6..430ecd1 100644
+--- a/app/assets/stylesheets/_global.scss
++++ b/app/assets/stylesheets/_global.scss
+@@ -36,10 +36,16 @@ $gray-selected: #3F3F3F;
+ $gray-disabled: #2B2B2B;
+ 
+ //Mixins
+-@mixin main-font($weight: 300, $size:18px) {
+- font-family: 'Lato', sans-serif;
++@mixin main-font($weight: 300, $size:19px,$style:normal) {
++ font-family: 'Myriad Pro', sans-serif;
+  font-weight: $weight;
+  font-size: $size;
++  font-style: $style;
++}
++
++@mixin clear-links($normal: #8794AD,$hover: #A5B4D4,$active:#70A3AE,$visited: #8794AD,$focus: #8794AD) {
++  text-decoration: none;
++  @include link-colors($normal, $hover, $active, $visited, $focus);
+ }
+ 
+ // @mixin main-color($color:"blue",$type:"normal") { 
+diff --git a/app/assets/stylesheets/admin.scss b/app/assets/stylesheets/admin.scss
+index 60cae7a..bf9823a 100644
+--- a/app/assets/stylesheets/admin.scss
++++ b/app/assets/stylesheets/admin.scss
+@@ -52,18 +52,6 @@
+ 
+ 
+ 
+-h1
+-{
+- padding: 20px;
+- @include main-font(700,2em);
+- color: $gray-normal;
+- text-align: center;
+- //background-color: $gray-selected;
+-}
+-
+-
+-
+-
+ #content-wrapper
+ {
+  position: relative;
+diff --git a/app/assets/stylesheets/experiences.scss b/app/assets/stylesheets/experiences.scss
+index ea7da09..b43f756 100644
+--- a/app/assets/stylesheets/experiences.scss
++++ b/app/assets/stylesheets/experiences.scss
+@@ -28,12 +28,12 @@ $list-block-width: 200px;
+ {
+  //background-color: red;
+  @include display-flex();
+-   @include align-items(flex-start);
++  @include align-items(flex-start);
+    //@include align-content(space-around);
+  @include flex-flow(row);
+  @include flex-wrap(wrap);
+-   @include justify-content(flex-start);
+-   color: $gray-normal;
++  @include justify-content(flex-start);
++  color: $gray-normal;
+ 
+  .spacer
+  {
+diff --git a/app/assets/stylesheets/statics.scss b/app/assets/stylesheets/statics.scss
+index f87bc6d..23894b5 100644
+--- a/app/assets/stylesheets/statics.scss
++++ b/app/assets/stylesheets/statics.scss
+@@ -2,11 +2,79 @@
+ // They will automatically be included in application.css.
+ // You can use Sass (SCSS) here: http://sass-lang.com/
+ 
+-#mybutton
++$nav-bar-height: 80px;
++$logo-container-size: 200px;
++
++#nav-bar
+ {
+- @include user-select(none);
+- @include button;
++  height: $nav-bar-height;
++  margin: 0px 50px;
++  //background-color: red;
++
++  #logo-container
++  {
++    height: $logo-container-size;
++    width: 20%; 
++   // background-color: blue;
++    float: left;
++    background-repeat: no-repeat;
++    background-position: center;
++    background-size: auto 80%;
++    background-image: image-url("logo-big.png");
++  }
++
++  #tabs-container
++  {
++
++    @include display-flex();
++    @include align-items(center);
++    //@include align-content(space-around);
++    @include flex-flow(row);
++    @include flex-wrap(wrap);
++    @include justify-content(flex-end);
++
++    float: left;
++
++
++    height: 100%;
++    width: 80%;
++    //background-color:tomato;
++    
++    a
++    {
++      margin: 15px;
++      @include clear-links();
++      @include main-font(300,19px,italic);
++
++      //background-color: white;
++    }
++
++
++  }
++
++}
++
++#landing-main-text
++{
++
++  
++
++  h1
++  {
++
++    float: right;
++    margin-top: 20px;
++    margin-left: 80px;
++    margin-right: 80px;
++    max-width: 900px;
++
++    text-transform: uppercase;
++    @include main-font(600,60px);
++    text-align: right;
++    color: white;
++
+ 
+- @include appearance(none);
++    //background-color: white;
+ 
++  }
+ }
+diff --git a/app/controllers/experiences_controller.rb b/app/controllers/experiences_controller.rb
+index d73e5c1..e2e9104 100644
+--- a/app/controllers/experiences_controller.rb
++++ b/app/controllers/experiences_controller.rb
+@@ -7,7 +7,6 @@ class ExperiencesController < ApplicationController
+   # GET /experiences
+   # GET /experiences.json
+   def index
+-
+     @experiences = Experience.all
+   end
+ 
+@@ -19,10 +18,7 @@ class ExperiencesController < ApplicationController
+   # GET /experiences/new
+   def new
+     @experience = Experience.new
+-
+     1.times {@experience.photos.build}
+-
+-
+   end
+ 
+   # GET /experiences/1/edit
+diff --git a/app/views/layouts/admin.html.erb b/app/views/layouts/admin.html.erb
+index ad5a35b..9a003c7 100644
+--- a/app/views/layouts/admin.html.erb
++++ b/app/views/layouts/admin.html.erb
+@@ -3,10 +3,6 @@
+ <head>
+   <title>ADMIN...</title>
+ 
+- 
+-
+-  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+-
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+diff --git a/app/views/layouts/application.html.erb b/app/views/layouts/application.html.erb
+index b877cc7..cc574de 100644
+--- a/app/views/layouts/application.html.erb
++++ b/app/views/layouts/application.html.erb
+@@ -1,9 +1,7 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+-  <title>VHDA</title>
+-
+-  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
++  <title>VHDA Servicios Integrales de Ingeniería</title>
+ 
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+diff --git a/app/views/statics/index.html.erb b/app/views/statics/index.html.erb
+index 36f5ede..45ce6f1 100644
+--- a/app/views/statics/index.html.erb
++++ b/app/views/statics/index.html.erb
+@@ -1,2 +1,13 @@
+-<h1>VHDA</h1>
+-<p>Servicios y construcciones</p>
++<div id="nav-bar">
++  <div id="logo-container"></div>
++  <nav id="tabs-container">
++    <a href="">Servicios</a>
++    <a href="">Nosotros</a>
++    <a href="">Experiencia</a>
++    <a href="">Contacto</a>
++  </nav>
++</div>
++  
++<div id="landing-main-text">
++  <h1>Servicios Integrales de Ingeniería</h1>
++</div>

@@ -28,12 +28,12 @@ $list-block-width: 200px;
 {
 	//background-color: red;
 	@include display-flex();
-  	@include align-items(flex-start);
+  @include align-items(flex-start);
   	//@include align-content(space-around);
 	@include flex-flow(row);
 	@include flex-wrap(wrap);
-  	@include justify-content(flex-start);
-  	color: $gray-normal;
+  @include justify-content(flex-start);
+  color: $gray-normal;
 
 	.spacer
 	{

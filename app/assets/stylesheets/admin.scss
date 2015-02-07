@@ -52,18 +52,6 @@
 
 
 
-h1
-{
-	padding: 20px;
-	@include main-font(700,2em);
-	color: $gray-normal;
-	text-align: center;
-	//background-color: $gray-selected;
-}
-
-
-
-
 #content-wrapper
 {
 	position: relative;

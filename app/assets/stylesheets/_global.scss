@@ -6,20 +6,29 @@
 @import "animate";
 
 //Compass default overrides
-
 $default-box-shadow-v-offset: 1px;
 $default-box-shadow-blur: 1px;
 
 //Variables
 $global-border-radius: 2px;
 
-
 //Lalo's cut
 $primary-color: #2D384D;
 $secondary-color: #A3CFE1;
 
+$blue-dark-color: #171B23;
+$blue-light-color: #284A9B;
+$aqua-color: #42BCEF;
+$aqua-dark-color: #53858E;
+$aqua-pale-color: #72BCC9;
 
-//Colors
+$color1: $blue-dark-color;
+$color2: $blue-light-color;
+$color3: $aqua-color;
+$color4: $aqua-dark-color;
+$color5: $aqua-pale-color;
+
+//Adrxx's cut
 $blue-hover: #4279FD;
 $blue-normal: #3762C8;
 $blue-selected: #304E96;
@@ -36,10 +45,16 @@ $gray-selected: #3F3F3F;
 $gray-disabled: #2B2B2B;
 
 //Mixins
-@mixin main-font($weight: 300, $size:18px) {
-	font-family: 'Lato', sans-serif;
+@mixin main-font($weight: 300, $size:19px,$style:normal) {
+	font-family: 'Myriad Pro', sans-serif;
 	font-weight: $weight;
 	font-size: $size;
+  font-style: $style;
+}
+
+@mixin clear-links($normal: #8794AD,$hover: #A5B4D4,$active:#70A3AE,$visited: #8794AD,$focus: #8794AD) {
+  text-decoration: none;
+  @include link-colors($normal, $hover, $active, $visited, $focus);
 }
 
 // @mixin main-color($color:"blue",$type:"normal") {	

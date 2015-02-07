@@ -1,18 +1,27 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-
-
-
 ready = () ->
+
   imageCount = 0
-  console.log "READDDJDAKSJDLKASJDLKASJLDKJASLDKJASLKDJLAKSJDLKASJLD"
+  #console.log "READDDJDAKSJDLKASJDLKASJLDKJASLDKJASLKDJLAKSJDLKASJLD"
   changeUrlImage = (input) ->
     #console.log $(input).parent().parent("img")
     reader = new FileReader()
     reader.onload = (e) ->
       $(input).parent().parent().find("img").attr('src', e.target.result)
     reader.readAsDataURL(input.files[0])
+
+  addImage = (input) ->
+    #console.log "HEY"
+    if (input.file && input.file[0])
+      reader = new FileReader()
+      reader.onload = (e) ->
+        $("#img-tag-#{imageCount}").attr('src', e.target.result)
+        $("#experience_photos_attributes_#{imageCount}_file").on "change", (event) ->
+          changeUrlImage(this)
+        imageCount++
+      reader.readAsDataURL(input.files[0])
 
   addImageInput = () ->
     #console.log "PORQUI"
@@ -24,15 +33,6 @@ ready = () ->
       addImage(this)
     $("#experience_photos_attributes_#{imageCount}_file").click()
 
-  addImage = (input) ->
-    #console.log "HEY"
-    reader = new FileReader()
-    reader.onload = (e) ->
-      $("#img-tag-#{imageCount}").attr('src', e.target.result)
-      $("#experience_photos_attributes_#{imageCount}_file").on "change", (event) ->
-        changeUrlImage(this)
-      imageCount++
-    reader.readAsDataURL(input.files[0])
 
   $("#photo-adder").on "click", (event) ->
     addImageInput()

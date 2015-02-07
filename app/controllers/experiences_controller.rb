@@ -7,7 +7,6 @@ class ExperiencesController < ApplicationController
   # GET /experiences
   # GET /experiences.json
   def index
-
     @experiences = Experience.all
   end
 
@@ -19,10 +18,7 @@ class ExperiencesController < ApplicationController
   # GET /experiences/new
   def new
     @experience = Experience.new
-
     1.times {@experience.photos.build}
-
-
   end
 
   # GET /experiences/1/edit
