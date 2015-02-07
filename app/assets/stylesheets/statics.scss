@@ -4,22 +4,23 @@
 
 .page-background
 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -10;
-  background-image: image-url("bg.jpg");
-  opacity: .1;
+    position: absolute;
+    z-index: -10;
 
+    width: 100%;
+    height: 100%;
+
+    opacity: .1;
+    background-image: image-url('bg.jpg');
 }
 
 $nav-bar-height: 90px;
 
 #nav-bar
 {
-  height: $nav-bar-height;
-  margin: 0px 50px;
-  //background-color: red;
+    height: $nav-bar-height;
+    margin: 0 50px;
+    //background-color: red;
 }
 
 $logo-container-height: 200px;
@@ -27,116 +28,119 @@ $logo-container-width: 180px;
 
 #nav-logo-container
 {
-  height: $logo-container-height;
-  width: 20%; 
-  float: left;
-  //background-color: white;
+    float: left;
 
-  #logo
-  {
-    position: relative;
-    width: $logo-container-width;
+    width: 25%;
     height: $logo-container-height;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: auto 80%;
-    background-image: image-url("logo.png");
-    //background-color: white;
-  } 
-  
 
-  $logo-flag-size: 15px;
-  .left
-  {
-    //background-color: transparentize(tomato, 0.5) ;
-    position: absolute;
-    z-index: -1;
-    left:0px;
-    border-bottom: $logo-flag-size solid transparent;
-    border-right: ($logo-container-width/2) solid white;
-    width: 0px;
-    height: $logo-container-height - $logo-flag-size/2;
-  }
+    $logo-flag-size: 15px;
+    // background-color: red;
+    #logo
+    {
+        position: relative;
 
-  .right
-  {
-   // background-color: transparentize(tomato, 0.5) ;
-    position: absolute;
-    z-index: -1;
-    right:0px;
-    border-bottom: $logo-flag-size solid transparent;
-    border-left: ($logo-container-width/2) solid white;
-    width: 0px;
-    height: $logo-container-height - $logo-flag-size/2;
-  }
+        width: $logo-container-width;
+        height: $logo-container-height;
+        margin-right: auto;
+        margin-left: auto;
 
+        background-image: image-url('logo.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: auto 80%;
+        //background-color: white;
+    }
+    .left
+    {
+        //background-color: transparentize(tomato, 0.5) ;
+        position: absolute;
+        z-index: -1;
+        left: 0;
+
+        width: 0;
+        height: $logo-container-height - $logo-flag-size/2;
+
+        border-right: ($logo-container-width/2) solid white;
+        border-bottom: $logo-flag-size solid transparent;
+    }
+    .right
+    {
+        // background-color: transparentize(tomato, 0.5) ;
+        position: absolute;
+        z-index: -1;
+        right: 0;
+
+        width: 0;
+        height: $logo-container-height - $logo-flag-size/2;
+
+        border-bottom: $logo-flag-size solid transparent;
+        border-left: ($logo-container-width/2) solid white;
+    }
 }
 
 #nav-tabs-container
-  {
+{
+    float: left;
 
-  @include display-flex();
-  @include align-items(center);
-  //@include align-content(space-around);
-  @include flex-flow(row);
-  @include flex-wrap(wrap);
-  @include justify-content(flex-end);
+    width: 75%;
+    height: 100%;
 
-  float: left;
+    @include display-flex();
+    @include align-items(center);
+    //@include align-content(space-around);
+    @include flex-flow(row);
+    @include flex-wrap(wrap);
+    @include justify-content(flex-end);
+    //background-color:tomato;
+    a
+    {
+        margin: 18px;
 
-  height: 100%;
-  width: 80%;
-  //background-color:tomato;
-
-  a
-  {
-    margin: 18px;
-    @include clear-links();
-    @include main-font(300,20px,italic);
-    //background-color: white;
-  }
-
-  .selected
-  {
-    color: $color5 !important;
-    // border-bottom: solid 1px $secondary-color;
-  }
-
-
+        @include clear-links();
+        @include main-font(300,20px,italic);
+        //background-color: white;
+    }
+    .selected
+    {
+        color: $color5 !important;
+        // border-bottom: solid 1px $secondary-color;
+    }
 }
 
 #landing-main-text
 {
+    h1
+    {
+        float: right;
+        clear: both;
 
-  h1
-  {
-    clear: both;
-    float: right;
-    margin-top: 60px;
-    margin-left: 80px;
-    margin-right: 80px;
-    max-width: 700px;
+        max-width: 700px;
+        margin-top: 60px;
+        margin-right: 80px;
+        margin-left: 80px;
 
-    text-transform: uppercase;
-    @include main-font(500,70px);
-    text-align: right;
-    color: white;
-    //background-color: white;
-  }
+        text-align: right;
+        text-transform: uppercase;
 
-  h2
-  {
-    clear: both;
-    float: right;
-    margin-top: 10px;
-    margin-left: 80px;
-    margin-right: 80px;
-    max-width: 600px;
+        color: white;
 
-    text-transform: uppercase;
-    @include main-font(300,20px);
-    text-align: right;
-    color: $aqua-pale-color;
-  }
+        @include main-font(500,70px);
+        //background-color: white;
+    }
+    h2
+    {
+        float: right;
+        clear: both;
 
+        max-width: 500px;
+        margin-top: 5px;
+        margin-right: 80px;
+        margin-left: 80px;
+
+        text-align: right;
+
+        color: $aqua-pale-color;
+
+        @include main-font(300,23px,italic);
+    }
 }
