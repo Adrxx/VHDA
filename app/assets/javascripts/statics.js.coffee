@@ -2,7 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = ->
-  $(document).mousemove( (event) ->
+  $(document).scroll ->
+    vertical_scroll = $(document).scrollTop()
+    $("#page-section-1 #page-image-background").offset { top: vertical_scroll/2, left: 0 }
+    if vertical_scroll > 10
+      $("#nav-bar").attr "id" ,"mini-nav-bar"
+    else
+      $("#mini-nav-bar").attr "id" ,"nav-bar"
+
+  $(document).mousemove (event) ->
 
     w = $(".page-background").width()
     h = $(".page-background").height()
@@ -16,7 +24,6 @@ ready = ->
 
 
     #$(".page-background").offset({top: event.pageY - cy , left: event.pageX- cx })
-  )
 
 
 $(document).ready(ready)

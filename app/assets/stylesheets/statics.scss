@@ -2,25 +2,45 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.page-background
+$left-column-color: #2C4B92;
+$right-column-color: #192744;;
+
+[id^="page-section"]
 {
-    position: absolute;
-    z-index: -10;
+  height: 100%;
+  width: 100%;
+  background-color:$color1;
+}
 
-    width: 100%;
-    height: 100%;
-
-    opacity: .1;
-    background-image: image-url('bg.jpg');
+#page-color-overlay
+{
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 $nav-bar-height: 90px;
+$mini-nav-bar-height: 60px;
 
 #nav-bar
 {
-    height: $nav-bar-height;
-    margin: 0 50px;
-    //background-color: red;
+  position:fixed;
+  z-index: 10;
+  width:100%;
+  height: $nav-bar-height;
+
+  @include transition();
+  @include transition-duration(2);
+
+
+  //background-color: red;
+}
+
+#mini-nav-bar
+{
+  @extend #nav-bar;
+  height: $mini-nav-bar-height;
+  background-color: transparentize(white, 0.1);
 }
 
 $logo-container-height: 200px;
@@ -28,119 +48,268 @@ $logo-container-width: 180px;
 
 #nav-logo-container
 {
-    float: left;
+  float: left;
 
-    width: 25%;
+  width: 25%;
+  height: $logo-container-height;
+
+  $logo-flag-size: 15px;
+  // background-color: red;
+
+  #flag
+  {
+    position: relative;
+
+    width: $logo-container-width;
     height: $logo-container-height;
+    margin-right: auto;
+    margin-left: auto;
 
-    $logo-flag-size: 15px;
-    // background-color: red;
-    #logo
-    {
-        position: relative;
+    //background-color: white;
+  }
 
-        width: $logo-container-width;
-        height: $logo-container-height;
-        margin-right: auto;
-        margin-left: auto;
+  #logo
+  {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
 
-        background-image: image-url('logo.png');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: auto 80%;
-        //background-color: white;
-    }
-    .left
-    {
-        //background-color: transparentize(tomato, 0.5) ;
-        position: absolute;
-        z-index: -1;
-        left: 0;
+    background-image: image-url("logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 80%;
 
-        width: 0;
-        height: $logo-container-height - $logo-flag-size/2;
+  }
 
-        border-right: ($logo-container-width/2) solid white;
-        border-bottom: $logo-flag-size solid transparent;
-    }
-    .right
-    {
-        // background-color: transparentize(tomato, 0.5) ;
-        position: absolute;
-        z-index: -1;
-        right: 0;
+  #left
+  {
+    //background-color: transparentize(tomato, 0.5) ;
+    position: absolute;
+    z-index: 0;
+    left: 0;
 
-        width: 0;
-        height: $logo-container-height - $logo-flag-size/2;
+    width: 0;
+    height: $logo-container-height - $logo-flag-size/2;
 
-        border-bottom: $logo-flag-size solid transparent;
-        border-left: ($logo-container-width/2) solid white;
-    }
+    border-right: ($logo-container-width/2) solid white;
+    border-bottom: $logo-flag-size solid transparent;
+  }
+  #right
+  {
+    // background-color: transparentize(tomato, 0.5) ;
+    position: absolute;
+    z-index: 0;
+    right: 0;
+
+    width: 0;
+    height: $logo-container-height - $logo-flag-size/2;
+
+    border-bottom: $logo-flag-size solid transparent;
+    border-left: ($logo-container-width/2) solid white;
+  }
 }
 
 #nav-tabs-container
 {
-    float: left;
+  float: left;
 
-    width: 75%;
-    height: 100%;
+  width: 70%;
+  height: 100%;
 
-    @include display-flex();
-    @include align-items(center);
-    //@include align-content(space-around);
-    @include flex-flow(row);
-    @include flex-wrap(wrap);
-    @include justify-content(flex-end);
-    //background-color:tomato;
-    a
-    {
-        margin: 18px;
+  @include display-flex();
+  @include align-items(center);
+  //@include align-content(space-around);
+  @include flex-flow(row);
+  @include flex-wrap(wrap);
+  @include justify-content(flex-end);
+  //background-color:tomato;
+  a
+  {
+    margin: 18px;
 
-        @include clear-links();
-        @include main-font(300,20px,italic);
-        //background-color: white;
-    }
-    .selected
-    {
-        color: $color5 !important;
-        // border-bottom: solid 1px $secondary-color;
-    }
+    @include clear-links();
+    @include main-font(300,20px,italic);
+    //background-color: white;
+  }
+  .selected
+  {
+    color: $color5 !important;
+    // border-bottom: solid 1px $secondary-color;
+  }
 }
 
-#landing-main-text
+
+#page-section-1
 {
+
+  #page-color-overlay
+  {
+    background-color: transparentize($color1, 0.1);
+  }
+
+  #page-image-background
+  {
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    background-image: image-url("bg.jpg"); 
+    //opacity: 0.6;
+  }
+
+  h1
+  {
+    float: right;
+    clear: both;
+
+    max-width: 700px;
+    margin-top: 260px;
+    margin-right: 80px;
+    margin-left: 80px;
+
+    text-align: right;
+    text-transform: uppercase;
+
+    color: white;
+
+    @include main-font(500,70px);
+    //background-color: white;
+  }
+
+  h2
+  {
+    float: right;
+    clear: both;
+
+    max-width: 500px;
+    margin-top: 5px;
+    margin-right: 80px;
+    margin-left: 80px;
+
+    text-align: right;
+
+    color: $aqua-pale-color;
+
+    @include animation-delay(0.3s);
+
+    @include main-font(300,23px,italic);
+  }
+
+  #left-triangle
+  {
+    display: none;
+    position: absolute;
+    bottom: 0px;
+    left:0px;
+    height: 70px;
+    width: 50%;
+
+    polygon
+    {
+      fill: $left-column-color;
+    } 
+    //background-color:white;
+  }
+
+  #right-triangle
+  {
+    display: none;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    height: 70px;
+    width: 50%;
+
+    polygon
+    {
+      fill: $right-column-color;
+    }
+    //background-color:white;
+  }
+
+  $arrow-size: 80px;
+  #arrow
+  {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -$arrow-size/2;
+    height: $arrow-size;
+    width: $arrow-size;
+    
+    polyline
+    {
+      fill: none;
+      stroke: transparentize(white, 0.3);
+      stroke-width: 0.4;
+    }
+  }
+  
+}
+
+#page-section-2
+{
+  
     h1
     {
-        float: right;
-        clear: both;
-
-        max-width: 700px;
-        margin-top: 60px;
-        margin-right: 80px;
-        margin-left: 80px;
-
-        text-align: right;
-        text-transform: uppercase;
-
-        color: white;
-
-        @include main-font(500,70px);
-        //background-color: white;
+      display: block;
+      @include main-font(500,50px);
+      color: white;
+      margin: 40px 60px;
+      //background-color: red;
     }
-    h2
+
+    p
     {
-        float: right;
-        clear: both;
-
-        max-width: 500px;
-        margin-top: 5px;
-        margin-right: 80px;
-        margin-left: 80px;
-
-        text-align: right;
-
-        color: $aqua-pale-color;
-
-        @include main-font(300,23px,italic);
+      display: block;
+      @include main-font(400,25px,italic);
+      color: white;
+      margin: 20px 60px;
+      //background-color: red;
     }
+
+
+  #left-column
+  {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0px;
+
+    //padding: 50px;
+    
+    background-image: image-url("bg.jpg");
+
+    #color-overlay
+    {
+      position: absolute;
+      height: 100%;
+      width:100%;
+
+      background-color: transparentize($left-column-color, 0.1);
+    }
+
+  }
+
+
+  #right-column
+  {
+    position: absolute;
+    width: 50%;
+    right: 0px;
+    height: 100%;
+    
+    background-image: image-url("bg.jpg");
+
+    #color-overlay
+    {
+      position: absolute;
+      height: 100%;
+      width:100%;
+
+      background-color: transparentize($right-column-color, 0.1);
+    }
+  }
+
 }

@@ -1,20 +1,53 @@
-<div class="page-background"></div>
 <div id="nav-bar">
   <div id="nav-logo-container">
-    <div id="logo">
-      <div class="left"></div>
-      <div class="right"></div>
-    </div>
+      <div id="flag" class="animated fadeInDown">
+        <div id="logo"></div>
+        <div id="left"></div>
+        <div id="right"></div>
+      </div>
   </div>
-  <nav id="nav-tabs-container">
+  <nav id="nav-tabs-container" class="animated fadeInRight">
     <%= link_to("Servicios", "#") %>
     <%= link_to("Nosotros", "#") %>
     <%= link_to("Experiencia", "#", class:'selected') %>
     <%= link_to("Contacto", "#") %>
   </nav>
 </div>
+
+<section id="page-section-1">
+  <div id="page-image-background"></div>
+  <div id="page-color-overlay">
   
-<div id="landing-main-text">
-  <h1>Servicios Integrales de Ingeniería</h1>
-  <h2>Civil, conceptual, de detalle, construcción, estudios y consultoría.</h2>
-</div>
+    <h1 class="animated fadeInRight">Servicios Integrales de Ingeniería</h1>
+    <h2 class="animated fadeInRight">Civil, conceptual, de detalle, construcción, estudios y consultoría.</h2>
+
+
+    <svg id="left-triangle" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,0 0,1 1,1" />
+    </svg>
+
+    <svg id="right-triangle" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="1,1 1,0 0,1" />
+    </svg>
+
+    <svg id="arrow" class="animated infinite pulse" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="1,4 5,8 9,4" />
+    </svg>
+
+  </div>
+</section>
+
+<section id="page-section-2">
+  <div id="left-column">
+    <div id="color-overlay">
+      <h1>Proyectos Arquitectónicos y de ingeniería.</h1>
+      <p>dkasjdlksa</p>
+    </div>
+  </div>
+  <div id="right-column">
+    <div id="color-overlay">
+      <h1>Proyectos Arquitectónicos y de ingeniería.</h1>
+      <p>dkasjdlksa</p>
+    </div>
+  </div>
+</section>

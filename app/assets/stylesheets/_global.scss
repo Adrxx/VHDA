@@ -13,15 +13,13 @@ $default-box-shadow-blur: 1px;
 $global-border-radius: 2px;
 
 //Lalo's cut
-$primary-color: #2D384D;
-$secondary-color: #A3CFE1;
-
-$blue-dark-color: #171B23;
-$blue-light-color: #284A9B;
-$aqua-color: #42BCEF;
-$aqua-dark-color: #53858E;
-$aqua-pale-color: #72BCC9;
-
+$primary-color: #2d384d;
+$secondary-color: #a3cfe1;
+$blue-dark-color: #171b23;
+$blue-light-color: #284a9b;
+$aqua-color: #42bcef;
+$aqua-dark-color: #53858e;
+$aqua-pale-color: #72bcc9;
 $color1: $blue-dark-color;
 $color2: $blue-light-color;
 $color3: $aqua-color;
@@ -29,35 +27,36 @@ $color4: $aqua-dark-color;
 $color5: $aqua-pale-color;
 
 //Adrxx's cut
-$blue-hover: #4279FD;
-$blue-normal: #3762C8;
-$blue-selected: #304E96;
+$blue-hover: #4279fd;
+$blue-normal: #3762c8;
+$blue-selected: #304e96;
 $blue-disabled: #233150;
-
-$cyan-hover: #4BD0FE;
-$cyan-normal: #4AB8FE;
-$cyan-selected: #1E5C83;
-$cyan-disabled: #0E485D;
-
+$cyan-hover: #4bd0fe;
+$cyan-normal: #4ab8fe;
+$cyan-selected: #1e5c83;
+$cyan-disabled: #0e485d;
 $gray-hover: #fff;
-$gray-normal: #DEDEDE;
-$gray-selected: #3F3F3F;
-$gray-disabled: #2B2B2B;
+$gray-normal: #dedede;
+$gray-selected: #3f3f3f;
+$gray-disabled: #2b2b2b;
 
 //Mixins
-@mixin main-font($weight: 300, $size:19px,$style:normal) {
-	font-family: 'Myriad Pro', sans-serif;
-	font-weight: $weight;
-	font-size: $size;
+@mixin main-font($weight: 300, $size:19px,$style:normal)
+{
+  font-family: "Myriad Pro", sans-serif;
+  font-size: $size;
+  font-weight: $weight;
   font-style: $style;
 }
 
-@mixin clear-links($normal: #8794AD,$hover: #A5B4D4,$active:#70A3AE,$visited: #8794AD,$focus: #8794AD) {
+@mixin clear-links($normal: #8794ad,$hover: #a5b4d4,$active:#70a3ae,$visited: #8794ad,$focus: #8794ad)
+{
   text-decoration: none;
+
   @include link-colors($normal, $hover, $active, $visited, $focus);
 }
 
-// @mixin main-color($color:"blue",$type:"normal") {	
+// @mixin main-color($color:"blue",$type:"normal") {  
 // }
 
 //Global Reset
