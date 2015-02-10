@@ -5,18 +5,41 @@
 $left-column-color: #2C4B92;
 $right-column-color: #192744;;
 
+
+//Global to all page-sections
 [id^="page-section"]
 {
   height: 100%;
   width: 100%;
   background-color:$color1;
-}
 
-#page-color-overlay
-{
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  .page-color-overlay
+  {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .page-image-background
+  {
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .content
+  {
+    width: 80%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+     @include animation-duration(1s);
+    @include animation-delay(0.2s);
+    //background-color:tomato;
+  }
+
 }
 
 $nav-bar-height: 90px;
@@ -29,9 +52,8 @@ $mini-nav-bar-height: 60px;
   width:100%;
   height: $nav-bar-height;
 
-  @include transition();
-  @include transition-duration(2);
-
+  //@include transition();
+  @include transition-duration(0.5s);
 
   //background-color: red;
 }
@@ -40,11 +62,17 @@ $mini-nav-bar-height: 60px;
 {
   @extend #nav-bar;
   height: $mini-nav-bar-height;
-  background-color: transparentize(white, 0.1);
+  background-color: transparentize(white, 0.0);
+
+  a
+  {
+    //@include transition-duration(0.5s);
+    //background-color:white;
+  }
 }
 
-$logo-container-height: 200px;
-$logo-container-width: 180px;
+$logo-container-height: 180px;
+$logo-container-width: 130px;
 
 #nav-logo-container
 {
@@ -54,60 +82,52 @@ $logo-container-width: 180px;
   height: $logo-container-height;
 
   $logo-flag-size: 15px;
-  // background-color: red;
+  //background-color: blue;
 
-  #flag
+  #ribbon
   {
     position: relative;
-
-    width: $logo-container-width;
-    height: $logo-container-height;
+    display: block;
     margin-right: auto;
     margin-left: auto;
+   
+    //background-color:red;
 
-    //background-color: white;
+    height: $logo-container-height;
+    width: $logo-container-width;
+
+    @include transition-duration(0.5s);
+
+    svg 
+    {
+       height: 100%;
+       width: 100%;
+       fill: white;
+    }
+
   }
 
   #logo
   {
     position: absolute;
     z-index: 1;
-    width: 100%;
+
     height: 100%;
+    width: 100%;
 
     background-image: image-url("logo.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: auto 80%;
-
+    background-size: auto 68%;
   }
 
-  #left
+   .scrolled
   {
-    //background-color: transparentize(tomato, 0.5) ;
-    position: absolute;
-    z-index: 0;
-    left: 0;
+    //display: none;
+    height: $mini-nav-bar-height !important;
 
-    width: 0;
-    height: $logo-container-height - $logo-flag-size/2;
-
-    border-right: ($logo-container-width/2) solid white;
-    border-bottom: $logo-flag-size solid transparent;
   }
-  #right
-  {
-    // background-color: transparentize(tomato, 0.5) ;
-    position: absolute;
-    z-index: 0;
-    right: 0;
 
-    width: 0;
-    height: $logo-container-height - $logo-flag-size/2;
-
-    border-bottom: $logo-flag-size solid transparent;
-    border-left: ($logo-container-width/2) solid white;
-  }
 }
 
 #nav-tabs-container
@@ -143,19 +163,15 @@ $logo-container-width: 180px;
 #page-section-1
 {
 
-  #page-color-overlay
+  .page-color-overlay
   {
     background-color: transparentize($color1, 0.1);
   }
 
-  #page-image-background
+  .page-image-background
   {
-    position: absolute;
-    z-index: 0;
-    height: 100%;
-    width: 100%;
     background-image: image-url("bg.jpg"); 
-    //opacity: 0.6;
+    background-size: 150% 150%;
   }
 
   h1
@@ -173,7 +189,10 @@ $logo-container-width: 180px;
 
     color: white;
 
+
     @include main-font(500,70px);
+
+
     //background-color: white;
   }
 
@@ -191,14 +210,17 @@ $logo-container-width: 180px;
 
     color: $aqua-pale-color;
 
-    @include animation-delay(0.3s);
+    @include animation-delay(0.4s);
+    @include animation-duration(1s);
 
     @include main-font(300,23px,italic);
+    
+
   }
 
   #left-triangle
   {
-    display: none;
+    //display: none;
     position: absolute;
     bottom: 0px;
     left:0px;
@@ -209,12 +231,12 @@ $logo-container-width: 180px;
     {
       fill: $left-column-color;
     } 
-    //background-color:white;
+
   }
 
   #right-triangle
   {
-    display: none;
+    //display: none;
     position: absolute;
     bottom: 0px;
     right: 0px;
@@ -225,7 +247,7 @@ $logo-container-width: 180px;
     {
       fill: $right-column-color;
     }
-    //background-color:white;
+
   }
 
   $arrow-size: 80px;
@@ -248,40 +270,83 @@ $logo-container-width: 180px;
   
 }
 
+#poly-background
+{
+  position:absolute;
+  z-index: 0;
+  height: 113%;
+  width: 100%;
+  bottom:0px;
+
+
+  .left
+  {
+    fill: transparentize($color1, 0.05);
+  }
+
+  .right
+  {
+    fill: transparentize($color2, 0.05);
+  }
+  //opacity: 0.4;
+}
+
 #page-section-2
 {
+
+  position:relative;
+
+  h1
+  {
+    //display: block;
+    @include main-font(500,50px);
+    color: white;
+    
+    margin-top: 100px;
+    margin-bottom: 40px;
+
+
+    span
+    {
+       color: $aqua-pale-color;
+    }
+
+    //background-color: red;
+  }
+
   
-    h1
-    {
-      display: block;
-      @include main-font(500,50px);
-      color: white;
-      margin: 40px 60px;
-      //background-color: red;
-    }
+  .animated-image
+  {
 
-    p
-    {
-      display: block;
-      @include main-font(400,25px,italic);
-      color: white;
-      margin: 20px 60px;
-      //background-color: red;
-    }
+    //display: none;
+    margin-right: auto;
+    margin-left: auto;
 
+    margin-bottom: 40px;
 
-  #left-column
+    height: 150px;
+    width: 400px;
+    //background-color: white;
+  }
+
+  p
+  {
+    //display: block;
+    @include main-font(400,25px,italic);
+
+    margin-bottom: 20px;
+    color: white;
+    //background-color: red;
+  }
+
+  .left-column
   {
     position: absolute;
     width: 50%;
     height: 100%;
     left: 0px;
 
-    //padding: 50px;
-    
-    background-image: image-url("bg.jpg");
-
-    #color-overlay
+    .color-overlay
     {
       position: absolute;
       height: 100%;
@@ -290,19 +355,28 @@ $logo-container-width: 180px;
       background-color: transparentize($left-column-color, 0.1);
     }
 
+    p
+    {
+      text-align: right;
+    }
+
   }
 
 
-  #right-column
+  .right-column
   {
     position: absolute;
     width: 50%;
     right: 0px;
     height: 100%;
     
-    background-image: image-url("bg.jpg");
 
-    #color-overlay
+    h1
+    {
+      text-align: right;
+    }
+
+    .color-overlay
     {
       position: absolute;
       height: 100%;
@@ -310,6 +384,84 @@ $logo-container-width: 180px;
 
       background-color: transparentize($right-column-color, 0.1);
     }
+
+ 
+
   }
+
+}
+
+#page-section-3
+{
+
+
+  h1
+  {
+    //display: block;
+    @include main-font(500,80px);
+    color: $aqua-pale-color;
+    margin-bottom: 40px;
+    margin-top: 200px;
+
+    //background-color: red;
+  }  
+
+  h2
+  {
+    @include main-font(500,30px,italic);
+    color: white;
+    margin-bottom: 40px;
+  }
+
+  .left-column
+  {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0px;
+
+    background-image: image-url("bg.jpg");
+
+    .color-overlay
+    {
+      position: absolute;
+      height: 100%;
+      width:100%;
+
+      background-color: transparentize($color1, 0.1);
+    }
+
+  }
+
+
+  .right-column
+  {
+    position: absolute;
+    width: 50%;
+    right: 0px;
+    height: 100%;
+    
+    //background-image: image-url("bg.jpg");
+
+    h1
+    {
+      text-align: right;
+    }
+
+    .color-overlay
+    {
+      position: absolute;
+      height: 100%;
+      width:100%;
+
+      background-color: transparentize($color2, 0.1);
+    }
+  }
+}
+
+svg
+{
+
+  //background-color: red;
 
 }

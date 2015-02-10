@@ -1,14 +1,26 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+applied = false
+
 ready = ->
   $(document).scroll ->
     vertical_scroll = $(document).scrollTop()
-    $("#page-section-1 #page-image-background").offset { top: vertical_scroll/2, left: 0 }
-    if vertical_scroll > 10
-      $("#nav-bar").attr "id" ,"mini-nav-bar"
+    $("#page-section-1 .page-image-background").css "background-position", "0px #{vertical_scroll/2}px"
+
+    if vertical_scroll > 1
+      if !applied
+        $("#nav-bar").attr "id" ,"mini-nav-bar"
+        $("#ribbon").addClass "scrolled"
+        applied = true
     else
       $("#mini-nav-bar").attr "id" ,"nav-bar"
+      $("#ribbon").removeClass "scrolled"
+      applied = false
+
+    if $('#page-section-2 .content').is(':visible')
+      $("#page-section-2 .content").addClass "animated fadeIn"
+
 
   $(document).mousemove (event) ->
 

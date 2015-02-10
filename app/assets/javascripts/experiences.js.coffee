@@ -14,11 +14,11 @@ ready = () ->
 
   addImage = (input) ->
     #console.log "HEY"
-    if (input.file && input.file[0])
+    if (input.files && input.files[0])
       reader = new FileReader()
       reader.onload = (e) ->
         $("#img-tag-#{imageCount}").attr('src', e.target.result)
-        $("#experience_photos_attributes_#{imageCount}_file").on "change", (event) ->
+        $("#experience_photos_attributes_#{imageCount}_file").on "change", (event) -> 
           changeUrlImage(this)
         imageCount++
       reader.readAsDataURL(input.files[0])
@@ -32,7 +32,6 @@ ready = () ->
     $("#experience_photos_attributes_#{imageCount}_file").one "change", (event) ->
       addImage(this)
     $("#experience_photos_attributes_#{imageCount}_file").click()
-
 
   $("#photo-adder").on "click", (event) ->
     addImageInput()
