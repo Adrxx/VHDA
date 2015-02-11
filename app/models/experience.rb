@@ -2,7 +2,7 @@ class Experience < ActiveRecord::Base
 
 	has_many :photos
 	
- 	accepts_nested_attributes_for :photos, :reject_if => :all_blank, :allow_destroy => true
+ 	accepts_nested_attributes_for :photos, :allow_destroy => true
 
  	validates :title, presence: true
  	validates :description, presence: true

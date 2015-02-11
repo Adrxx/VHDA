@@ -139,8 +139,8 @@ $login-fields-width: 300px;
 	{
 		@include main-font();
 
-    	font-style: italic;
-  	}
+    font-style: italic;
+  }
 
 	@include main-font(300,20px);
 	color: $primary-color;

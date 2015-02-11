@@ -3,6 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 applied = false
 
+isElementVisible = (elementToBeChecked) ->
+  TopView = $(window).scrollTop()
+  BotView = TopView + $(window).height()
+  TopElement = $(elementToBeChecked).offset().top
+  BotElement = TopElement + $(elementToBeChecked).height()
+  ((BotElement <= BotView) && (TopElement >= TopView))
+
+
 ready = ->
   $(document).scroll ->
     vertical_scroll = $(document).scrollTop()
@@ -19,7 +27,13 @@ ready = ->
       applied = false
 
     if $('#page-section-2 .content').is(':visible')
-      $("#page-section-2 .content").addClass "animated fadeIn"
+      $("#page-section-2 .left-column").addClass "animated fadeInLeft"
+      $("#page-section-2 .right-column").addClass "animated fadeInRight"
+
+    if $('#page-section-3 .content').is(':visible')
+      $("#page-section-3 h1").addClass "animated fadeInUp"
+      $("#page-section-3 h2").addClass "animated fadeIn"
+
 
 
   $(document).mousemove (event) ->

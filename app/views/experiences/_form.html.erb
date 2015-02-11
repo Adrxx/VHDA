@@ -9,7 +9,7 @@
       </ul>
     </div>
   <% end %>
-<%= form_for(@experience, :html => {:id => "experience-form"} ) do |f| %>
+<%= form_for(@experience,  :html => {:id => "experience-form", :multipart => true} ) do |f| %>
 
   <div id="experience-form-text-data">
 
@@ -28,36 +28,29 @@
   </div>
 
   <div id="experience-form-media-data">
-    <%#= image_tag "imgTag" , id: "img-tag" %>
-    <%#= file_field_tag "image-input" , id: 'cicme' %>
+
     <%= link_to "Agregar foto", "#" , id: 'photo-adder'%>
 
     <div id="experience-form-photos">
 
-      <div class="photo-as-list" style="display:none">
-        <img id="img-tag-0" src="">
-        <div class="photo-options">
-          <%= f.fields_for :photos do |p| %>
-            <%= p.file_field :file, class: 'file-field'%>
-            <%#= p.text_area :description %>
-           <% end %>
+      <%= f.fields_for :photos do |p| %>
+        <div class='photo-as-list'>
+          <img id="img-tag" src='<%= p.object.file %>'>
+          <div class='remove-existent'>
+            <%= p.hidden_field :_destroy %>
+          </div>
+          <div class='photo-options'>
+            <%= p.file_field :file, accept: "image/png,image/gif,image/jpeg" ,class: 'file-field'%>
+          </div>
         </div>
-      </div>
-
+      <% end %>
+    
       <div class="spacer"></div>
       <div class="spacer"></div>
       <div class="spacer"></div>
       <div class="spacer"></div>
-      <%#= link_to_add_association 'add task', f, :photos,
-        :class => 'photo-as-list',
-        :'data-association-insertion-method' => 'after',
-        :'data-association-insertion-node' => 'this'
-      %>
     </div>
 
-      <%= f.submit "Crear experiencia", :id => 'submit-experience' %>
-
+    <%= f.submit edit_mode ? 'Guardar cambios' : 'Crear Experiencia' , :id => 'submit-experience' %>
   </div>
-
-
 <% end %>

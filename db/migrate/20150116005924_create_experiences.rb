@@ -6,7 +6,7 @@ class CreateExperiences < ActiveRecord::Migration
       t.text :description
       t.string :place
       t.string :sphere
-      t.timestamp :date
+      t.string :date
 
       t.timestamps
     end

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150119191743) do
     t.text     "description"
     t.string   "place"
     t.string   "sphere"
-    t.datetime "date"
+    t.string   "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

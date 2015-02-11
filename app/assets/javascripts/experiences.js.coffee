@@ -3,8 +3,17 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = () ->
 
-  imageCount = 0
-  #console.log "READDDJDAKSJDLKASJDLKASJLDKJASLDKJASLKDJLAKSJDLKASJLD"
+  $(".file-field").on "change", ->
+    #console.log "HELLOOOO"
+    changeUrlImage(this)
+
+  $(".remove-existent").on "click", ->
+    #console.log "PORQUI"
+    $(this).find("input").attr "value", "true"
+    $(this).parent().hide()
+
+  imageCount = $('.photo-as-list').size() 
+  #console.log (imageCount) + "READDDJDAKSJDLKASJDLKASJLDKJASLDKJASLKDJLAKSJDLKASJLD"
   changeUrlImage = (input) ->
     #console.log $(input).parent().parent("img")
     reader = new FileReader()
@@ -25,10 +34,10 @@ ready = () ->
 
   addImageInput = () ->
     #console.log "PORQUI"
-    if imageCount > 0 
-      $('#experience-form-photos').prepend("<div class='photo-as-list'><img id='img-tag-#{imageCount}' src=''><div class='photo-options'><input accept='image/png,image/gif,image/jpeg' id='experience_photos_attributes_#{imageCount}_file' class='file-field' name='experience[photos_attributes][#{imageCount}][file]' type='file'></div></div>")
-    else
-      $(".photo-as-list").show()
+    $('#experience-form-photos').prepend("<div class='photo-as-list'><img id='img-tag-#{imageCount}' src=''><div class='remove'></div><div class='photo-options'><input accept='image/png,image/gif,image/jpeg' id='experience_photos_attributes_#{imageCount}_file' class='file-field' name='experience[photos_attributes][#{imageCount}][file]' type='file'></div></div>")
+    $("#img-tag-#{imageCount}+.remove").on "click", (event) ->
+      $(this).parent().remove()
+
     $("#experience_photos_attributes_#{imageCount}_file").one "change", (event) ->
       addImage(this)
     $("#experience_photos_attributes_#{imageCount}_file").click()

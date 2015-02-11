@@ -2,13 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$left-column-color: #2C4B92;
-$right-column-color: #192744;;
-
 
 //Global to all page-sections
 [id^="page-section"]
 {
+  position:relative;
   height: 100%;
   width: 100%;
   background-color:$color1;
@@ -31,6 +29,7 @@ $right-column-color: #192744;;
   .content
   {
     width: 80%;
+
 
     margin-left: auto;
     margin-right: auto;
@@ -64,11 +63,6 @@ $mini-nav-bar-height: 60px;
   height: $mini-nav-bar-height;
   background-color: transparentize(white, 0.0);
 
-  a
-  {
-    //@include transition-duration(0.5s);
-    //background-color:white;
-  }
 }
 
 $logo-container-height: 180px;
@@ -229,7 +223,7 @@ $logo-container-width: 130px;
 
     polygon
     {
-      fill: $left-column-color;
+      fill: $color2;
     } 
 
   }
@@ -245,7 +239,7 @@ $logo-container-width: 130px;
 
     polygon
     {
-      fill: $right-column-color;
+      fill: $color6;
     }
 
   }
@@ -281,12 +275,12 @@ $logo-container-width: 130px;
 
   .left
   {
-    fill: transparentize($color1, 0.05);
+    fill: transparentize($color2, 0.05);
   }
 
   .right
   {
-    fill: transparentize($color2, 0.05);
+    fill: transparentize($color6, 0.05);
   }
   //opacity: 0.4;
 }
@@ -294,7 +288,7 @@ $logo-container-width: 130px;
 #page-section-2
 {
 
-  position:relative;
+  height: calc( 100% - #{$mini-nav-bar-height} );
 
   h1
   {
@@ -302,7 +296,7 @@ $logo-container-width: 130px;
     @include main-font(500,50px);
     color: white;
     
-    margin-top: 100px;
+    margin-top: 40px;
     margin-bottom: 40px;
 
 
@@ -352,7 +346,7 @@ $logo-container-width: 130px;
       height: 100%;
       width:100%;
 
-      background-color: transparentize($left-column-color, 0.1);
+      background-color: transparentize($color2, 0.1);
     }
 
     p
@@ -382,7 +376,7 @@ $logo-container-width: 130px;
       height: 100%;
       width:100%;
 
-      background-color: transparentize($right-column-color, 0.1);
+      background-color: transparentize($color6, 0.1);
     }
 
  
@@ -393,15 +387,22 @@ $logo-container-width: 130px;
 
 #page-section-3
 {
+  height: calc( 100% - #{$mini-nav-bar-height} );
 
+  .content
+  {
+    @include vertical-align();
+    //background-color: red;
+  }
 
   h1
   {
     //display: block;
     @include main-font(500,80px);
     color: $aqua-pale-color;
-    margin-bottom: 40px;
-    margin-top: 200px;
+
+    //margin-bottom: 40px;
+    //margin-top: 180px;
 
     //background-color: red;
   }  
@@ -410,7 +411,9 @@ $logo-container-width: 130px;
   {
     @include main-font(500,30px,italic);
     color: white;
-    margin-bottom: 40px;
+    @include animation-delay(0.2s);
+
+    //margin-bottom: 40px;
   }
 
   .left-column
@@ -459,9 +462,90 @@ $logo-container-width: 130px;
   }
 }
 
-svg
+#projects
 {
+  width: 100%;
+  height: 100%;
+}
 
-  //background-color: red;
+.recent-experience
+{
+  position: relative;
+
+    -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+
+  float: left;
+  width: 50%;
+  height: 33%;
+  background-color: $color1;
+  overflow: hidden;
+
+  @include transition-duration(0.5s);
+
+  &:nth-child(n+5)
+  {
+    height: 34%;
+  }
+
+  .info
+  {
+    position:relative;
+    z-index: 2;
+    @include vertical-align;
+
+    text-align:center;
+    //background-color: red;
+    color: white;
+  }
+
+  hr
+  {
+    width: 50%;
+    height: 2px;
+    background-color:white;
+    border: none;
+  }
+
+  .title
+  {
+    @include main-font(600,25px);
+    margin-bottom: 5px;
+  }
+
+  .place
+  {
+    @include main-font(500,22px);
+  }
+
+  .date
+  {
+    @include main-font(500,18px,italic);
+
+  }
+
+  img
+  {
+    position: absolute;
+    top: -25%;
+    left: -25%;
+    z-index: 0;
+    height: 150%;
+    opacity: .2;
+    @include transition-duration(.5s);
+
+  }
+
+  &:hover
+  {
+    background-color:$aqua-dark-color;
+  }
+
+  &:hover > img
+  {
+    opacity: .1;
+  }
 
 }
+

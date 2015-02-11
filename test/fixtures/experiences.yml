@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyText
-  place: MyString
+  title: Puente Hidalgo
+  description: Shalalalalalala
+  place: Nuevo León
 
 two:
   title: MyString

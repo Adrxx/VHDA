@@ -10,14 +10,14 @@ Rails.application.routes.draw do
 
   post 'admin/authentificate' => 'session#authentificate', as: 'authentificate'
 
-
   scope '/admin' do
     resources :experiences
   end
 
-  get '/servicios' => 'statics#services'
 
-  get '/contacto' => 'statics#contact'
+  get '/experiencia' => 'statics#experiences', as: 'experiencia'
+
+  get '/contacto' => 'statics#contact', as: 'contacto'
 
   root 'statics#index'
 

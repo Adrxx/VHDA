@@ -20,11 +20,13 @@ $blue-light-color: #284a9b;
 $aqua-color: #42bcef;
 $aqua-dark-color: #53858e;
 $aqua-pale-color: #72bcc9;
+
 $color1: $blue-dark-color;
 $color2: $blue-light-color;
 $color3: $aqua-color;
 $color4: $aqua-dark-color;
 $color5: $aqua-pale-color;
+$color6: #152956;
 
 //Adrxx's cut
 $blue-hover: #4279fd;
@@ -55,6 +57,15 @@ $gray-disabled: #2b2b2b;
 
   @include link-colors($normal, $hover, $active, $visited, $focus);
 }
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
 
 // @mixin main-color($color:"blue",$type:"normal") {  
 // }
