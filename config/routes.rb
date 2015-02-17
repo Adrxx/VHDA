@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   get '/contacto' => 'statics#contact', as: 'contacto'
 
-  root 'statics#index'
+  root 'statics#landing'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

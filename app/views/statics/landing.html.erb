@@ -5,11 +5,12 @@
     <h1 class="animated fadeInUp">Servicios Integrales de Ingeniería</h1>
     <h2 class="animated fadeIn">Civil, conceptual, de detalle, construcción, estudios y consultoría.</h2>
 
-    <svg id="arrow" class="animated infinite pulse" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
-      <polyline points="1,4 5,8 9,4" />
-    </svg>
+
 
   </div>
+      <svg id="arrow" class="animated infinite pulse" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="1,4 5,8 9,4" />
+    </svg>
 </section>
 
 <section id="page-section-2">
@@ -26,21 +27,21 @@
   </svg>
 
   <div class="left-column">
-      <div class="content">
-        <h1><span>Proyectos</span> Arquitectónicos y de ingeniería.</h1>
-        <div class="animated-image"></div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-      </div>
+    <div class="content">
+      <h1><span>Proyectos</span> Arquitectónicos y de ingeniería.</h1>
+      <div class="animated-image"></div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+    </div>
   </div>
   <div class="right-column">
-      <div class="content">
-        <h1><br><span>Asesoría</span> técnica y consultoría.
-        </h1>
-        <div class="animated-image"></div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor.</p>
-      </div>
+    <div class="content">
+      <h1><br><span>Asesoría</span> técnica y consultoría.
+      </h1>
+      <div class="animated-image"></div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor.</p>
+    </div>
   </div>
 </section>
 
@@ -49,26 +50,27 @@
     <div class="color-overlay">
       <div class="content">
         <h1>Nuestra experiencia.</h1>
-        <h2>Proyectos terminados y <br> casos de éxito</h2>
+        <h2>Proyectos terminados y <br> casos de éxito.</h2>
       </div>
     </div>
   </div>
   <div class="right-column">
     <div id="projects">
       <% @experiences.take(6).each do |exp| %>
-          <div class="recent-experience">
-            <div class="info">
-              <div class="title"><%= exp.title %></div>
-              <div class="place"><%= exp.place %></div>
-              <hr>
-              <div class="date"><%= "Marzo 12, 2012" %></div>
-            </div>
-            <%= image_tag(exp.photos.first.file) %>
+        <div class="recent-experience">
+          <div class="info">
+            <div class="title"><%= exp.title %></div>
+            <div class="place"><%= exp.place %></div>
+            <hr>
+            <div class="date"><%= exp.date %></div>
           </div>
+          <%= image_tag(exp.photos.first.file) %>
+        </div>
       <% end %>
     </div>
   </div>
 </section>
 <section id="page-section-4">
+
   
 </section>

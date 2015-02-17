@@ -9,6 +9,8 @@
   position:relative;
   height: 100%;
   width: 100%;
+  min-height: 550px;
+
   background-color:$color1;
 
   .page-color-overlay
@@ -61,7 +63,7 @@ $mini-nav-bar-height: 60px;
 {
   @extend #nav-bar;
   height: $mini-nav-bar-height;
-  background-color: transparentize(white, 0.0);
+  background-color: transparentize($color1, 0.04);
 
 }
 
@@ -70,9 +72,13 @@ $logo-container-width: 130px;
 
 #nav-logo-container
 {
-  float: left;
 
-  width: 25%;
+  position:absolute;
+  //float: left;
+  z-index: 11;
+
+  width: 90px;
+  left: 5%;
   height: $logo-container-height;
 
   $logo-flag-size: 15px;
@@ -81,6 +87,7 @@ $logo-container-width: 130px;
   #ribbon
   {
     position: relative;
+    z-index: 1;
     display: block;
     margin-right: auto;
     margin-left: auto;
@@ -117,8 +124,10 @@ $logo-container-width: 130px;
 
    .scrolled
   {
+    margin-top: -$logo-container-height;
     //display: none;
-    height: $mini-nav-bar-height !important;
+    //height: $mini-nav-bar-height !important;
+    //opacity: 0.1 !important;
 
   }
 
@@ -126,10 +135,11 @@ $logo-container-width: 130px;
 
 #nav-tabs-container
 {
-  float: left;
+  float: right;
 
   width: 70%;
   height: 100%;
+  margin-right: 40px;
 
   @include display-flex();
   @include align-items(center);
@@ -156,16 +166,19 @@ $logo-container-width: 130px;
 
 #page-section-1
 {
-
+  
   .page-color-overlay
   {
     background-color: transparentize($color1, 0.1);
+    height: 110%;
   }
 
   .page-image-background
   {
+    height: 110%;
     background-image: image-url("bg.jpg"); 
-    background-size: 150% 150%;
+    background-position: 0px 0px;
+    background-size: 100% 180%;
   }
 
   h1
@@ -268,7 +281,7 @@ $logo-container-width: 130px;
 {
   position:absolute;
   z-index: 0;
-  height: 113%;
+  height: 100%;
   width: 100%;
   bottom:0px;
 
@@ -288,7 +301,15 @@ $logo-container-width: 130px;
 #page-section-2
 {
 
-  height: calc( 100% - #{$mini-nav-bar-height} );
+  height: calc( 100% + #{$mini-nav-bar-height} );
+  background-color: transparent;
+  
+
+  .content
+  {
+    //margin-top: 130px;
+    @include vertical-align();
+  }
 
   h1
   {
@@ -401,7 +422,9 @@ $logo-container-width: 130px;
     @include main-font(500,80px);
     color: $aqua-pale-color;
 
-    //margin-bottom: 40px;
+    line-height: 59px;
+
+    margin-bottom: 12px;
     //margin-top: 180px;
 
     //background-color: red;
@@ -472,17 +495,20 @@ $logo-container-width: 130px;
 {
   position: relative;
 
-    -webkit-transform-style: preserve-3d;
+  cursor: pointer;
+
+  -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
 
   float: left;
   width: 50%;
   height: 33%;
-  background-color: $color1;
+  background-color: #3D3D3D;
   overflow: hidden;
 
   @include transition-duration(0.5s);
+
 
   &:nth-child(n+5)
   {
@@ -498,6 +524,14 @@ $logo-container-width: 130px;
     text-align:center;
     //background-color: red;
     color: white;
+
+
+
+    //@include transition-duration(0.5s);
+
+    opacity: 0.0;
+
+
   }
 
   hr
@@ -506,33 +540,34 @@ $logo-container-width: 130px;
     height: 2px;
     background-color:white;
     border: none;
+    margin: 6px auto;
   }
 
   .title
   {
-    @include main-font(600,25px);
-    margin-bottom: 5px;
+    @include main-font(600,22px);
+    margin-bottom: 1px;
   }
 
   .place
   {
-    @include main-font(500,22px);
+    @include main-font(500,20px);
   }
 
   .date
   {
-    @include main-font(500,18px,italic);
+    @include main-font(500,16px,italic);
 
   }
 
   img
   {
     position: absolute;
-    top: -25%;
-    left: -25%;
+    top: 0;
+    left: 0;
     z-index: 0;
-    height: 150%;
-    opacity: .2;
+    width: 100%;
+    opacity: .5;
     @include transition-duration(.5s);
 
   }
@@ -544,7 +579,38 @@ $logo-container-width: 130px;
 
   &:hover > img
   {
+    @include transform(scaleX(1.15) scaleY(1.15));
+    // width: 110%;
+    // left: -5%;
+    // top: -5%;
     opacity: .1;
+  }
+
+  &:hover > .info
+  {
+    opacity: 1;
+  }
+
+  &:hover > .info > .title
+  {
+    @extend .animated;
+    @extend .fadeInDown;
+  }
+  &:hover > .info > .place
+  {
+    @extend .animated;
+    @extend .fadeInDown;
+  }
+  &:hover > .info > hr
+  {
+    @extend .animated;
+    @extend .zoomIn;
+  }
+
+  &:hover > .info > .date
+  {
+    @extend .animated;
+    @extend .fadeInUp;
   }
 
 }

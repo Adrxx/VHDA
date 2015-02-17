@@ -2,6 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 applied = false
+applied2 = false
+
 
 isElementVisible = (elementToBeChecked) ->
   TopView = $(window).scrollTop()
@@ -10,29 +12,31 @@ isElementVisible = (elementToBeChecked) ->
   BotElement = TopElement + $(elementToBeChecked).height()
   ((BotElement <= BotView) && (TopElement >= TopView))
 
-
 ready = ->
   $(document).scroll ->
     vertical_scroll = $(document).scrollTop()
-    $("#page-section-1 .page-image-background").css "background-position", "0px #{vertical_scroll/2}px"
+    $("#page-section-1 .page-image-background").css "background-position", "center #{vertical_scroll/2}px"
 
-    if vertical_scroll > 1
+    if vertical_scroll > 100
       if !applied
         $("#nav-bar").attr "id" ,"mini-nav-bar"
-        $("#ribbon").addClass "scrolled"
+        #$("#ribbon").addClass "scrolled"
         applied = true
+      applied2 = false
     else
-      $("#mini-nav-bar").attr "id" ,"nav-bar"
-      $("#ribbon").removeClass "scrolled"
+      if !applied2
+        $("#mini-nav-bar").attr "id" ,"nav-bar"
+        $("#ribbon").removeClass "scrolled"
+        applied2 = true
       applied = false
 
     if $('#page-section-2 .content').is(':visible')
       $("#page-section-2 .left-column").addClass "animated fadeInLeft"
       $("#page-section-2 .right-column").addClass "animated fadeInRight"
 
-    if $('#page-section-3 .content').is(':visible')
-      $("#page-section-3 h1").addClass "animated fadeInUp"
-      $("#page-section-3 h2").addClass "animated fadeIn"
+    #if $('#page-section-3 .content').is(':visible')
+     # $("#page-section-3 h1").addClass "animated fadeInUp"
+      #$("#page-section-3 h2").addClass "animated fadeIn"
 
 
 
