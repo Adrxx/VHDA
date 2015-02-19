@@ -20,13 +20,13 @@ ready = ->
     if vertical_scroll > 100
       if !applied
         $("#nav-bar").attr "id" ,"mini-nav-bar"
-        #$("#ribbon").addClass "scrolled"
+        #$("#nav-tabs-container").addClass "scrolled"
         applied = true
       applied2 = false
     else
       if !applied2
         $("#mini-nav-bar").attr "id" ,"nav-bar"
-        $("#ribbon").removeClass "scrolled"
+        #$("#nav-tabs-container").removeClass "scrolled"
         applied2 = true
       applied = false
 

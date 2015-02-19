@@ -67,6 +67,35 @@ $gray-disabled: #2b2b2b;
 }
 
 
+$debug-mode-enabled: true;
+$debug-section: #page-section-3;
+
+@mixin debug-mode($i)
+{
+
+  @if $debug-mode-enabled == true {
+    &:hover
+    {
+      @include transition-duration(0.2s);
+      @include transition-property(box-shadow);
+      @include single-box-shadow($inset: true,$hoff: 0px, $voff: 0px,$spread:2px,$blur:10px,$color: rgba(random(155-$i)+100+$i,random(155-$i)+100+$i,random(155-$i)+$i,0.9));
+          @include single-box-shadow($inset: true,$hoff: 0px, $voff: 0px,$spread:2px,$blur:20px,$color: rgba(random(256)-1,random(256)-1,random(256)-1,0.8));
+    }
+    
+  }
+
+}
+
+$i:1;
+@while $i < 50  {
+  #{$debug-section} *:nth-child(#{$i})
+  {
+    @include debug-mode($i);
+  }
+  $i : $i +1;
+}
+
+
 // @mixin main-color($color:"blue",$type:"normal") {  
 // }
 

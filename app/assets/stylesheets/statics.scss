@@ -122,23 +122,19 @@ $logo-container-width: 130px;
     background-size: auto 68%;
   }
 
-   .scrolled
-  {
-    margin-top: -$logo-container-height;
-    //display: none;
-    //height: $mini-nav-bar-height !important;
-    //opacity: 0.1 !important;
 
-  }
 
 }
 
 #nav-tabs-container
 {
-  float: right;
+  //float: right;
+  position:absolute;
 
-  width: 70%;
+  width: 100%;
   height: 100%;
+  right: 0px;
+  top: 0px;
   margin-right: 40px;
 
   @include display-flex();
@@ -147,6 +143,8 @@ $logo-container-width: 130px;
   @include flex-flow(row);
   @include flex-wrap(wrap);
   @include justify-content(flex-end);
+
+  @include transition-duration(0.5s);
   //background-color:tomato;
   a
   {
@@ -161,6 +159,7 @@ $logo-container-width: 130px;
     color: $color5 !important;
     // border-bottom: solid 1px $secondary-color;
   }
+
 }
 
 
@@ -170,12 +169,12 @@ $logo-container-width: 130px;
   .page-color-overlay
   {
     background-color: transparentize($color1, 0.1);
-    height: 110%;
+    height: 113%;
   }
 
   .page-image-background
   {
-    height: 110%;
+    height: 113%;
     background-image: image-url("bg.jpg"); 
     background-position: 0px 0px;
     background-size: 100% 180%;
@@ -304,7 +303,6 @@ $logo-container-width: 130px;
   height: calc( 100% + #{$mini-nav-bar-height} );
   background-color: transparent;
   
-
   .content
   {
     //margin-top: 130px;
@@ -407,6 +405,158 @@ $logo-container-width: 130px;
 }
 
 #page-section-3
+{
+
+  height: calc( 100% - #{$mini-nav-bar-height} );
+
+  .centered
+  {
+    @include vertical-align;
+  }
+
+  #us
+  {
+
+    height: 30%;
+
+    h1
+    {
+      //margin-top: 30px;
+      margin-left: auto;
+      margin-right: 30px;
+      @include main-font(400,70px); 
+      color: $aqua-pale-color;
+
+      width: 40%;
+      text-align: right;
+    }
+
+    p
+    {
+      margin-left: auto;
+      margin-right: 30px;
+
+      @include main-font(400,25px);
+      color: white;
+      width: 750px;
+      text-align: right;
+      line-height: 1.1em;
+
+
+    }
+  }
+
+  %mision-vision
+  {
+
+    position:relative;
+    z-index: 3;
+
+    width: 50%;
+    height: 40%;
+
+    h2
+    {
+      @include main-font(400,32px); 
+      color: $aqua-pale-color;
+      text-align: center;
+
+      &:after
+      {
+        display: block;
+        content: "";
+        height: 2px;
+        width: 20%;
+        margin:10px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+      }
+
+    }
+
+    p
+    {
+      @include main-font(400,23px,italic);
+      color: white;
+      padding: 0px 80px;
+      line-height: 1.5em;
+      text-align: justify;
+      text-align-last: left;
+    }
+  }
+
+  #mision
+  {
+    float: left;
+    @extend %mision-vision;
+  }
+  
+  #vision
+  {
+
+    float: right;
+    @extend %mision-vision;
+
+  }
+
+  #values
+  { 
+
+    clear:both;
+    height: 30%;
+
+    h2
+    {
+      @include main-font(400,32px); 
+      color: $aqua-pale-color;
+      text-align: center;
+
+      &:after
+      {
+        display: block;
+        content: "";
+        height: 2px;
+        width: 20%;
+        margin:10px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+      }
+
+    }
+
+    p
+    {
+      @include main-font(400,23px,italic);
+      color: white;
+      padding: 0px 80px;
+      text-align: center;
+      line-height: 1.5em;
+    }
+
+    span:after
+    {
+      $span-decoration-size:4px;
+      content: "";
+      display: inline-block;
+      margin:10px;
+      margin-bottom: 4px;
+      height: $span-decoration-size;
+      width: $span-decoration-size;
+      background-color: white;
+      @include border-radius($span-decoration-size/2);
+    }
+
+    span:last-child:after
+    {
+      display: none;
+    }
+  }
+
+}
+
+#page-section-4
 {
   height: calc( 100% - #{$mini-nav-bar-height} );
 
