@@ -9,7 +9,7 @@
   position:relative;
   height: 100%;
   width: 100%;
-  min-height: 550px;
+  min-height: 600px;
 
   background-color:$color1;
 
@@ -276,7 +276,7 @@ $logo-container-width: 130px;
   
 }
 
-#poly-background
+.poly-background
 {
   position:absolute;
   z-index: 0;
@@ -294,19 +294,24 @@ $logo-container-width: 130px;
   {
     fill: transparentize($color6, 0.05);
   }
-  //opacity: 0.4;
 }
 
 #page-section-2
 {
-
-  height: calc( 100% + #{$mini-nav-bar-height} );
+  position:relative;
+  height: 100%;
   background-color: transparent;
   
+  span
+  {
+     color: $aqua-pale-color;
+  }
+
   .content
   {
     //margin-top: 130px;
     @include vertical-align();
+    height: 80%;
   }
 
   h1
@@ -319,11 +324,6 @@ $logo-container-width: 130px;
     margin-bottom: 40px;
 
 
-    span
-    {
-       color: $aqua-pale-color;
-    }
-
     //background-color: red;
   }
 
@@ -335,7 +335,7 @@ $logo-container-width: 130px;
     margin-right: auto;
     margin-left: auto;
 
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 
     height: 150px;
     width: 400px;
@@ -345,7 +345,7 @@ $logo-container-width: 130px;
   p
   {
     //display: block;
-    @include main-font(400,25px,italic);
+    @include main-font(400,23px,italic);
 
     margin-bottom: 20px;
     color: white;
@@ -384,8 +384,10 @@ $logo-container-width: 130px;
     height: 100%;
     
 
+
     h1
     {
+      margin-top: 80px;
       text-align: right;
     }
 
@@ -409,6 +411,23 @@ $logo-container-width: 130px;
 
   height: calc( 100% - #{$mini-nav-bar-height} );
 
+  .page-image-background
+  {
+    height: 113%;
+    background-image: image-url("bg.jpg"); 
+    background-position: 0px 0px;
+    background-size: 100% 180%;
+
+    opacity: 0.04;
+  }
+
+  .poly-background
+  {
+    fill: transparentize(white, 0.93)
+  }
+
+
+
   .centered
   {
     @include vertical-align;
@@ -416,6 +435,8 @@ $logo-container-width: 130px;
 
   #us
   {
+    position:relative;
+    z-index: 1;
 
     height: 30%;
 
@@ -423,8 +444,8 @@ $logo-container-width: 130px;
     {
       //margin-top: 30px;
       margin-left: auto;
-      margin-right: 30px;
-      @include main-font(400,70px); 
+      margin-right: 40px;
+      @include main-font(500,67px); 
       color: $aqua-pale-color;
 
       width: 40%;
@@ -434,9 +455,9 @@ $logo-container-width: 130px;
     p
     {
       margin-left: auto;
-      margin-right: 30px;
+      margin-right: 40px;
 
-      @include main-font(400,25px);
+      @include main-font(400,20px);
       color: white;
       width: 750px;
       text-align: right;
@@ -455,10 +476,17 @@ $logo-container-width: 130px;
     width: 50%;
     height: 40%;
 
+    .centered
+    {
+      position: absolute;
+      top:60%;
+    }
+
     h2
     {
-      @include main-font(400,32px); 
-      color: $aqua-pale-color;
+      margin-top: 5%;
+      @include main-font(500,30px);
+      color: white;
       text-align: center;
 
       &:after
@@ -467,20 +495,22 @@ $logo-container-width: 130px;
         content: "";
         height: 2px;
         width: 20%;
-        margin:10px;
+        margin-top:3px;
+        margin-bottom: 0px;
         margin-left: auto;
         margin-right: auto;
-        background-color: white;
+        background-color: transparentize($aqua-pale-color, 0.3);
+
       }
 
     }
 
     p
     {
-      @include main-font(400,23px,italic);
+      @include main-font(400,19px,italic);
       color: white;
-      padding: 0px 80px;
-      line-height: 1.5em;
+      padding: 0px 50px;
+      line-height: 1.4em;
       text-align: justify;
       text-align-last: left;
     }
@@ -498,6 +528,16 @@ $logo-container-width: 130px;
     float: right;
     @extend %mision-vision;
 
+    &:after
+    {
+      display: block;
+      content: "";
+      bottom: 80px;
+      height: 150px;
+      width: 1px;
+      background-color: transparentize($aqua-pale-color, 0.3);
+    }
+
   }
 
   #values
@@ -506,29 +546,43 @@ $logo-container-width: 130px;
     clear:both;
     height: 30%;
 
+    &:before
+    {
+      display: block;
+      content: "";
+      height: 1px;
+      width: 80%;
+      margin-right: auto;
+      margin-left: auto;
+      background-color: transparentize($aqua-pale-color, 0.4);
+
+    }
+
     h2
     {
-      @include main-font(400,32px); 
-      color: $aqua-pale-color;
+      @include main-font(500,30px); 
+      color: white;
       text-align: center;
+      margin-bottom: 20px;
 
       &:after
       {
         display: block;
         content: "";
         height: 2px;
-        width: 20%;
-        margin:10px;
+        width: 12%;
+        margin-top:3px;
+        margin-bottom: 10px;
         margin-left: auto;
         margin-right: auto;
-        background-color: white;
-      }
+        background-color: transparentize($aqua-pale-color, 0.4);
 
+      }
     }
 
     p
     {
-      @include main-font(400,23px,italic);
+      @include main-font(400,20px,italic);
       color: white;
       padding: 0px 80px;
       text-align: center;
@@ -563,7 +617,6 @@ $logo-container-width: 130px;
   .content
   {
     @include vertical-align();
-    //background-color: red;
   }
 
   h1
@@ -765,3 +818,137 @@ $logo-container-width: 130px;
 
 }
 
+
+$contact-form-width: 350px;
+#page-section-5
+{
+
+  height: calc( 100% - #{$mini-nav-bar-height} );
+
+  .page-image-background
+  {
+    height: 100%;
+    background-image: image-url("bg.jpg"); 
+    background-position: 0px 0px;
+    background-size: 100% 180%;
+    z-index: 0;
+    
+    opacity: 0.04;
+  }
+
+
+  #contact-info
+  {
+
+    position:relative;
+    z-index: 1;
+
+    height: 100%;
+    width: calc( 100% - #{$contact-form-width} );
+
+    h1
+    {
+      @include main-font(500,65px);
+      padding-top:60px;
+      color: $aqua-pale-color;
+    }
+
+    p
+    {
+      @include main-font(400,18px);
+      color: white;
+    }
+
+    span
+    {
+      color: $aqua-pale-color;
+    }
+
+    iframe
+    {
+      margin-top: 60px;
+      height: 260px;
+      width: 90%;
+      margin-right: auto;
+      margin-left: auto;
+
+
+    }
+
+  }
+
+  #contact-panel
+  {
+    position:absolute;
+
+    z-index: 1;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    width: $contact-form-width;
+    background-color:transparentize($aqua-pale-color, 0.5);
+
+    form
+    {
+      position:relative;
+      height: 68%;
+    }
+
+    .contact-text
+    {
+      display: block;
+      width: 80%;
+      //height: 80;
+      margin: 10px auto;
+      padding: 10px 20px;
+      padding-top: 12px;
+      
+      @include main-font(400,20px);
+      border: none;
+      background-color: transparentize($aqua-dark-color, 0.0);
+      -webkit-appearance: none;
+      color: white;
+      //@include input-style();
+
+      @include input-placeholder 
+      {
+        color: transparentize(white, 0.55);
+        font-style: italic;
+      }
+    }
+
+    .contact-text-area
+    {
+      @extend .contact-text;
+      height: 45%;
+
+    }
+    
+    .submit
+    {
+      display: block;
+      border: none;
+      padding: 10px 20px;
+
+      border: 2px solid white ;
+
+      color: white;
+      @include main-font(400,20px);
+      width: 91%;
+      background-color: transparent;
+      margin: auto;
+
+    }
+
+    h2
+    {
+      text-align: center;
+      color:white;
+      margin:70px 30px;
+      margin-bottom:30px;
+      @include main-font(400,34px);
+    }
+
+  }
+
+}

@@ -4,18 +4,24 @@
 applied = false
 applied2 = false
 
-
-isElementVisible = (elementToBeChecked) ->
-  TopView = $(window).scrollTop()
-  BotView = TopView + $(window).height()
-  TopElement = $(elementToBeChecked).offset().top
-  BotElement = TopElement + $(elementToBeChecked).height()
-  ((BotElement <= BotView) && (TopElement >= TopView))
+smoothScrollTo = ->
+  $('a[href*=#]:not([href=#])').click ->
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname)
+      target = $(this.hash)
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']')
+      if (target.length)
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 8000)
+        return false
 
 ready = ->
+  #smoothScrollTo()
+
   $(document).scroll ->
     vertical_scroll = $(document).scrollTop()
     $("#page-section-1 .page-image-background").css "background-position", "center #{vertical_scroll/2}px"
+    $("#page-section-3 .page-image-background").css "background-position", "center #{vertical_scroll/2}px"
 
     if vertical_scroll > 100
       if !applied

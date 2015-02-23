@@ -8,7 +8,7 @@
 	{
 		@include main-font();
     	font-style: italic;
-  	}
+  }
 	
 }
 
@@ -61,8 +61,6 @@
 		height: 40px;
 		background-color: white;
 		@include border-radius($global-border-radius);
-
-
 
 		input
 		{

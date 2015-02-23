@@ -1,11 +1,9 @@
 <section id="page-section-1">
   <div class="page-image-background"></div>
   <div class="page-color-overlay">
-  
+
     <h1 class="animated fadeInUp">Servicios Integrales de Ingeniería</h1>
     <h2 class="animated fadeIn">Civil, conceptual, de detalle, construcción, estudios y consultoría.</h2>
-
-
 
   </div>
       <svg id="arrow" class="animated infinite pulse" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
@@ -13,8 +11,10 @@
     </svg>
 </section>
 
+<!-- ****************************************** Servicios ***************************************** -->
+
 <section id="page-section-2">
-  <svg id="poly-background" preserveAspectRatio="none" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1">
+  <svg class="poly-background" preserveAspectRatio="none" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1">
       <g>
          <clipPath id="poly-mask">
             <polygon points="0,0 0,10 10,10 10,0 5,1" />
@@ -30,66 +30,79 @@
     <div class="content">
       <h1><span>Proyectos</span> Arquitectónicos y de ingeniería.</h1>
       <div class="animated-image"></div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+      <p><span>Vías terrestres:</span> <br> Caminos, puentes, pavimentación, terracerías
+      <br>
+      <span>Infraestructura hidráulica y de saneamiento:</span>Agua potable, alcatnarillado pluvial y sanitario, plantas de tratamiento residuales
+      <br>
+      <span>Espacios</span> públicos, deportivos y culturales
+      <br>
+      <span>Vivienda</span> y otros.
+      </p>
     </div>
   </div>
   <div class="right-column">
     <div class="content">
-      <h1><br><span>Asesoría</span> técnica y consultoría.
+      <h1><span>Asesoría</span> técnica y consultoría.
       </h1>
       <div class="animated-image"></div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor.</p>
+      <p><span>Asesoría a municipios</span>, elaboración de expedientes técnicos, topografía, dirección responsable de obra, <span>mantenimiento y rehabilitación</span>, presupuestos.</p>
     </div>
   </div>
 </section>
+
+<!-- ****************************************** Nosotros ***************************************** -->
+
 <section id="page-section-3">
+<div class="page-image-background"></div>
 
   <div id="us">
     <div class="centered">
-        <h1>Nosotros.</h1>
-        <p>VHDA es una empresa que se formó en el año 2014 con el propósito de <br> prestar servicios integrales de proyectos de ingeniería civil en <br> diferentes rubros.</p>
+      <h1>Nosotros.</h1>
+      <p>VHDA es una empresa que se formó en el año 2014 con el propósito de <br> prestar servicios integrales de proyectos de ingeniería civil en <br> diferentes rubros.</p>
     </div>
-
   </div>
+
+  <svg class="poly-background" preserveAspectRatio="none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" version="1.1">
+      <polygon points="0,4 0,20 20,20 20,6.5" />
+  </svg>
+
   <div id="mision">
-  <div class="centered">
-        <h2>Misión</h2>
-    <p>youtube face forwards physical -space spook semiotics vehicle weathered bridge pre- voodoo god franchise network drugs artisanal </p>
+    <h2>Misión</h2>
+    <div class="centered">
+      <p>Ser una empresa competitiva a nivel estatal que ejecute proyectos integrales enfocados a lograr la satisfación de nuestros clientes, empleados y sociedad beneficiada.</p>
+    </div>
   </div>
 
-  </div>
   <div id="vision">
-  <div class="centered">
-      <h2>Visión</h2>
-    <p>youtube face forwards physical -space spook semiotics vehicle weathered bridge pre- </p>
-    
-  </div>
+    <h2>Visión</h2>
+    <div class="centered">
+      <p>Desarrollar proyectos rentables fundamentados en la capacidad técnica de la empresa y el personal altamente preparado, que travaje con ética profesional, calidad y seguridad, proporcionando certeza y valor agregado a nuestros clientes. </p>
+    </div>
 
   </div>
 
   <div id="values">
-  <div class="centered">
+    <div class="centered">
       <h2>Valores</h2>
-    <p>
-      <span>Hdska</span>
-      <span>asiDUSl</span>
-      <span>jlDIS</span>
-      <span>LKSJD</span>
-      <span>LDKSJL</span>
-      <span>ISuasodia</span>
-      <span>LKSJlas</span>
-      <span>LSksji</span>
-    </p>
-    
-  </div>
-
-
+      <p>
+        <span>Trabajo en equipo</span>
+        <span>Mejora continua</span>
+        <span>Desarrollo de estado</span>
+        <span>Seguridad</span>
+        <span>Calidad</span>
+        <span>Tecnología</span>
+        <span>Desarrollo Integral</span>
+        <span>Rentabilidad</span>
+      </p>
+    </div>
   </div>
 
 </section>
+
+<!-- ****************************************** Experiencia ***************************************** -->
+
 <section id="page-section-4">
+
   <div class="left-column">
     <div class="color-overlay">
       <div class="content">
@@ -98,6 +111,7 @@
       </div>
     </div>
   </div>
+
   <div class="right-column">
     <div id="projects">
       <% @experiences.take(6).each do |exp| %>
@@ -113,5 +127,36 @@
       <% end %>
     </div>
   </div>
+
+</section>
+
+<!-- ****************************************** Contacto ***************************************** -->
+
+<section id="page-section-5">
+
+<div class="page-image-background"></div>
+
+  <div id="contact-info">
+    <div class="content">
+      <h1>Contacto.</h1>
+      <p><span>2da.</span> Privada de Independencia No. <span>102</span>, <br>
+      San Agustín de las Juntas, Oaxaca. <br>
+      C.P. <span>71238</span>
+      </p>
+      <br>
+      <p>Teléfono: <span>(951)</span> 143 8471</p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2smx!4v1424633683440!6m8!1m7!1sjd1LUbq6CP49nTwnhR7h8A!2m2!1d19.672336!2d-99.085451!3f96!4f0!5f0.7820865974627469" frameborder="0" style="border:0"></iframe>
+    </div>
+  </div>
+  <aside id="contact-panel">
+    <h2>Escríbenos un <br> mensaje.</h2>
+    <%= form_tag "/mail" do %>
+      <%= text_field "hdsda" ,"", placeholder:'Nombre.', class:"contact-text"  %>
+      <%= email_field "hdsasda" ,"", placeholder:'Correo electrónico.', class:"contact-text"  %>
+      <%= text_area "dsa" ,"", rows: "6", placeholder:'Mensaje.', class:'contact-text' %>
+      <%= submit_tag "Enviar", class: 'submit' %>
+    <% end %>
+  </aside>
+
 </section>
 
