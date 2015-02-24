@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
 //Global to all page-sections
 [id^="page-section"]
 {
@@ -10,6 +11,12 @@
   height: 100%;
   width: 100%;
   min-height: 600px;
+
+  @include tablet
+  {
+    min-height: initial;
+  }
+
 
   background-color:$color1;
 
@@ -39,7 +46,7 @@
      @include animation-duration(1s);
     @include animation-delay(0.2s);
     //background-color:tomato;
-  }
+  } 
 
 }
 
@@ -56,6 +63,11 @@ $mini-nav-bar-height: 60px;
   //@include transition();
   @include transition-duration(0.5s);
 
+  @include smartphone
+  {
+    display: none;
+  }
+    
   //background-color: red;
 }
 
@@ -64,11 +76,14 @@ $mini-nav-bar-height: 60px;
   @extend #nav-bar;
   height: $mini-nav-bar-height;
   background-color: transparentize($color1, 0.04);
-
+  @include smartphone
+  {
+      display: none;
+  }
 }
 
-$logo-container-height: 180px;
-$logo-container-width: 130px;
+$logo-container-height: 220px;
+$logo-container-width: 170px;
 
 #nav-logo-container
 {
@@ -81,7 +96,14 @@ $logo-container-width: 130px;
   left: 5%;
   height: $logo-container-height;
 
+
+@include tablet
+    {
+      left: 0%;
+
+    }
   $logo-flag-size: 15px;
+
   //background-color: blue;
 
   #ribbon
@@ -91,11 +113,19 @@ $logo-container-width: 130px;
     display: block;
     margin-right: auto;
     margin-left: auto;
-   
+
     //background-color:red;
 
     height: $logo-container-height;
     width: $logo-container-width;
+
+    @include tablet
+    {
+      height: 180px;
+      width: 100px;
+      @include transform( rotateZ(-90deg) );
+
+    }
 
     @include transition-duration(0.5s);
 
@@ -120,6 +150,14 @@ $logo-container-width: 130px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: auto 68%;
+
+    @include tablet
+    {
+      background-position: right;
+      background-size: 68% auto;
+      @include transform( rotateZ(90deg) );
+    }
+
   }
 
 
@@ -170,6 +208,7 @@ $logo-container-width: 130px;
   {
     background-color: transparentize($color1, 0.1);
     height: 113%;
+
   }
 
   .page-image-background
@@ -180,13 +219,20 @@ $logo-container-width: 130px;
     background-size: 100% 180%;
   }
 
+  .centered
+  {
+    @include clearfix;
+    @include vertical-align;
+    top:46%;
+  }
+
   h1
   {
     float: right;
     clear: both;
 
-    max-width: 700px;
-    margin-top: 260px;
+    max-width: 730px;
+    //margin-top: 260px;
     margin-right: 80px;
     margin-left: 80px;
 
@@ -211,6 +257,7 @@ $logo-container-width: 130px;
     margin-top: 5px;
     margin-right: 80px;
     margin-left: 80px;
+    //margin-bottom: 90px;
 
     text-align: right;
 
@@ -284,6 +331,10 @@ $logo-container-width: 130px;
   width: 100%;
   bottom:0px;
 
+  @include tablet
+  {
+      display: none;
+  }
 
   .left
   {
@@ -299,7 +350,7 @@ $logo-container-width: 130px;
 #page-section-2
 {
   position:relative;
-  height: 100%;
+  height: auto;
   background-color: transparent;
   
   span
@@ -311,7 +362,17 @@ $logo-container-width: 130px;
   {
     //margin-top: 130px;
     @include vertical-align();
+
     height: 80%;
+
+
+    @include tablet
+    {
+      @include no-vertical-align();
+      height: auto;
+
+      padding: 40px 0px;
+    }
   }
 
   h1
@@ -323,6 +384,12 @@ $logo-container-width: 130px;
     margin-top: 40px;
     margin-bottom: 40px;
 
+    @include tablet
+    {
+      margin-top: 0px;
+
+    }
+
 
     //background-color: red;
   }
@@ -331,7 +398,7 @@ $logo-container-width: 130px;
   .animated-image
   {
 
-    //display: none;
+    display: none;
     margin-right: auto;
     margin-left: auto;
 
@@ -339,7 +406,7 @@ $logo-container-width: 130px;
 
     height: 150px;
     width: 400px;
-    //background-color: white;
+    background-color: tomato;
   }
 
   p
@@ -349,6 +416,11 @@ $logo-container-width: 130px;
 
     margin-bottom: 20px;
     color: white;
+
+    @include tablet
+    {
+     margin-bottom: 0px;
+    }
     //background-color: red;
   }
 
@@ -359,14 +431,15 @@ $logo-container-width: 130px;
     height: 100%;
     left: 0px;
 
-    .color-overlay
-    {
-      position: absolute;
-      height: 100%;
-      width:100%;
 
-      background-color: transparentize($color2, 0.1);
+    @include tablet
+    {
+       position: relative;
+        width: 100%;
+        height: auto;
+        background-color: $color2;
     }
+
 
     p
     {
@@ -382,22 +455,24 @@ $logo-container-width: 130px;
     width: 50%;
     right: 0px;
     height: 100%;
-    
 
+    @include tablet
+    {
+      position: relative;
+      width: 100%;
+      height: auto;
+      background-color: $color6;
+
+    }
 
     h1
     {
-      margin-top: 80px;
+      @include tablet
+      {
+       margin-top: 0px;
+      }
+
       text-align: right;
-    }
-
-    .color-overlay
-    {
-      position: absolute;
-      height: 100%;
-      width:100%;
-
-      background-color: transparentize($color6, 0.1);
     }
 
  
@@ -411,6 +486,14 @@ $logo-container-width: 130px;
 
   height: calc( 100% - #{$mini-nav-bar-height} );
 
+  @include tablet
+  {
+    height: auto;
+  }
+
+
+
+
   .page-image-background
   {
     height: 113%;
@@ -423,14 +506,21 @@ $logo-container-width: 130px;
 
   .poly-background
   {
-    fill: transparentize(white, 0.93)
+    fill: transparentize(white, 0.93);
+    @include tablet
+    {
+      display: none;
+    }
   }
-
-
 
   .centered
   {
     @include vertical-align;
+
+    @include tablet
+    {
+      @include no-vertical-align;
+    }
   }
 
   #us
@@ -439,6 +529,13 @@ $logo-container-width: 130px;
     z-index: 1;
 
     height: 30%;
+
+    @include tablet
+    {
+      height: auto;
+      padding: 40px 0px;
+    }
+
 
     h1
     {
@@ -450,6 +547,16 @@ $logo-container-width: 130px;
 
       width: 40%;
       text-align: right;
+
+      @include tablet
+      {
+        margin-left: 0px;
+        margin-right: 0px;
+        @include main-font(400,45px); 
+        width: auto;
+        text-align: center;
+
+      }
     }
 
     p
@@ -462,6 +569,23 @@ $logo-container-width: 130px;
       width: 750px;
       text-align: right;
       line-height: 1.1em;
+
+      @include tablet
+      {
+        margin-left: 0px;
+        margin-right: 0px;
+        @include main-font(400,17px); 
+
+        padding: 30px 70px;
+        width: auto;
+        text-align: center;
+
+        br
+        {
+          display: none;
+        }
+
+      }
 
 
     }
@@ -476,10 +600,30 @@ $logo-container-width: 130px;
     width: 50%;
     height: 40%;
 
+
+
+    @include tablet
+    {
+      display: block;
+      height: auto;
+      width: 100%;
+      float: none !important;
+
+            padding: 40px 0px;
+
+
+    }
+
     .centered
     {
       position: absolute;
       top:60%;
+
+      @include tablet
+      {
+        @include no-vertical-align;
+      }
+
     }
 
     h2
@@ -488,6 +632,12 @@ $logo-container-width: 130px;
       @include main-font(500,30px);
       color: white;
       text-align: center;
+
+       @include tablet
+      {
+        margin-top: 0px;
+      }
+
 
       &:after
       {
@@ -536,6 +686,11 @@ $logo-container-width: 130px;
       height: 150px;
       width: 1px;
       background-color: transparentize($aqua-pale-color, 0.3);
+
+      @include tablet
+      {
+        display: none;
+      }
     }
 
   }
@@ -546,6 +701,12 @@ $logo-container-width: 130px;
     clear:both;
     height: 30%;
 
+    @include tablet
+    {
+      height: auto;
+      padding:40px 0px;
+    }
+
     &:before
     {
       display: block;
@@ -555,6 +716,11 @@ $logo-container-width: 130px;
       margin-right: auto;
       margin-left: auto;
       background-color: transparentize($aqua-pale-color, 0.4);
+
+      @include tablet
+      {
+        display: none;
+      }
 
     }
 
@@ -612,11 +778,23 @@ $logo-container-width: 130px;
 
 #page-section-4
 {
+
   height: calc( 100% - #{$mini-nav-bar-height} );
+
+  @include tablet
+  {
+    height: auto;
+  }
 
   .content
   {
     @include vertical-align();
+
+    @include tablet
+    {
+       @include no-vertical-align;
+    }
+
   }
 
   h1
@@ -629,7 +807,6 @@ $logo-container-width: 130px;
 
     margin-bottom: 12px;
     //margin-top: 180px;
-
     //background-color: red;
   }  
 
@@ -638,8 +815,18 @@ $logo-container-width: 130px;
     @include main-font(500,30px,italic);
     color: white;
     @include animation-delay(0.2s);
-
     //margin-bottom: 40px;
+  }
+
+  #all-experience-button
+  {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    @include main-font();
+    border: 2px solid white;
+    padding:10px 20px;
+    margin: 10px 0px;
   }
 
   .left-column
@@ -648,6 +835,14 @@ $logo-container-width: 130px;
     width: 50%;
     height: 100%;
     left: 0px;
+
+    @include tablet
+    {
+       position: relative;
+        width: 100%;
+        height: auto;
+        //background-color: $color2;
+    }
 
     background-image: image-url("bg.jpg");
 
@@ -658,6 +853,12 @@ $logo-container-width: 130px;
       width:100%;
 
       background-color: transparentize($color1, 0.1);
+
+      @include tablet
+      {
+        position: relative;
+        height: auto;
+      }
     }
 
   }
@@ -669,6 +870,14 @@ $logo-container-width: 130px;
     width: 50%;
     right: 0px;
     height: 100%;
+
+    @include tablet
+    {
+       position: relative;
+        width: 100%;
+        height: auto;
+        //background-color: $color2;
+    }
     
     //background-image: image-url("bg.jpg");
 
@@ -684,6 +893,14 @@ $logo-container-width: 130px;
       width:100%;
 
       background-color: transparentize($color2, 0.1);
+
+      @include tablet
+      {
+        position: relative;
+        height: auto;
+      }
+
+
     }
   }
 }
@@ -692,13 +909,20 @@ $logo-container-width: 130px;
 {
   width: 100%;
   height: 100%;
+  @include tablet
+  {
+    height: auto;
+  }
 }
 
 .recent-experience
 {
+  display: block;
   position: relative;
 
   cursor: pointer;
+
+  text-decoration: none;
 
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
@@ -712,10 +936,22 @@ $logo-container-width: 130px;
 
   @include transition-duration(0.5s);
 
+  @include tablet
+  {
+    float: none;
+    width: 100%;
+    height: 250px;
+  }
+
 
   &:nth-child(n+5)
   {
     height: 34%;
+
+    @include tablet
+    {
+      height: 250px;
+    }
   }
 
   .info
@@ -825,6 +1061,11 @@ $contact-form-width: 350px;
 
   height: calc( 100% - #{$mini-nav-bar-height} );
 
+  @include tablet
+  {
+    height: auto;
+  }
+
   .page-image-background
   {
     height: 100%;
@@ -834,6 +1075,20 @@ $contact-form-width: 350px;
     z-index: 0;
     
     opacity: 0.04;
+  }
+
+  .centered
+  {
+    height: 80%;
+    @include vertical-align;
+
+    @include tablet
+    {
+      height: auto;
+      @include no-vertical-align;
+
+      padding: 80px 0px;
+    }
   }
 
 
@@ -846,16 +1101,23 @@ $contact-form-width: 350px;
     height: 100%;
     width: calc( 100% - #{$contact-form-width} );
 
+
+    @include tablet
+    {
+      height: auto;
+      width: 100%;
+    }
+
     h1
     {
       @include main-font(500,65px);
-      padding-top:60px;
+      padding-bottom:30px;
       color: $aqua-pale-color;
     }
 
     p
     {
-      @include main-font(400,18px);
+      @include main-font(400,20px);
       color: white;
     }
 
@@ -866,8 +1128,8 @@ $contact-form-width: 350px;
 
     iframe
     {
-      margin-top: 60px;
-      height: 260px;
+      margin-top: 50px;
+      height: 280px;
       width: 90%;
       margin-right: auto;
       margin-left: auto;
@@ -887,6 +1149,13 @@ $contact-form-width: 350px;
     height: 100%;
     width: $contact-form-width;
     background-color:transparentize($aqua-pale-color, 0.5);
+
+    @include tablet
+    {
+      position:relative;
+      height: auto;
+      width: 100%;
+    }
 
     form
     {
@@ -920,8 +1189,7 @@ $contact-form-width: 350px;
     .contact-text-area
     {
       @extend .contact-text;
-      height: 45%;
-
+      height: 70%;
     }
     
     .submit
@@ -930,7 +1198,7 @@ $contact-form-width: 350px;
       border: none;
       padding: 10px 20px;
 
-      border: 2px solid white ;
+      border: 2px solid white;
 
       color: white;
       @include main-font(400,20px);
@@ -944,7 +1212,7 @@ $contact-form-width: 350px;
     {
       text-align: center;
       color:white;
-      margin:70px 30px;
+      margin:0px 30px;
       margin-bottom:30px;
       @include main-font(400,34px);
     }

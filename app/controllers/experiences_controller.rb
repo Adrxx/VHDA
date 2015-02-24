@@ -3,7 +3,7 @@ class ExperiencesController < ApplicationController
   layout "admin"
 
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
-  before_action :check_permission
+  before_action :check_permission, except: [:show]
   # GET /experiences
   # GET /experiences.json
   def index

@@ -5,6 +5,7 @@
 @import "bourbon";
 @import "animate";
 
+
 //Compass default overrides
 $default-box-shadow-v-offset: 1px;
 $default-box-shadow-blur: 1px;
@@ -42,10 +43,31 @@ $gray-normal: #dedede;
 $gray-selected: #3f3f3f;
 $gray-disabled: #2b2b2b;
 
+//MEDIA QUERIES
+$smartphone-width: 400px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin smartphone {
+  @media (max-width: #{$smartphone-width}) 
+  {
+    @content;
+  }
+}
+
+
+@mixin tablet {
+  @media (max-width: #{$tablet-width}) 
+  {
+    @content;
+  }
+}
+
+
 //Mixins
 @mixin main-font($weight: 300, $size:19px,$style:normal)
 {
-  font-family: "Myriad Pro", sans-serif;
+  font-family: 'PT Sans', sans-serif;
   font-size: $size;
   font-weight: $weight;
   font-style: $style;
@@ -66,9 +88,17 @@ $gray-disabled: #2b2b2b;
   transform: translateY(-50%);
 }
 
+@mixin no-vertical-align {
+  position:relative;
+  top: auto;
+  -webkit-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%);
+}
 
-$debug-mode-enabled: true;
-$debug-section: #page-section-2;
+
+$debug-mode-enabled: false;
+$debug-section: #page-section-3;
 
 @mixin debug-mode($i)
 {

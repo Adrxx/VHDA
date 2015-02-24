@@ -14,7 +14,6 @@ Rails.application.routes.draw do
     resources :experiences
   end
 
-
   get '/experiencia' => 'statics#experiences', as: 'experiencia'
 
   get '/contacto' => 'statics#contact', as: 'contacto'
