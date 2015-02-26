@@ -28,12 +28,20 @@ $list-block-width: 200px;
 {
 	//background-color: red;
 	@include display-flex();
-  @include align-items(flex-start);
-  	//@include align-content(space-around);
+  @include align-items(stretch);
+  @include align-content(stretch);
 	@include flex-flow(row);
 	@include flex-wrap(wrap);
   @include justify-content(flex-start);
-  color: $gray-normal;
+
+  width: 100%;
+  height: 100%;
+
+  @include tablet
+  {
+    height: auto;
+  }
+  //color: $gray-normal;
 
 	.spacer
 	{
@@ -48,22 +56,164 @@ $list-block-width: 200px;
 
 
 
-#experience-as-list
+.experience-as-list
 {
 	@include flex-grow(1);
 
 	position: relative;
-	margin: 10px;
-	@include border-radius(5px);
+	//margin: 10px;
+  cursor: pointer;
+  text-decoration: none;
+
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 
 	height: 160px;
 	width: $list-block-width;
 
-	background-color: $blue-normal;
+  overflow: hidden;
 
-	@include box-shadow();
+	background-color: #3D3D3D;
 
-	#buttons
+  @include transition-duration(0.5s);
+
+  @include tablet
+  {
+    background-color:$aqua-dark-color;
+    @include transition-duration(0.0s);
+  }
+
+  .info
+  {
+    position:relative;
+    z-index: 2;
+    @include vertical-align;
+
+    text-align:center;
+    //background-color: red;
+    color: white;
+
+
+
+    //@include transition-duration(0.5s);
+
+    opacity: 0.0;
+
+    @include tablet
+    {
+      //background-color: red;
+      opacity: 1.0;
+    }
+
+
+  }
+
+  hr
+  {
+    width: 50%;
+    height: 2px;
+    background-color:white;
+    border: none;
+    margin: 6px auto;
+  }
+
+  .title
+  {
+    @include main-font(600,22px);
+    margin-bottom: 1px;
+  }
+
+  .place
+  {
+    @include main-font(500,20px);
+  }
+
+  .date
+  {
+    @include main-font(500,16px,italic);
+
+  }
+
+  .image
+  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+    @include transition-duration(.5s);
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include tablet
+    {
+      opacity: 0.18;
+    }
+
+  }
+
+  &:hover
+  {
+    background-color:$aqua-dark-color;
+  }
+
+  &:hover > .image
+  {
+    @include transform(scaleX(1.15) scaleY(1.15));
+    opacity: .1;
+  }
+
+  &:hover > .info
+  {
+    opacity: 1;
+  }
+
+  &:hover > .info > .title
+  {
+    @extend .animated;
+    @extend .fadeInDown;
+
+    @include tablet
+    {
+      @include animation(none);
+    }
+  }
+
+  &:hover > .info > .place
+  {
+    @extend .animated;
+    @extend .fadeInDown;
+    @include tablet
+    {
+      @include animation(none);
+    }
+  }
+
+  &:hover > .info > hr
+  {
+    @extend .animated;
+    @extend .zoomIn;
+    @include tablet
+    {
+      @include animation(none);
+    }
+  }
+
+  &:hover > .info > .date
+  {
+    @extend .animated;
+    @extend .fadeInUp;
+    @include tablet
+    {
+      @include animation(none);
+    }
+  }
+
+	.buttons
 	{
 		position: absolute;
 		background-color: $blue-disabled;

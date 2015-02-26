@@ -1,6 +1,6 @@
 class ExperiencesController < ApplicationController
 
-  layout "admin"
+  layout "layout_admin"
 
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
   before_action :check_permission, except: [:show]
@@ -13,6 +13,7 @@ class ExperiencesController < ApplicationController
   # GET /experiences/1
   # GET /experiences/1.json
   def show
+    render :layout => 'layout_exp'
   end
 
   # GET /experiences/new

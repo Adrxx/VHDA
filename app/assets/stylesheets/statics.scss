@@ -12,9 +12,13 @@
   width: 100%;
   min-height: 600px;
 
+
   @include tablet
   {
     min-height: initial;
+    overflow-y: hidden;
+    overflow-x: hidden;
+
   }
 
 
@@ -37,14 +41,19 @@
 
   .content
   {
-    width: 80%;
 
+    width: 80%;
 
     margin-left: auto;
     margin-right: auto;
 
-     @include animation-duration(1s);
+    @include animation-duration(1s);
     @include animation-delay(0.2s);
+
+    @include tablet
+    {
+      width: 88%;
+    };
     //background-color:tomato;
   } 
 
@@ -203,6 +212,11 @@ $logo-container-width: 170px;
 
 #page-section-1
 {
+
+  @include tablet
+  {
+    max-height: 650px;
+  }
   
   .page-color-overlay
   {
@@ -244,6 +258,18 @@ $logo-container-width: 170px;
 
     @include main-font(500,70px);
 
+    @include animation-delay(0.7s);
+
+    @include tablet
+    {
+      @include main-font(500,calc( 34px + 1.5vw ));
+      margin-right: 10vw;
+    }
+
+    @include smartphone
+    {
+      @include main-font(500, calc( 27px + 1.5vw ));
+    }
 
     //background-color: white;
   }
@@ -263,10 +289,17 @@ $logo-container-width: 170px;
 
     color: $aqua-pale-color;
 
-    @include animation-delay(0.4s);
+    @include animation-delay(1.3rs);
+
     @include animation-duration(1s);
 
     @include main-font(300,23px,italic);
+
+    @include tablet
+    {
+      @include main-font(500,calc( 12px + 1.5vw ));
+      margin-right: 10vw;
+    }
     
 
   }
@@ -349,10 +382,31 @@ $logo-container-width: 170px;
 
 #page-section-2
 {
+
+  $tablet-min-height-section: 690px;
+  $smartphone-min-height-section: 660px;
+
   position:relative;
-  height: auto;
   background-color: transparent;
-  
+
+  height: calc( 100% + #{$mini-nav-bar-height} );
+
+  @include tablet
+  {
+    min-height: $tablet-min-height-section*2;
+
+    .animated
+    {
+       @include animation-duration(0s);
+    }
+
+  }
+
+  @include smartphone
+  {
+    min-height: $smartphone-min-height-section*2;
+  }
+
   span
   {
      color: $aqua-pale-color;
@@ -363,63 +417,110 @@ $logo-container-width: 170px;
     //margin-top: 130px;
     @include vertical-align();
 
-    height: 80%;
+    height: auto;
 
 
     @include tablet
     {
-      @include no-vertical-align();
       height: auto;
-
-      padding: 40px 0px;
+      position: relative;
     }
   }
 
   h1
   {
-    //display: block;
-    @include main-font(500,50px);
+    position: relative;
+    display: block;
+    //top: 0px;
+    @include main-font(500, calc( 35px + 1.5vw ) );
     color: white;
-    
-    margin-top: 40px;
+
+    //margin-top: 0px;
     margin-bottom: 40px;
 
     @include tablet
     {
+      position: static;
+      //width: 100%;
+      @include main-font(500, calc( 38px + 1.5vw ) );
+
       margin-top: 0px;
+
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 84px;
+    }
+
+    @include smartphone
+    {
+      @include main-font(500, calc( 34px + 1.5vw ) );
+      margin-bottom: 35px;
 
     }
 
+    // &:after
+    // {
+    //   display: block;
+    //   content: "";
+    //   height: 2px;
+    //   width: 100%;
+    //   margin-top:13px;
+    //   margin-bottom: 14px;
+    //   margin-left: auto;
+    //   margin-right: auto;
+    //   background-color: transparentize(white, 0.5);
 
-    //background-color: red;
+    // }
   }
 
   
   .animated-image
   {
-
-    display: none;
+    //@include vertical-align;
+    //display: none;
     margin-right: auto;
     margin-left: auto;
 
-    margin-bottom: 20px;
+    //margin-bottom: 20px;
 
-    height: 150px;
-    width: 400px;
-    background-color: tomato;
+    height: 200px;
+    //width: 400px;
+    background-image: image-url("puente.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.8;
+
+    @include tablet
+    {
+      @include no-vertical-align;
+    }
+    //background-color: tomato;
   }
 
   p
   {
-    //display: block;
-    @include main-font(400,23px,italic);
+
+    position: relative;
+    display: block;
+    bottom:0px;
+
+    @include main-font(400,20px,italic);
 
     margin-bottom: 20px;
     color: white;
 
     @include tablet
     {
-     margin-bottom: 0px;
+      position: static;
+      @include main-font(400,19px,italic);
+      line-height: 22px;
+      margin-bottom: 10px;
+    }
+
+    @include smartphone
+    {
+      @include main-font(400,calc( 13px + 1vw),italic);
     }
     //background-color: red;
   }
@@ -434,10 +535,16 @@ $logo-container-width: 170px;
 
     @include tablet
     {
-       position: relative;
-        width: 100%;
-        height: auto;
-        background-color: $color2;
+      position: relative;
+      width: 100%;
+      min-height: $tablet-min-height-section;
+      height: 50%;
+      background-color: $color2;
+    }
+
+    @include smartphone
+    {
+      min-height: $smartphone-min-height-section;
     }
 
 
@@ -460,19 +567,35 @@ $logo-container-width: 170px;
     {
       position: relative;
       width: 100%;
-      height: auto;
+      min-height: $tablet-min-height-section;
+      height: 50%;
+
       background-color: $color6;
+
+      p
+      {
+        text-align: left;
+      }
 
     }
 
     h1
     {
+      margin-top: 20px;
+      text-align: right;
+
       @include tablet
       {
-       margin-top: 0px;
+        margin-top: 0px;
+        text-align: left;
+
       }
 
-      text-align: right;
+    }
+
+    .animated-image
+    {
+      margin: 56px 0px;
     }
 
  
@@ -490,8 +613,6 @@ $logo-container-width: 170px;
   {
     height: auto;
   }
-
-
 
 
   .page-image-background
@@ -552,11 +673,11 @@ $logo-container-width: 170px;
       {
         margin-left: 0px;
         margin-right: 0px;
-        @include main-font(400,45px); 
+        @include main-font(400,46px); 
         width: auto;
         text-align: center;
-
       }
+
     }
 
     p
@@ -574,9 +695,9 @@ $logo-container-width: 170px;
       {
         margin-left: 0px;
         margin-right: 0px;
-        @include main-font(400,17px); 
+        @include main-font(400,19px); 
 
-        padding: 30px 70px;
+        padding: 7px 5vw;
         width: auto;
         text-align: center;
 
@@ -585,6 +706,11 @@ $logo-container-width: 170px;
           display: none;
         }
 
+      }
+
+      @include smartphone
+      {
+        @include main-font(400,18px);
       }
 
 
@@ -600,16 +726,28 @@ $logo-container-width: 170px;
     width: 50%;
     height: 40%;
 
-
-
     @include tablet
     {
       display: block;
       height: auto;
       width: 100%;
       float: none !important;
+      background-color: transparentize(white, 0.85);
+      padding-top: 40px;
 
-            padding: 40px 0px;
+      &:after
+      {
+        display: block;
+        content: "";
+        height: 2px;
+        width: 80%;
+        margin-top:40px;
+        margin-bottom: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: transparentize($aqua-pale-color, 0.3);
+
+      }
 
 
     }
@@ -636,6 +774,7 @@ $logo-container-width: 170px;
        @include tablet
       {
         margin-top: 0px;
+        margin-bottom:14px;
       }
 
 
@@ -651,18 +790,29 @@ $logo-container-width: 170px;
         margin-right: auto;
         background-color: transparentize($aqua-pale-color, 0.3);
 
+
+        @include tablet
+        {
+          display: none;
+        }
+
       }
 
     }
 
     p
     {
-      @include main-font(400,19px,italic);
+      @include main-font(400,18px,italic);
       color: white;
-      padding: 0px 50px;
+      padding: 0px 6vw;
       line-height: 1.4em;
       text-align: justify;
-      text-align-last: left;
+
+      @include smartphone
+      {
+        font-size: 16px;
+      }
+      //text-align-last: left;
     }
   }
 
@@ -678,21 +828,6 @@ $logo-container-width: 170px;
     float: right;
     @extend %mision-vision;
 
-    &:after
-    {
-      display: block;
-      content: "";
-      bottom: 80px;
-      height: 150px;
-      width: 1px;
-      background-color: transparentize($aqua-pale-color, 0.3);
-
-      @include tablet
-      {
-        display: none;
-      }
-    }
-
   }
 
   #values
@@ -705,6 +840,9 @@ $logo-container-width: 170px;
     {
       height: auto;
       padding:40px 0px;
+            background-color: transparentize(white, 0.85);
+
+
     }
 
     &:before
@@ -731,6 +869,12 @@ $logo-container-width: 170px;
       text-align: center;
       margin-bottom: 20px;
 
+
+      @include tablet
+      {
+        margin-bottom: 14px;
+      }
+
       &:after
       {
         display: block;
@@ -743,6 +887,11 @@ $logo-container-width: 170px;
         margin-right: auto;
         background-color: transparentize($aqua-pale-color, 0.4);
 
+        @include tablet
+        {
+          display: none;
+        }
+
       }
     }
 
@@ -753,6 +902,14 @@ $logo-container-width: 170px;
       padding: 0px 80px;
       text-align: center;
       line-height: 1.5em;
+
+      @include tablet
+      {
+        @include main-font(400,17px,italic);
+        padding: 0px 6vw;
+        line-height: 1.4em;
+
+      }
     }
 
     span:after
@@ -786,6 +943,28 @@ $logo-container-width: 170px;
     height: auto;
   }
 
+  .experience-as-list
+  {
+    height: 34%;
+    width: 50%;
+
+    @include tablet
+    {
+      height: 200px;
+      width: 50%;
+    }
+    @include smartphone
+    {
+      height: 160px;
+      width: 100%;
+
+      &:nth-child(n+4)
+      {
+        display: none;
+      }
+    }
+  }
+
   .content
   {
     @include vertical-align();
@@ -793,6 +972,8 @@ $logo-container-width: 170px;
     @include tablet
     {
        @include no-vertical-align;
+       padding: 45px 0px;
+       //padding-bottom:20px;
     }
 
   }
@@ -800,7 +981,7 @@ $logo-container-width: 170px;
   h1
   {
     //display: block;
-    @include main-font(500,80px);
+    @include main-font(500, calc( 45px + 3vw) );
     color: $aqua-pale-color;
 
     line-height: 59px;
@@ -808,6 +989,13 @@ $logo-container-width: 170px;
     margin-bottom: 12px;
     //margin-top: 180px;
     //background-color: red;
+
+    @include tablet
+    {
+      line-height: 50px;
+      @include main-font(500,55px);
+
+    }
   }  
 
   h2
@@ -815,6 +1003,11 @@ $logo-container-width: 170px;
     @include main-font(500,30px,italic);
     color: white;
     @include animation-delay(0.2s);
+
+    @include tablet
+    {
+      @include main-font(500,20px);
+    }
     //margin-bottom: 40px;
   }
 
@@ -827,6 +1020,11 @@ $logo-container-width: 170px;
     border: 2px solid white;
     padding:10px 20px;
     margin: 10px 0px;
+
+    @include tablet
+    {
+      display: none;
+    }
   }
 
   .left-column
@@ -905,155 +1103,6 @@ $logo-container-width: 170px;
   }
 }
 
-#projects
-{
-  width: 100%;
-  height: 100%;
-  @include tablet
-  {
-    height: auto;
-  }
-}
-
-.recent-experience
-{
-  display: block;
-  position: relative;
-
-  cursor: pointer;
-
-  text-decoration: none;
-
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-
-  float: left;
-  width: 50%;
-  height: 33%;
-  background-color: #3D3D3D;
-  overflow: hidden;
-
-  @include transition-duration(0.5s);
-
-  @include tablet
-  {
-    float: none;
-    width: 100%;
-    height: 250px;
-  }
-
-
-  &:nth-child(n+5)
-  {
-    height: 34%;
-
-    @include tablet
-    {
-      height: 250px;
-    }
-  }
-
-  .info
-  {
-    position:relative;
-    z-index: 2;
-    @include vertical-align;
-
-    text-align:center;
-    //background-color: red;
-    color: white;
-
-
-
-    //@include transition-duration(0.5s);
-
-    opacity: 0.0;
-
-
-  }
-
-  hr
-  {
-    width: 50%;
-    height: 2px;
-    background-color:white;
-    border: none;
-    margin: 6px auto;
-  }
-
-  .title
-  {
-    @include main-font(600,22px);
-    margin-bottom: 1px;
-  }
-
-  .place
-  {
-    @include main-font(500,20px);
-  }
-
-  .date
-  {
-    @include main-font(500,16px,italic);
-
-  }
-
-  img
-  {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    width: 100%;
-    opacity: .5;
-    @include transition-duration(.5s);
-
-  }
-
-  &:hover
-  {
-    background-color:$aqua-dark-color;
-  }
-
-  &:hover > img
-  {
-    @include transform(scaleX(1.15) scaleY(1.15));
-    // width: 110%;
-    // left: -5%;
-    // top: -5%;
-    opacity: .1;
-  }
-
-  &:hover > .info
-  {
-    opacity: 1;
-  }
-
-  &:hover > .info > .title
-  {
-    @extend .animated;
-    @extend .fadeInDown;
-  }
-  &:hover > .info > .place
-  {
-    @extend .animated;
-    @extend .fadeInDown;
-  }
-  &:hover > .info > hr
-  {
-    @extend .animated;
-    @extend .zoomIn;
-  }
-
-  &:hover > .info > .date
-  {
-    @extend .animated;
-    @extend .fadeInUp;
-  }
-
-}
-
 
 $contact-form-width: 350px;
 #page-section-5
@@ -1077,21 +1126,6 @@ $contact-form-width: 350px;
     opacity: 0.04;
   }
 
-  .centered
-  {
-    height: 80%;
-    @include vertical-align;
-
-    @include tablet
-    {
-      height: auto;
-      @include no-vertical-align;
-
-      padding: 80px 0px;
-    }
-  }
-
-
   #contact-info
   {
 
@@ -1106,7 +1140,27 @@ $contact-form-width: 350px;
     {
       height: auto;
       width: 100%;
+      
+      iframe
+      {
+        display: block;
+      }
     }
+
+    .centered
+    {
+      @include vertical-align;
+
+      @include tablet
+      {
+        height: auto;
+        @include no-vertical-align;
+
+        padding: 80px 0px;
+      }
+    }
+
+
 
     h1
     {
@@ -1155,7 +1209,23 @@ $contact-form-width: 350px;
       position:relative;
       height: auto;
       width: 100%;
+
     }
+
+    .centered
+    {
+      height: 80%;
+      @include vertical-align;
+
+      @include tablet
+      {
+        height: auto;
+        @include no-vertical-align;
+
+        padding: 49px 0px;
+      }
+    }
+
 
     form
     {
@@ -1205,6 +1275,12 @@ $contact-form-width: 350px;
       width: 91%;
       background-color: transparent;
       margin: auto;
+
+      @include tablet
+      {
+        width: auto;
+        padding: 10px 70px;
+      }
 
     }
 

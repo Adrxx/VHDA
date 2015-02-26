@@ -2,7 +2,7 @@ class StaticsController < ApplicationController
   before_action :set_variables
 
 def experiences
-  render :layout => 'admin'
+  render :layout => 'layout_exp'
 end
 
 def test_mail

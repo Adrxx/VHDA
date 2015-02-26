@@ -10,8 +10,10 @@ Rails.application.routes.draw do
 
   post 'admin/authentificate' => 'session#authentificate', as: 'authentificate'
 
+
+  resources :experiences, path: 'experiencia', only: [:show, :update,:destroy]
   scope '/admin' do
-    resources :experiences
+    resources :experiences, except: [:show,:update,:destroy]
   end
 
   get '/experiencia' => 'statics#experiences', as: 'experiencia'

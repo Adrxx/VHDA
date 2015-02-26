@@ -2,7 +2,7 @@
   <div class="page-image-background"></div>
   <div class="page-color-overlay">
     <div class="centered">
-      <h1 class="animated fadeInUp">Servicios Integrales de Ingeniería</h1>
+      <h1 class="animated fadeIn">Servicios Integrales de Ingeniería</h1>
       <h2 class="animated fadeIn">Civil, conceptual, de detalle, construcción, estudios y consultoría.</h2>
     </div>
   </div>
@@ -20,8 +20,7 @@
             <polygon points="0,0 0,10 10,10 10,0 5,1" />
          </clipPath>
       </g> 
-      
-      <image clip-path="url(#poly-mask)" preserveAspectRatio="none" height="100%" width="100%" xlink:href="<%= image_url 'bg.jpg' %>" />
+  
       <rect class="left" clip-path="url(#poly-mask)" width="50%" height="100%" />
       <rect class="right" clip-path="url(#poly-mask)" x="50%" width="50%" height="100%" />
   </svg>
@@ -30,13 +29,17 @@
     <div class="content">
       <h1><span>Proyectos</span> arquitectónicos y de ingeniería.</h1>
       <div class="animated-image"></div>
-      <p><span>Vías terrestres:</span> <br> Caminos, puentes, pavimentación, terracerías
-      <br>
-      <span>Infraestructura hidráulica y de saneamiento:</span>Agua potable, alcatnarillado pluvial y sanitario, plantas de tratamiento residuales
-      <br>
-      <span>Espacios</span> públicos, deportivos y culturales
-      <br>
-      <span>Vivienda</span> y otros.
+      <p>
+        <span>Vías terrestres:</span> <br> Caminos, puentes, pavimentación, terracerías
+        <br>
+      </p>
+        <p><span>Infraestructura hidráulica y de saneamiento:</span> Agua potable, alcatnarillado pluvial y sanitario, plantas de tratamiento residuales
+        <br>
+      </p>
+      <p>
+        <span>Espacios</span> públicos, deportivos y culturales
+        <br>
+        <span>Vivienda</span> y otros.
       </p>
     </div>
   </div>
@@ -114,16 +117,16 @@
   </div>
 
   <div class="right-column">
-    <div id="projects">
-      <% @experiences.take(6).each do |exp| %>
-        <%= link_to exp , class: 'recent-experience' do %>
+    <div id="experiences">
+      <% @experiences.reverse.take(6).each do |exp| %>
+        <%= link_to exp , class: 'experience-as-list' do %>
           <div class="info">
             <div class="title"><%= exp.title %></div>
             <div class="place"><%= exp.place %></div>
-            <hr>
-            <div class="date"><%= exp.date %></div>
+            <hr><div class="date"><%= exp.date %></div>
           </div>
-          <%= image_tag(exp.photos.first.file) %>
+          
+          <div class="image" style="background-image: url(' <%= photo_from_experience(exp) %> ') "></div>
         <% end %>
       <% end %>
     </div>
