@@ -125,11 +125,12 @@
             <div class="place"><%= exp.place %></div>
             <hr><div class="date"><%= exp.date %></div>
           </div>
-          
+
           <div class="image" style="background-image: url(' <%= photo_from_experience(exp) %> ') "></div>
         <% end %>
       <% end %>
     </div>
+    <%= link_to("Toda la expeiencia", experiencia_path, id:'all-experience-button-mobile') %>
   </div>
 
 </section>

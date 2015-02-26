@@ -36,9 +36,9 @@ ready = ->
         applied2 = true
       applied = false
 
-    if $('#page-section-2 .content').is(':visible')
-      $("#page-section-2 .left-column").addClass "animated fadeInLeft"
-      $("#page-section-2 .right-column").addClass "animated fadeInRight"
+    #if $('#page-section-2 .content').is(':visible')
+      #$("#page-section-2 .left-column").addClass "animated fadeInLeft"
+      #$("#page-section-2 .right-column").addClass "animated fadeInRight"
 
     #if $('#page-section-3 .content').is(':visible')
      # $("#page-section-3 h1").addClass "animated fadeInUp"

@@ -3,9 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $list-block-width: 200px;
-
 @import "experience_form";
-
 
 #new-experience
 {
@@ -41,16 +39,14 @@ $list-block-width: 200px;
   {
     height: auto;
   }
-  //color: $gray-normal;
 
 	.spacer
 	{
 	height: 1px;
 	width: $list-block-width;
-	margin-left: 20px;
+	//margin-left: 20px;
 	@include flex-grow(1);
 	}
-
 
 }
 
@@ -58,6 +54,7 @@ $list-block-width: 200px;
 
 .experience-as-list
 {
+
 	@include flex-grow(1);
 
 	position: relative;
@@ -86,26 +83,20 @@ $list-block-width: 200px;
 
   .info
   {
+
     position:relative;
     z-index: 2;
     @include vertical-align;
 
     text-align:center;
-    //background-color: red;
     color: white;
-
-
-
-    //@include transition-duration(0.5s);
 
     opacity: 0.0;
 
     @include tablet
     {
-      //background-color: red;
       opacity: 1.0;
     }
-
 
   }
 
@@ -220,7 +211,6 @@ $list-block-width: 200px;
 		bottom: 0px;
 		width: 100%;
 
-
 		@include display-flex();
 		@include justify-content(space-around);
 
@@ -234,6 +224,100 @@ $list-block-width: 200px;
 	}
 
 	
+}
+
+
+#experiences-page
+{
+  height: 220px;
+
+  #experiences
+  {
+    margin:0px auto;
+    width: 90%;
+  }
+
+  .content
+  {
+    @include vertical-align();
+
+    @include tablet
+    {
+       @include no-vertical-align;
+       padding: 45px 0px;
+       //padding-bottom:20px;
+    }
+
+  }
+
+  h1
+  {
+    //display: block;
+    @include main-font(500, calc( 45px + 3vw) );
+    color: $aqua-pale-color;
+
+    line-height: 59px;
+
+    margin-bottom: 12px;
+    //margin-top: 180px;
+    //background-color: red;
+
+    @include tablet
+    {
+      line-height: 50px;
+      @include main-font(500,55px);
+
+    }
+  }  
+
+  h2
+  {
+    @include main-font(500,30px,italic);
+    color: white;
+    @include animation-delay(0.2s);
+
+    @include tablet
+    {
+      @include main-font(500,20px);
+    }
+    //margin-bottom: 40px;
+  }
+
+
+  .column
+  {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+
+    @include tablet
+    {
+       position: relative;
+        width: 100%;
+        height: auto;
+        //background-color: $color2;
+    }
+
+    background-image: image-url("bg.jpg");
+
+    .color-overlay
+    {
+      position: absolute;
+      height: 100%;
+      width:100%;
+
+      background-color: transparentize($color1, 0.1);
+
+      @include tablet
+      {
+        position: relative;
+        height: auto;
+      }
+    }
+
+  }
+
 }
 
 

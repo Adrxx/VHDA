@@ -1,15 +1,30 @@
-<section id="">
-  <h1>jdjsdfs</h1>
-  <p>hkdjsahkdjssdfsdf</p>
+<section id="experiences-page">
+
+<div class="column">
+  <div class="color-overlay">
+    <div class="content">
+      <h1>Nuestra experiencia.</h1>
+      <h2>Proyectos terminados y <br> casos de éxito.</h2>
+    </div>
+  </div>
+</div>
 
 <div id="experiences">
 
-  <% @experiences.each do |exp| %>
-        <div id="experience-as-list"><%= exp.title %> </div>
+  <% @experiences.reverse.each do |exp| %>
+    <%= link_to exp , class: 'experience-as-list' do %>
+      <div class="info">
+        <div class="title"><%= exp.title %></div>
+        <div class="place"><%= exp.place %></div>
+        <hr><div class="date"><%= exp.date %></div>
+      </div>
+      
+      <div class="image" style="background-image: url(' <%= photo_from_experience(exp) %> ') "></div>
+    <% end %>
   <% end %>
-
     <!-- SPACERS -->
-    <%= echo_spacers(4) %>
+  <%= echo_spacers(4) %>
+
 </div>
 
 </section>
