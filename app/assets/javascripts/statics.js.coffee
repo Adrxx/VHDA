@@ -1,8 +1,10 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-applied = false
-applied2 = false
+appliedMiniBar = false
+appliedNormalBar = false
+
+appliedGif1 = false
 
 smoothScrollTo = ->
   $('a[href*=#]:not([href=#])').click ->
@@ -17,26 +19,39 @@ smoothScrollTo = ->
 
 ready = ->
   #smoothScrollTo()
-
   $(document).scroll ->
     vertical_scroll = $(document).scrollTop()
-    $("#page-section-1 .page-image-background").css "background-position", "center #{vertical_scroll/2}px"
-    $("#page-section-3 .page-image-background").css "background-position", "center #{vertical_scroll/2}px"
+
+    width = $( window ).width()
+    parallax = width > 400
+
+    if parallax 
+      $("#page-section-1 .page-image-background").css "background-position", "center #{vertical_scroll/2}px"
+      $("#page-section-3 .page-image-background").css "background-position", "center #{vertical_scroll/2}px"
 
     if vertical_scroll > 100
-      if !applied
+      if !appliedMiniBar
         $("#nav-bar").attr "id" ,"mini-nav-bar"
         #$("#nav-tabs-container").addClass "scrolled"
-        applied = true
-      applied2 = false
+        appliedMiniBar = true
+      appliedNormalBar = false
     else
-      if !applied2
+      if !appliedNormalBar
         $("#mini-nav-bar").attr "id" ,"nav-bar"
         #$("#nav-tabs-container").removeClass "scrolled"
-        applied2 = true
-      applied = false
+        appliedNormalBar = true
+      appliedMiniBar = false
 
-    #if $('#page-section-2 .content').is(':visible')
+    #console.log "v:: " + vertical_scroll
+    #console.log "o:: " + $("#page-section-2").height()/2
+
+    if vertical_scroll > $("#page-section-2 .left-column").offset().top -  $("#page-section-2 .left-column").height()/2
+      if !appliedGif1
+        console.log "adsahdas"
+        #$("#page-section-2 .animated-image").css "background-image" , "url(/assets/ds.gif)"
+        $("#page-section-2 .animated-image").css "background-image" , "url(/assets/puente.gif?#{Math.random()})"
+        appliedGif1 = true
+
       #$("#page-section-2 .left-column").addClass "animated fadeInLeft"
       #$("#page-section-2 .right-column").addClass "animated fadeInRight"
 

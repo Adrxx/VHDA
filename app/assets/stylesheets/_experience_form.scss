@@ -88,6 +88,7 @@
 			margin: 0px;
 			padding: 10px;
 			border: none;
+      box-sizing: border-box;
 			background-color: transparent;
 
 			@include input-style();
@@ -232,6 +233,7 @@ $photo-as-list-margin: 20px;
 		.file-field
 		{
 			width: 50%;
+      position:absolute;
 		}
 
 	}

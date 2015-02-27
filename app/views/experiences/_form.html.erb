@@ -23,6 +23,9 @@
     <div class="text-area-container">
       <%= f.text_area :description, :placeholder => 'Descripción'  %>
     </div>
+    <div class='text-field-container'>
+      <%= f.text_field :sphere, :placeholder => 'iframe' %>
+    </div>
 
 
   </div>
@@ -45,10 +48,7 @@
         </div>
       <% end %>
     
-      <div class="spacer"></div>
-      <div class="spacer"></div>
-      <div class="spacer"></div>
-      <div class="spacer"></div>
+      <%= echo_spacers(4) %>
     </div>
 
     <%= f.submit edit_mode ? 'Guardar cambios' : 'Crear Experiencia' , :id => 'submit-experience' %>

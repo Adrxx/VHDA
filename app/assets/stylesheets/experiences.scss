@@ -5,6 +5,13 @@
 $list-block-width: 200px;
 @import "experience_form";
 
+#nav-bar-exp
+{
+  @extend #mini-nav-bar;
+  //background-color: red;
+}
+
+
 #new-experience
 {
 	position: relative;
@@ -42,10 +49,10 @@ $list-block-width: 200px;
 
 	.spacer
 	{
-	height: 1px;
-	width: $list-block-width;
-	//margin-left: 20px;
-	@include flex-grow(1);
+  	height: 1px;
+  	width: $list-block-width;
+  	//margin-left: 20px;
+  	@include flex-grow(1);
 	}
 
 }
@@ -229,24 +236,41 @@ $list-block-width: 200px;
 
 #experiences-page
 {
-  height: 220px;
+  height: auto;
+  padding-top: $mini-nav-bar-height;
 
-  #experiences
+  background-image: image-url("bg.jpg"); 
+
+  .experience-as-list
   {
-    margin:0px auto;
-    width: 90%;
+    width: 300px;
+    height: 200px
+  }
+  .spacer
+  {
+    width: 300px;
+
   }
 
-  .content
+ 
+  .column
   {
-    @include vertical-align();
+    padding:50px 40px;
+    height: 100%;
+    margin: 0px 0px;
+    background-color: transparentize($blue-dark-color, 0.1);
 
     @include tablet
     {
-       @include no-vertical-align;
-       padding: 45px 0px;
-       //padding-bottom:20px;
+      padding:50px 6vw;
     }
+  }
+
+  #experiences
+  {
+   // margin:0px auto;
+    width: 100%;
+    background-color: $blue-dark-color;
 
   }
 
@@ -283,41 +307,249 @@ $list-block-width: 200px;
     //margin-bottom: 40px;
   }
 
+}
 
-  .column
+
+#page-section-show-experience
+{
+  position:relative;
+  top: $mini-nav-bar-height;
+
+  height: calc( 100% - #{$mini-nav-bar-height} );
+
+
+  //margin-top: $mini-nav-bar-height;
+
+  background-image: image-url("bg.jpg");
+
+
+  @include tablet
   {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    left: 0px;
+    height: auto;
+  }
+
+  h1
+  {
+    display: block;
+    @include main-font(600, calc( 14px + 3vw) );
+    color: white;
+    text-align: center;
+
+    line-height: 45px;
+
+    margin-bottom: 14px;
+    margin-top: 28px;
+    //background-color: red;
 
     @include tablet
     {
-       position: relative;
-        width: 100%;
-        height: auto;
-        //background-color: $color2;
+      line-height: 50px;
+      @include main-font(500,55px);
     }
 
-    background-image: image-url("bg.jpg");
-
-    .color-overlay
+    &:after
     {
-      position: absolute;
-      height: 100%;
-      width:100%;
+      display: block;
+      content: "";
+      height: 2px;
+      width: 80%;
+      margin-top:13px;
+      margin-bottom: 14px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: transparentize($aqua-pale-color, 0.5);
 
-      background-color: transparentize($color1, 0.1);
+    }
 
-      @include tablet
-      {
-        position: relative;
-        height: auto;
-      }
+  }  
+
+  h2
+  {
+    display: block;
+    text-align: center;
+    @include main-font(500,20px,italic);
+    color: white;
+    @include animation-delay(0.2s);
+
+    @include tablet
+    {
+      @include main-font(500,20px);
+    }
+    //margin-bottom: 40px;
+  }
+
+  h3
+  {
+    display: block;
+    text-align: center;
+    @include main-font(500,18px,italic);
+    color: $aqua-pale-color;
+    padding-top: 30px;
+
+
+  }
+
+  p
+  {
+    color: white;
+    text-align: justify;
+    padding: 0px 40px;
+    height: 230px;
+    overflow-y: scroll;
+    line-height: 21px;
+    margin-top: 30px;
+
+    @include main-font(500,16px);
+
+    @include tablet
+    {
+      height: auto;
     }
 
   }
 
+  #all-experience-button
+  {
+
+    display: block;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+
+    @include main-font();
+    border: 2px solid white;
+    padding:10px 20px;
+    margin: 10px auto;
+    margin-top: 30px;
+
+    width: 200px;
+
+    @include tablet
+    {
+      display: none;
+    }
+
+    &:before
+    {
+      display: inline-block;
+      margin-right: 8px;
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 5px 6px 5px 0;
+      border-color: transparent white transparent transparent;
+    }
+
+  }
+
+
+  .left-column
+  {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0px;
+
+    background-color: transparentize($blue-dark-color, 0.1);
+
+    .content
+    {
+      width: 90%;
+      @include tablet
+      {
+        width: 100%;
+        padding-bottom: 25px;
+      }
+    }
+
+    @include tablet
+    {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+
+  }
+
+
+  .right-column
+  {
+    position: absolute;
+    width: 50%;
+    right: 0px;
+    height: 100%;
+
+    background-color: $blue-dark-color;
+
+    @include tablet
+    {
+      position: relative;
+      width: 100%;
+      height: 150vw;
+      box-sizing: border-box;
+      padding: 30px;
+          background-color: transparentize($blue-dark-color, 0.1);
+
+    }
+    
+    .iframe-container
+    {
+      box-sizing:border-box;
+      border: 4px solid $blue-dark-color;
+      *:not(iframe)
+      {
+        display: none;
+      }
+      @include tablet{
+        padding-bottom: 20px;
+      }
+    }
+
+    iframe
+    {
+      display: block;
+      height: 100% !important;
+      width: 100% !important;
+    }
+
+    .swiper-container {
+        width: 100%;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .swiper-slide {
+        background-size: cover;
+        background-position: center;
+    }
+    .gallery-top {
+        //height: 45%;
+        width: 100%;
+
+    }
+    .gallery-thumbs {
+        height: 15%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+    .gallery-thumbs .swiper-slide {
+        width: 25%;
+        height: 100%;
+        opacity: 0.4;
+    }
+    .gallery-thumbs .swiper-slide-active {
+        opacity: 1;
+    }
+
+    //background-image: image-url("bg.jpg");
+
+    h1
+    {
+      text-align: right;
+    }
+
+  }
 }
 
 

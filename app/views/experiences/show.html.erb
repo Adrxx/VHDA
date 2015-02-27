@@ -1,23 +1,63 @@
-<p id="notice"><%= notice %></p>
+<section id="page-section-show-experience">
+  
 
-<p>
-  <strong>Title:</strong>
-  <%= @experience.title %>
-</p>
+  <div class="left-column">
+    <div class="content">
+      <h3><%= @experience.date %></h3>
+      <h1><%= @experience.title %></h1>
+      <h2><%= @experience.place %></h2>
+      <p><%= @experience.description %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @experience.description %>
-</p>
+      <%= link_to("Toda la expeiencia", experiencia_path, id:'all-experience-button') %>
+    </div>
+  </div>
+  
+  <div class="right-column">
+    <!-- Swiper -->
+    <div class="iframe-container">
+      <%= iframe_from_experience(@experience) %>
+    </div>
+    <div class="swiper-container gallery-top">
+        <div class="swiper-wrapper">
+          <% @experience.photos.each do |photo| %>
+            <div class="swiper-slide" style="background-image:url(<%=photo.file%>)"></div>
+          <% end %>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+    </div>
+    <div class="swiper-container gallery-thumbs">
+        <div class="swiper-wrapper">
+          <% @experience.photos.each do |photo| %>
+            <div class="swiper-slide" style="background-image:url(<%=photo.file%>)"></div>
+          <% end %>
+        </div>
+    </div>
 
-<p>
-  <strong>IMAGES:</strong>
-  <% @experience.photos.each do |ph|  %>
-  	  <%= image_tag ph.file %>
-  <% end %>
-</p>
+    <!-- Swiper JS -->
 
-<p>
-  <strong>Place:</strong>
-  <%= @experience.place %>
-</p>
+    <!-- Initialize Swiper -->
+    <script>
+    var appendNumber = 4;
+    var prependNumber = 1;
+    var galleryTop = new Swiper('.gallery-top', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        spaceBetween: 10,
+    });
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+        spaceBetween: 10,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        touchRatio: 0.2,
+        slideToClickedSlide: true
+    });
+    galleryTop.params.control = galleryThumbs;
+    galleryThumbs.params.control = galleryTop;
+    </script>
+  
+  </div>
+
+
+</section>

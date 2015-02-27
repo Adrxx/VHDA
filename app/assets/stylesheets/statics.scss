@@ -66,6 +66,7 @@ $mini-nav-bar-height: 60px;
 {
   position:fixed;
   z-index: 10;
+  top:0px;
   width:100%;
   height: $nav-bar-height;
 
@@ -274,7 +275,7 @@ $logo-container-width: 170px;
 
     @include smartphone
     {
-      @include main-font(500, calc( 27px + 1.5vw ));
+      @include main-font(500, calc( 26px + 1.2vw ));
     }
 
     //background-color: white;
@@ -377,12 +378,12 @@ $logo-container-width: 170px;
 
   .left
   {
-    fill: transparentize($color2, 0.05);
+    fill: $color2
   }
 
   .right
   {
-    fill: transparentize($color6, 0.05);
+    fill: $color6
   }
 }
 
@@ -487,15 +488,14 @@ $logo-container-width: 170px;
     margin-right: auto;
     margin-left: auto;
 
-    //margin-bottom: 20px;
+    margin-bottom: 10px;
 
     height: 200px;
     //width: 400px;
-    background-image: image-url("puente.gif");
+    //background-image: image-url("puente.gif");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0.8;
+    background-size: auto 80%;
 
     @include tablet
     {
