@@ -1,19 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+ <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>VHDA - Sistema Administrador</title>
+</head>
+<body>
+
 <%= form_tag authentificate_url ,autocomplete: 'off', id: 'login-form' ,class: animation_options(flash) do %>
 
-	<div id="login-logo"></div>
+  <div id="login-logo"></div>
 
-	<div id="login-greet">Sistema administrador</div>
+  <div id="login-greet">Sistema administrador</div>
 
-	<% flash.each do |name, msg| %>
-		<%= content_tag :div, msg, :id => "flash-#{name}" , class: 'animated tada' %>
-	<% end %>	
-	<div id='login-fields'>
-		<%= text_field_tag :email, nil, autocomplete: 'off',placeholder: 'E-mail', class: "login-field" %>
-		<div class="spacer"></div>
-		<%= password_field_tag :password, nil , placeholder: 'Password', class: "login-field" %>
-	</div>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash-#{name}" , class: 'animated shake' %>
+  <% end %> 
 
-	<%= submit_tag 'Iniciar sesión', id: 'login-button' %>
+  <div id='login-fields'>
+    <%= text_field_tag :email, nil, autocomplete: 'off',placeholder: 'E-mail', class: "login-field" %>
+    <div class="spacer"></div>
+    <%= password_field_tag :password, nil , placeholder: 'Password', class: "login-field" %>
+  </div>
+
+  <%= submit_tag 'Iniciar sesión', id: 'login-button' %>
 
 <% end %>
+  
+</body>
+</html>
+
+
 

@@ -1,14 +1,10 @@
 <% if @experience.errors.any? %>
-    <div id="form-error">
-      <div><%= pluralize(@experience.errors.count, "error", "errores") %>:</div>
-
-      <ul>
+    <div id="experience-form-error">
       <% @experience.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <%= message %> <br>
       <% end %>
-      </ul>
     </div>
-  <% end %>
+<% end %>
 <%= form_for(@experience,  :html => {:id => "experience-form", :multipart => true} ) do |f| %>
 
   <div id="experience-form-text-data">
@@ -29,7 +25,7 @@
 
 
   </div>
-
+  <h2>Galería</h2>
   <div id="experience-form-media-data">
 
     <%= link_to "Agregar foto", "#" , id: 'photo-adder'%>
@@ -47,10 +43,9 @@
           </div>
         </div>
       <% end %>
-    
       <%= echo_spacers(4) %>
     </div>
-
+    <%# link_to edit_mode ? 'Eliminar Experiencia' : 'Cancelar' ,"asdas", :id => 'preview-experience' %>
     <%= f.submit edit_mode ? 'Guardar cambios' : 'Crear Experiencia' , :id => 'submit-experience' %>
   </div>
 <% end %>

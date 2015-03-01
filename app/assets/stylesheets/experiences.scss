@@ -12,23 +12,6 @@ $list-block-width: 200px;
 }
 
 
-#new-experience
-{
-	position: relative;
-
-	text-align: center;
-	width: $list-block-width * 5;
-	padding: 10px;
-	margin: 10px;
-	margin-top: 20px;
-	@include border-radius(5px);
-	background-color: $blue-normal;
-	color: $gray-normal;
-	text-decoration: none;
-	@include flex-grow(1);
-
-}
-
 #experiences
 {
 	//background-color: red;
@@ -344,7 +327,7 @@ $list-block-width: 200px;
     @include tablet
     {
       line-height: 50px;
-      @include main-font(500,55px);
+      @include main-font(500,40px);
     }
 
     &:after
@@ -404,6 +387,8 @@ $list-block-width: 200px;
     @include tablet
     {
       height: auto;
+      padding: 0px 16px;
+
     }
 
   }
@@ -492,6 +477,13 @@ $list-block-width: 200px;
           background-color: transparentize($blue-dark-color, 0.1);
 
     }
+
+    @include smartphone
+    {
+      padding: 10px;
+      height: 370px;
+
+    }
     
     .iframe-container
     {
@@ -501,8 +493,15 @@ $list-block-width: 200px;
       {
         display: none;
       }
-      @include tablet{
+
+      @include tablet
+      {
         padding-bottom: 20px;
+      }
+
+      @include smartphone
+      {
+        display: none;
       }
     }
 

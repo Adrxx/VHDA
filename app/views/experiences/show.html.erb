@@ -1,8 +1,12 @@
 <section id="page-section-show-experience">
-  
-
   <div class="left-column">
     <div class="content">
+     <% flash.each do |name, msg| %>
+      <%= content_tag :div, :id => "flash-notice" do %>
+        <%= msg %>
+        <%= link_to("Volver a editar", edit_experience_path(@experience) ) %>
+      <% end %>
+    <% end %> 
       <h3><%= @experience.date %></h3>
       <h1><%= @experience.title %></h1>
       <h2><%= @experience.place %></h2>
@@ -45,6 +49,7 @@
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         spaceBetween: 10,
+        keyboardControl: true,
     });
     var galleryThumbs = new Swiper('.gallery-thumbs', {
         spaceBetween: 10,

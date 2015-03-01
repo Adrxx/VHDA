@@ -1,82 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ADMIN...</title>
+  <title>VHDA - Sistema Administrador</title>
 
- <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-   <style>
-    html, body {
-        position: relative;
-        height: 100%;
-    }
-    body {
-
-      position: relative;
-      height: 100%;
-        background: #000;
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        color:#000;
-        margin: 0;
-        padding: 0;
-    }
-    .swiper-container {
-        width: 100%;
-        height: 300px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .swiper-slide {
-        background-size: cover;
-        background-position: center;
-    }
-    .gallery-top {
-        height: 80%;
-        width: 100%;
-    }
-    .gallery-thumbs {
-        height: 20%;
-        box-sizing: border-box;
-        padding: 10px 0;
-    }
-    .gallery-thumbs .swiper-slide {
-        width: 25%;
-        height: 100%;
-        opacity: 0.4;
-    }
-    .gallery-thumbs .swiper-slide-active {
-        opacity: 1;
-    }
-    
-    </style>
-
 </head>
 <body>
+  <div id="nav-logo-container">
+    <%= link_to experiencia_path, id: 'mini-ribbon' do %>
+      <div id="logo"></div>
+      <svg viewBox="0 0 10 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,0 0,9 5,10 10,9, 10,0"/>
+      </svg>
+    <% end %>
+  </div>
 
-
-<div id="admin-bar" >
-    <div id="logo-container"></div>
-    
-      <%= link_to("Cerrar sesión", logout_path, method: :delete, :class => 'nav-bar-button') %>
-
+<div id="nav-bar">
+  <nav id="nav-tabs-container" class="animated fadeIn">
+    <%= link_to("Cerrar sesión", logout_path, method: :delete ) %>
+  </nav>
 </div>
-
-<div id="content-wrapper">
 
 	<%= yield %>
-	
-
-  
-<!-- 	<footer>
-    Ment
-	</footer> -->
-</div>
 
 </body>
 </html>

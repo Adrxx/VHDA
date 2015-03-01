@@ -31,7 +31,7 @@ class ExperiencesController < ApplicationController
 
     respond_to do |format|
       if @experience.save
-        format.html { redirect_to @experience, notice: "Experience was successfully created. #{params}" }
+        format.html { redirect_to @experience, notice: "Experience was successfully created." }
       else
         format.html { render :new }
       end
@@ -42,7 +42,8 @@ class ExperiencesController < ApplicationController
   def update
     respond_to do |format|
       if @experience.update(experience_params)
-        format.html { redirect_to @experience, notice: 'Experience was successfully updated.' }
+
+        format.html { redirect_to @experience, notice: 'Se han guardado los cambios. ' }
       else
         format.html { render :edit }
       end

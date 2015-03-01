@@ -1,12 +1,21 @@
-<div id="experiences">
-
+<div class="page-experiences">
 <%= link_to 'Agregar experiencia', new_experience_path, :id =>'new-experience' %>
+  <div id="experiences">
 
-    <% @experiences.each do |experience| %>
-          <%= render 'experience_as_list', :experience => experience%>
+    <% @experiences.reverse.each do |exp| %>
+      <%= link_to edit_experience_path(exp.id) , class: 'experience-as-list' do %>
+        <div class="info">
+          <div class="title"><%= exp.title %></div>
+          <div class="place"><%= exp.place %></div>
+          <hr>
+          <div class="date"><%= exp.date %></div>
+          <%# link_to 'Eliminar', exp, method: :delete, data: { confirm: 'Esta acción no puede deshacerse ¿Está seguro que desea eliminar este elemento?' } %>
+        </div>
+        <div class="image" style="background-image: url(' <%= photo_from_experience(exp) %> ') "></div>
+      <% end %>
     <% end %>
-
-    <!-- SPACERS -->
+      <!-- SPACERS -->
     <%= echo_spacers(4) %>
+  </div>
 
 </div>

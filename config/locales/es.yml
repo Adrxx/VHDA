@@ -1,0 +1,22 @@
+es:
+  activerecord:
+      models:
+        experience: "Experiencia"
+      attributes:
+        experience:
+          title: "Título"   # <= here
+          place: "Lugar"
+          date: "Fecha"
+          description: "Descripción"
+      errors:
+        models:
+          experience:
+            attributes:
+              title:
+                blank: "no puede estar vacío."
+              place:
+                blank: "no puede estar vacío."
+              date:
+                blank: "no puede estar vacío."
+              description:
+                blank: "no puede estar vacío."

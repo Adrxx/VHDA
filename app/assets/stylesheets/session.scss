@@ -2,8 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
 $login-form-width: 500px;
 $login-form-height: 400px;
 
@@ -38,6 +36,14 @@ $login-fields-width: 300px;
 	color: $secondary-color;
 	border: solid 2px $secondary-color;
 	background-color: transparentize($secondary-color, .6);
+
+  a
+  {
+    color: white;
+    display: inline-block;
+    margin-top: 7px;
+  }
+
 }
 
 #login-form 
@@ -78,7 +84,7 @@ $login-fields-width: 300px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: auto 100%;
-	background-image: image-url("logo-big.png");
+	background-image: image-url("logo.png");
 	//background-color: cyan;
 	
 }

@@ -3,7 +3,7 @@ module StaticsHelper
     if exp.photos.any?
       exp.photos.first.file
     else
-      image_url("puente.gif")
+      image_url("no-image.png")
     end
   end
 end

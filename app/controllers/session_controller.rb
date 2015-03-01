@@ -1,6 +1,9 @@
 class SessionController < ApplicationController
+
+  layout false
   
   def login
+    
   end
 
   def check_session

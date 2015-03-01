@@ -15,20 +15,27 @@
 <body>
 
   <div id="nav-logo-container">
-    <div id="ribbon" >
+    <div id="ribbon">
       <div id="logo"></div>
       <svg viewBox="0 0 10 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <polygon points="0,0 0,9 5,10 10,9, 10,0"/>
       </svg>
     </div>
   </div>
-
 <div id="nav-bar">
+  <svg id="nav-button"></svg>
+
+  <nav id="nav-tabs-container-mobile">
+    <%= link_to("Servicios", "#page-section-2") %>
+    <%= link_to("Nosotros", "#page-section-3") %>
+    <%= link_to("Experiencia", "#page-section-4") %>
+    <%= link_to("Contacto", "#page-section-5") %>
+  </nav>
   <nav id="nav-tabs-container" class="animated fadeIn">
-    <%= link_to("Servicios", "") %>
-    <%= link_to("Nosotros", "") %>
-    <%= link_to("Experiencia", "") %>
-    <%= link_to("Contacto", "") %>
+    <%= link_to("Servicios", "#page-section-2") %>
+    <%= link_to("Nosotros", "#page-section-3") %>
+    <%= link_to("Experiencia", "#page-section-4") %>
+    <%= link_to("Contacto", "#page-section-5") %>
   </nav>
 </div>
 

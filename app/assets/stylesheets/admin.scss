@@ -1,67 +1,58 @@
-
-
-#admin-bar
+#mini-ribbon
 {
-  //background-color: purple;
-  position: relative;
+  @extend #ribbon;
+  height:100px !important; 
+  width:87px !important;
 
-  height: 44px;
-  padding-left: 8px;
-
-  background-color: $secondary-color;
-
-  @include display-flex();
-  @include align-items(center);
-  //@include align-content(space-around);
-  @include flex-flow(row);
-  @include flex-wrap(wrap);
-  @include justify-content(flex-end);
-  @include box-shadow(0px 2px 0px 0px rgba(0,0,0,.13));
-  //border-bottom: solid rgba(0, 0, 0, .4) 2px;
+  @include tablet 
+  {
+    height: 160px !important; 
+    width: 80px !important; 
+  }
 }
 
-
-.nav-bar-button
+.page-experiences
 {
-  margin-right: 8px;
-  padding: 8px;
+  height: auto;
+  width: 80%;
+  margin: 0px auto;
+  padding-top: 130px;
 
-  text-decoration: none;
-
-  color: white;
-  background-color: transparentize(black, .5);
-
-  @include border-radius(4px);
-  @include main-font(400);
-  @include transition-property(background-color);
-  @include transition-duration(.5s);
-  &:hover
+  @include tablet
   {
-    background-color: $primary-color;
-    //border-bottom: solid #fff 3px;
+    width: 90%;
+  }
+
+  h1
+  {
+    @include main-font(400,40px);
+    text-align:center;
+    color: $aqua-pale-color;
+    margin-bottom: 20px;
+  }
+
+  h2
+  {
+    @include main-font(400,30px);
+    text-align:center;
+    color: $aqua-pale-color;
+    margin:20px 0px;
   }
 }
 
 
-
-#content-wrapper
+#new-experience
 {
-  position: relative;
+  
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+    text-align: center;
 
-  width: 80%;
-  //min-width: 800px;
-  min-height: 100%;
-  margin-right: auto;
-  margin-left: auto;
-}
+    @include main-font();
+    border: 2px solid white;
+    padding: 10px 20px;
+    margin-bottom:10px;
 
-footer
-{
-  position: absolute;
-  bottom: 0;
-
-  width: 100%;
-
-  text-align: center;
-  //background-color: blue;
 }
