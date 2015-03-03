@@ -13,7 +13,7 @@
 </head>
 <body>
   <div id="nav-logo-container">
-    <%= link_to experiencia_path, id: 'mini-ribbon' do %>
+    <%= link_to experiences_path, id: 'mini-ribbon' do %>
       <div id="logo"></div>
       <svg viewBox="0 0 10 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <polygon points="0,0 0,9 5,10 10,9, 10,0"/>
@@ -21,12 +21,16 @@
     <% end %>
   </div>
 
-<div id="nav-bar">
+<div id="mini-nav-bar">
+  <div id="nav-bar-mobile">
+      <div class="current-tab"></div>
+      <svg id="nav-button"></svg>
+  </div>
   <nav id="nav-tabs-container" class="animated fadeIn">
+    <%= link_to "Toda la experiencia",experiences_path %>
     <%= link_to("Cerrar sesión", logout_path, method: :delete ) %>
   </nav>
 </div>
-
 	<%= yield %>
 
 </body>

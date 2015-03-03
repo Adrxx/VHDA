@@ -31,7 +31,7 @@ class ExperiencesController < ApplicationController
 
     respond_to do |format|
       if @experience.save
-        format.html { redirect_to @experience, notice: "Experience was successfully created." }
+        format.html { redirect_to @experience, notice: "La experiencia ha sido creada. " }
       else
         format.html { render :new }
       end
@@ -43,7 +43,7 @@ class ExperiencesController < ApplicationController
     respond_to do |format|
       if @experience.update(experience_params)
 
-        format.html { redirect_to @experience, notice: 'Se han guardado los cambios. ' }
+        format.html { redirect_to @experience, notice: 'Se han guardado los cambios.' }
       else
         format.html { render :edit }
       end
@@ -54,7 +54,7 @@ class ExperiencesController < ApplicationController
   def destroy
     @experience.destroy
     respond_to do |format|
-      format.html { redirect_to experiences_url, notice: 'Experience was successfully destroyed.' }
+      format.html { redirect_to experiences_url, notice: 'La experiencia fue destuida exitosamente.' }
     end
   end
 

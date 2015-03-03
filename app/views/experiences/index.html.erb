@@ -3,16 +3,18 @@
   <div id="experiences">
 
     <% @experiences.reverse.each do |exp| %>
-      <%= link_to edit_experience_path(exp.id) , class: 'experience-as-list' do %>
-        <div class="info">
+      <div class="experience-as-list">
+        <div class="info-static">
           <div class="title"><%= exp.title %></div>
           <div class="place"><%= exp.place %></div>
-          <hr>
-          <div class="date"><%= exp.date %></div>
-          <%# link_to 'Eliminar', exp, method: :delete, data: { confirm: 'Esta acción no puede deshacerse ¿Está seguro que desea eliminar este elemento?' } %>
+        </div>
+        <div class="buttons">
+          <%= link_to 'Ver', exp %>
+          <%= link_to 'Editar', edit_experience_path(exp) %>
+          <%= link_to 'Eliminar', exp, method: :delete, data: { confirm: 'Esta acción no puede deshacerse ¿Está seguro que desea eliminar este elemento?' } %>
         </div>
         <div class="image" style="background-image: url(' <%= photo_from_experience(exp) %> ') "></div>
-      <% end %>
+      </div>
     <% end %>
       <!-- SPACERS -->
     <%= echo_spacers(4) %>

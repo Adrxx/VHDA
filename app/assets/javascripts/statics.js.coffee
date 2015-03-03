@@ -4,6 +4,7 @@
 appliedMiniBar = false
 appliedNormalBar = false
 
+appliedGif2 = false
 appliedGif1 = false
 
 canvas = 0
@@ -17,7 +18,6 @@ ur = 0
 m = 0
 ll = 0
 lr = 0
-group = 0
 active = false
 
 animateMenu = (time) ->
@@ -27,38 +27,30 @@ animateMenu = (time) ->
     middleLine.animate( {transform: m, opacity: 1}, time) 
     lowerLineL.animate( {transform: ll}, time)
     lowerLineR.animate( {transform: lr}, time)
-    $('#nav-tabs-container-mobile').show()
-    #$('#nav-tabs-container-mobile').animate({
-    #opacity: 1,
-    #top: "+=50",
-    #}, 5000)
+    $('#nav-tabs-container').addClass "expanded-menu"
 
     active= true
   else
     noMatrix = new Snap.Matrix()
-    time = time /3
+    time = time /2
     upperLineL.animate( { transform: noMatrix} , time)
     upperLineR.animate( { transform: noMatrix} , time)
     middleLine.animate( { transform: noMatrix,opacity: 1} , time) 
     lowerLineL.animate( { transform: noMatrix} , time)
     lowerLineR.animate( { transform: noMatrix} , time)
-    #$('#nav-tabs-container-mobile').addClass "animated fadeOutUp"
-    $('#nav-tabs-container-mobile').hide()
-
+    $('#nav-tabs-container').removeClass "expanded-menu"
 
     active= false
 
 
 
 generateMenu = ->
-  #console.log 'porqui'
   lineWidth = 2
   gapBetween = 11
   width = 28
   height = lineWidth*3 + gapBetween*2
   $('#nav-button').width width
   $('#nav-button').height height
-  $('#nav-tabs-container-mobile').hide()
   canvas = Snap('#nav-button')
   upperLineL = canvas.rect(0,0,width/2,lineWidth)
   upperLineR = canvas.rect(width/2,0,width/2,lineWidth)
@@ -72,18 +64,18 @@ generateMenu = ->
   ul.translate(4,4) 
   ul.rotate(45, lineWidth/2, lineWidth/2); 
 
-  ur = new Snap.Matrix() 
-  ur.translate(-4,4) 
+  ur = new Snap.Matrix()
+  ur.translate(-4,4)
   ur.rotate(-45, width-lineWidth/2, lineWidth/2); 
 
-  m = new Snap.Matrix() 
+  m = new Snap.Matrix()
   m.rotate(45, height/2, height/2); 
 
-  ll = new Snap.Matrix() 
-  ll.translate(4,-4) 
+  ll = new Snap.Matrix()
+  ll.translate(4,-4)
   ll.rotate(-45, lineWidth/2, height-lineWidth/2); 
 
-  lr = new Snap.Matrix() 
+  lr = new Snap.Matrix()
   lr.translate(-4,-4) 
   lr.rotate(45, width-lineWidth/2, height-lineWidth/2);
 
@@ -91,52 +83,84 @@ generateMenu = ->
     animateMenu(300)
 
 
-
-
 ready = ->
   generateMenu()
-  $('a[href*=#]:not([href=#])').on "click", () ->
+  $('a[href*=#]:not([href=#])').on "click", (event) ->
+    event.preventDefault();
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname)
       target = $(this.hash);
-      #console.log target
-      #target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
       if (target.length)
-        console.log "porqyi"
-        $('html,body').animate({ scrollTop: target.offset().top }, 1000);
-      
+        $('html,body').animate({ scrollTop: target.offset().top - 60 }, 1000);
+        animateMenu(300)
 
   $('#arrow').on "click", ->
+    $('html,body').animate({ scrollTop: $('#page-section-2').offset().top + 20 }, 1000);
+
     
   $(document).scroll ->
     vertical_scroll = $(document).scrollTop()
-
     width = $( window ).width()
-    parallax = width > 400
+    parallax = width > 769
 
     if parallax 
       $("#page-section-1 .page-image-background").css "background-position", "center #{vertical_scroll/2}px"
       $("#page-section-3 .page-image-background").css "background-position", "center #{vertical_scroll/2}px"
 
-    if vertical_scroll > 100
+
+    navTransformRange = 100;
+    navTransformRange = 400 if !parallax;
+    if vertical_scroll > navTransformRange
       if !appliedMiniBar
         $("#nav-bar").attr "id" ,"mini-nav-bar"
+        $('#nav-bar-mobile').css "background-color","#171b23"
+        $('.current-tab').css "color","white"
         #$("#nav-tabs-container").addClass "scrolled"
         appliedMiniBar = true
       appliedNormalBar = false
     else
       if !appliedNormalBar
         $("#mini-nav-bar").attr "id" ,"nav-bar"
+        $('#nav-bar-mobile').css "background-color","transparent"
+        $('.current-tab').css "color","transparent"
+
         #$("#nav-tabs-container").removeClass "scrolled"
         appliedNormalBar = true
       appliedMiniBar = false
 
-    if vertical_scroll > $("#page-section-2 .left-column").offset().top -  $("#page-section-2 .left-column").height()/2
+    inRange= (x,div) ->
+      threshold = 200
+      x >= $("#{div}").offset().top-threshold && x <= ($("#{div}").offset().top+$("#{div}").height() - threshold)
+
+    if inRange vertical_scroll, '#page-section-1'
+      $("#nav-tabs-container a").removeClass "selected"
+      $(".current-tab").html "Servicios"
+    else if inRange vertical_scroll, '#page-section-2'
+      $("#nav-tabs-container a").removeClass "selected"
+      $("#nav-tabs-container a:nth-child(1)").addClass "selected"
+      $(".current-tab").html "Servicios"
+    else if inRange vertical_scroll, '#page-section-3'
+      $("#nav-tabs-container a").removeClass "selected"
+      $("#nav-tabs-container a:nth-child(2)").addClass "selected"
+      $(".current-tab").html "Nosotros"
+    else if inRange vertical_scroll, '#page-section-4'
+      $("#nav-tabs-container a").removeClass "selected"
+      $("#nav-tabs-container a:nth-child(3)").addClass "selected"    
+      $(".current-tab").html "Experiencia"
+    else if inRange vertical_scroll, '#page-section-5'
+      $("#nav-tabs-container a").removeClass "selected"
+      $("#nav-tabs-container a:nth-child(4)").addClass "selected"
+      $(".current-tab").html "Contacto"
+
+
+    if vertical_scroll > $("#page-section-2 .left-column").offset().top - $("#page-section-2 .left-column").height()/2
       if !appliedGif1
-        #console.log "adsahdas"
-        #$("#page-section-2 .animated-image").css "background-image" , "url(/assets/ds.gif)"
         $("#page-section-2 .left-column .animated-image").css "background-image" , "url(/assets/animacion1.gif?#{Math.random()})"
-        $("#page-section-2 .right-column .animated-image").css "background-image" , "url(/assets/animacion2.gif?#{Math.random()})"
         appliedGif1 = true
+    if vertical_scroll > $("#page-section-2 .right-column").offset().top - $("#page-section-2 .left-column").height()/2
+      if !appliedGif2
+        $("#page-section-2 .right-column .animated-image").css "background-image" , "url(/assets/animacion2.gif?#{Math.random()})"
+        appliedGif2 = true
+
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
