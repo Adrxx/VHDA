@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get '/experiencia' => 'statics#experiences', as: 'experiencia'
 
-  post '/mail' => 'statics#mail'
+  post '/mail' => 'statics#mail', as: 'mail'
 
   root 'statics#landing'
 

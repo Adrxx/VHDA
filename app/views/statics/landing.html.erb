@@ -156,10 +156,10 @@
   <aside id="contact-panel">
     <div class="centered">
       <h2>Escríbenos un <br> mensaje.</h2>
-      <%= form_tag "/mail", method: :post, remote: true, id:'mail-form' do %>
-        <%= text_field "nombre" ,"", placeholder:'Nombre.', class:"contact-text"  %>
-        <%= email_field "correo" ,"", placeholder:'Correo electrónico.', class:"contact-text"  %>
-        <%= text_area "mensaje" ,"", rows: "6", placeholder:'Mensaje.', class:'contact-text-area' %>
+      <%= form_tag mail_path, method: :post, remote: true, id:'mail-form' do %>
+        <%= text_field_tag :nombre ,nil, placeholder:'Nombre.', class:"contact-text"  %>
+        <%= email_field_tag :correo ,nil, placeholder:'Correo electrónico.', class:"contact-text"  %>
+        <%= text_area_tag :mensaje ,nil, rows: "6", placeholder:'Mensaje.', class:'contact-text-area' %>
         <%= submit_tag "Enviar", class: 'submit' %>
       <% end %>
     </div>

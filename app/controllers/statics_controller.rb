@@ -6,8 +6,17 @@ def experiences
 end
 
 def mail
-  ContactMailer.send_mail(params[:nombre],params[:correo],params[:mensaje]).deliver
-  render nothing:true;
+  #render :nothing => true
+  nom = params[:nombre]
+  corr = params[:correo]
+  men = params[:mensaje]
+  unless nom.empty? or corr.empty? or men.empty?
+    ContactMailer.send_mail(nom,corr,men).deliver
+  else
+    render js: "alert('Por favor complete todos los campos.')"
+    return
+  end
+  render plain: "aceptado"
 end
 
 private

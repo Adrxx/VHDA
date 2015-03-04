@@ -78,20 +78,24 @@ generateMenu = ->
   $('#nav-button').on "click", ->
     animateMenu(300)
 
-
 ready = ->
+  $("[class^='contact-text']").on "keyup", ->
+    nombreL = $('#mail-form #nombre').val().length
+    correoL = $('#mail-form #correo').val().length
+    mensajeL = $('#mail-form #mensaje').val().length
+    if nombreL > 0 && correoL > 0 && mensajeL > 0
+      $('#mail-form .submit').css "opacity", 1
+    else
+      $('#mail-form .submit').prop "opacity", 0.3
+
   $("#mail-form").on("ajax:success", (e, data, status, xhr) ->
     showGracias= ->
+      console.log "kjashk"
       $('#contact-panel .centered').html "<h3>Gracias</h3><p>Tu mensaje ha sido enviado.</p>"
       $('#contact-panel .centered').css "height", "auto"
       $('#contact-panel').fadeIn()
-    $('#contact-panel').fadeOut("slow",showGracias)
+    $('#contact-panel').fadeOut("slow",showGracias) if xhr.responseText == "aceptado"
   ).on "ajax:error", (e, xhr, status, error) ->
-    showError= ->
-      $('#contact-panel .centered').html "<h3>Error</h3><p>Hubo un error, por favor inténtalo más tarde o envía un correo a info@vhda.mx</p>"
-      $('#contact-panel .centered').css "height", "auto"
-      $('#contact-panel').fadeIn()
-    $('#contact-panel .centered').fadeOut("slow",showError)
 
   appliedGif2 = false
   appliedGif1 = false
