@@ -87,7 +87,11 @@ ready = ->
       $('#contact-panel').fadeIn()
     $('#contact-panel').fadeOut("slow",showGracias)
   ).on "ajax:error", (e, xhr, status, error) ->
-    $('#contact-panel .centered').fadeOut("slow",)
+    showError= ->
+      $('#contact-panel .centered').html "<h3>Error</h3><p>Hubo un error, por favor inténtalo más tarde o envía un correo a info@vhda.mx</p>"
+      $('#contact-panel .centered').css "height", "auto"
+      $('#contact-panel').fadeIn()
+    $('#contact-panel .centered').fadeOut("slow",showError)
 
   appliedGif2 = false
   appliedGif1 = false

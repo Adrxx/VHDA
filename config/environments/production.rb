@@ -59,8 +59,8 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  ActionMailer::Base.stmp_settings = {
-    address: "stmp.gmail.com",
+  ActionMailer::Base.smtp_settings = {
+    address: "smtp.gmail.com",
     port: 587,
     domain: "gmail.com",
     user_name: ENV['EMAIL_USER'],
