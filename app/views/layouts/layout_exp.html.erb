@@ -14,13 +14,17 @@
 </head>
 <body>
 
-
 <div id="nav-bar-exp">
+  <div id="nav-bar-mobile">
+      <div class="current-tab"></div>
+      <svg id="nav-button"></svg>
+  </div>
+  <div id="mini-logo"></div>
   <nav id="nav-tabs-container" class="animated fadeIn">
-    <%= link_to("Servicios", "") %>
-    <%= link_to("Nosotros", "") %>
-    <%= link_to("Experiencia", "", class: 'selected') %>
-    <%= link_to("Contacto", "") %>
+    <%= link_to("Servicios", root_path + "#page-section-2") %>
+    <%= link_to("Nosotros", root_path + "#page-section-3") %>
+    <%= link_to("Experiencia","#", class: "selected-section") %>
+    <%= link_to("Contacto", root_path + "#page-section-5") %>
   </nav>
 </div>
 

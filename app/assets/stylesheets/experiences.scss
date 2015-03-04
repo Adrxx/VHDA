@@ -8,7 +8,6 @@ $list-block-width: 200px;
 #nav-bar-exp
 {
   @extend #mini-nav-bar;
-  //background-color: red;
 }
 
 
@@ -40,7 +39,10 @@ $list-block-width: 200px;
 
 }
 
-
+.selected-section
+{
+  color:$aqua-pale-color !important;
+}
 
 .experience-as-list
 {
@@ -222,7 +224,6 @@ $list-block-width: 200px;
 #experiences-page
 {
   height: auto;
-  padding-top: $mini-nav-bar-height;
 
   background-image: image-url("bg.jpg"); 
 
@@ -241,6 +242,7 @@ $list-block-width: 200px;
   .column
   {
     padding:50px 40px;
+    padding-top: 50px + $mini-nav-bar-height;
     height: 100%;
     margin: 0px 0px;
     background-color: transparentize($blue-dark-color, 0.1);

@@ -538,6 +538,7 @@ $logo-container-width: 170px;
     @include tablet
     {
       height: auto;
+      top:50%;
       position: relative;
     }
   }
@@ -679,6 +680,11 @@ $logo-container-width: 170px;
         text-align: left;
       }
 
+      .content
+      {
+        top:48%;
+      }
+
     }
 
     h1
@@ -691,7 +697,6 @@ $logo-container-width: 170px;
       @include tablet
       {
         text-align: left;
-
       }
 
     }
@@ -1443,6 +1448,22 @@ $contact-form-width: 350px;
       margin:0px 30px;
       margin-bottom:30px;
       @include main-font(400,34px);
+    }
+
+    h3
+    {
+      display: block;
+      color:white;
+      @include main-font(600,32px); 
+      text-align: center;
+    }
+
+    p
+    {
+      display: block;
+      color: white;
+      text-align: center;
+      @include main-font(400,25px); 
     }
 
   }

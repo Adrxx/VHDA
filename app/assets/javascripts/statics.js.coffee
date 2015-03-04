@@ -1,12 +1,6 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-appliedMiniBar = false
-appliedNormalBar = false
-
-appliedGif2 = false
-appliedGif1 = false
-
 canvas = 0
 upperLineL = 0
 upperLineR = 0
@@ -19,6 +13,8 @@ m = 0
 ll = 0
 lr = 0
 active = false
+transformableBar = true
+outsideLinks = true
 
 animateMenu = (time) ->
   if !active
@@ -84,14 +80,29 @@ generateMenu = ->
 
 
 ready = ->
+  $("#mail-form").on("ajax:success", (e, data, status, xhr) ->
+    showGracias= ->
+      $('#contact-panel .centered').html "<h3>Gracias</h3><p>Tu mensaje ha sido enviado.</p>"
+      $('#contact-panel .centered').css "height", "auto"
+      $('#contact-panel').fadeIn()
+    $('#contact-panel').fadeOut("slow",showGracias)
+  ).on "ajax:error", (e, xhr, status, error) ->
+    $('#contact-panel .centered').fadeOut("slow",)
+
+  appliedGif2 = false
+  appliedGif1 = false
+
+  appliedMiniBar = false
+  appliedNormalBar = false
   generateMenu()
   $('a[href*=#]:not([href=#])').on "click", (event) ->
-    event.preventDefault();
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname)
-      target = $(this.hash);
-      if (target.length)
-        $('html,body').animate({ scrollTop: target.offset().top - 60 }, 1000);
-        animateMenu(300)
+    if $(this).data "smooth-scroll"
+      event.preventDefault();
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname)
+        target = $(this.hash);
+        if (target.length)
+          $('html,body').animate({ scrollTop: target.offset().top - 60 }, 1000);
+          animateMenu(300)
 
   $('#arrow').on "click", ->
     $('html,body').animate({ scrollTop: $('#page-section-2').offset().top + 20 }, 1000);
@@ -109,23 +120,24 @@ ready = ->
 
     navTransformRange = 100;
     navTransformRange = 400 if !parallax;
-    if vertical_scroll > navTransformRange
-      if !appliedMiniBar
-        $("#nav-bar").attr "id" ,"mini-nav-bar"
-        $('#nav-bar-mobile').css "background-color","#171b23"
-        $('.current-tab').css "color","white"
-        #$("#nav-tabs-container").addClass "scrolled"
-        appliedMiniBar = true
-      appliedNormalBar = false
-    else
-      if !appliedNormalBar
-        $("#mini-nav-bar").attr "id" ,"nav-bar"
-        $('#nav-bar-mobile').css "background-color","transparent"
-        $('.current-tab').css "color","transparent"
+    if transformableBar
+      if vertical_scroll > navTransformRange
+        if !appliedMiniBar
+          $("#nav-bar").attr "id" ,"mini-nav-bar"
+          $('#nav-bar-mobile').css "background-color","#171b23"
+          $('.current-tab').css "color","white"
+          #$("#nav-tabs-container").addClass "scrolled"
+          appliedMiniBar = true
+        appliedNormalBar = false
+      else
+        if !appliedNormalBar
+          $("#mini-nav-bar").attr "id" ,"nav-bar"
+          $('#nav-bar-mobile').css "background-color","transparent"
+          $('.current-tab').css "color","transparent"
 
-        #$("#nav-tabs-container").removeClass "scrolled"
-        appliedNormalBar = true
-      appliedMiniBar = false
+          #$("#nav-tabs-container").removeClass "scrolled"
+          appliedNormalBar = true
+        appliedMiniBar = false
 
     inRange= (x,div) ->
       threshold = 200

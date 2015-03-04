@@ -1,10 +1,11 @@
 class ContactMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "info@vhda.mx"
 
-  def send_mail(name,mail)
+  def send_mail(name,correo,msj)
     @name = name
-    @url  = 'http://example.com/login'
-    mail(to: mail, subject: 'Welcome to My Awesome Site')
+    @correo = correo
+    @msj = msj
+    mail(to: "info@vhda.mx", subject: 'VHDA CONTACTO')
   end
 
 end

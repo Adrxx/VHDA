@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-  #post '/ajaxy' => 'photos#create'
   get '/admin' => 'session#check_session'
 
   get '/admin/login' => 'session#login', as: 'login'
@@ -18,10 +16,9 @@ Rails.application.routes.draw do
 
   get '/experiencia' => 'statics#experiences', as: 'experiencia'
 
-  get '/contacto' => 'statics#contact', as: 'contacto'
+  post '/mail' => 'statics#mail'
 
   root 'statics#landing'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

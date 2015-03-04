@@ -5,9 +5,9 @@ def experiences
   render :layout => 'layout_exp'
 end
 
-def test_mail
-  ContactMailer.send_mail(params[:name],params[:mail]).deliver
-  render nothing: true
+def mail
+  ContactMailer.send_mail(params[:nombre],params[:correo],params[:mensaje]).deliver
+  render nothing:true;
 end
 
 private
