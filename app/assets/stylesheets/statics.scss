@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
+$footer-height:100px;
 //Global to all page-sections
 [id^="page-section"]
 {
@@ -1275,7 +1275,7 @@ $contact-form-width: 350px;
     background-position: 0px 0px;
     background-size: cover;
     z-index: 0;
-    
+
     opacity: 0.1;
   }
 
@@ -1440,6 +1440,11 @@ $contact-form-width: 350px;
         margin-top: 20px;
       }
 
+      &:disabled
+      {
+        opacity: 0.2;
+      }
+
 
     }
 
@@ -1471,3 +1476,45 @@ $contact-form-width: 350px;
   }
 
 }
+
+footer
+{
+  height: $footer-height;
+  background-color: transparentize($color1, 0.0);
+
+  p
+  {
+    display: block;
+    color: $aqua-pale-color;
+    padding-top: 20px;
+    @include main-font(400,14px,italic);
+    text-align: center;
+
+    &:after
+    {
+      content: "";
+      display: block;
+      width: 20%;
+      height: 1px;
+      margin: 5px auto;
+      background-color: transparentize(white, 0.7);
+    }
+  }
+
+  .logo-ment
+  {
+    display: block;
+    background-image: image-url("ment.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 40px;
+    width: 100px;
+    //background-color: red;
+    margin-right: auto;
+    margin-left: auto;
+    opacity: 0.9;
+  }
+
+}
+

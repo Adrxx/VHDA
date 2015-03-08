@@ -13,7 +13,7 @@ def mail
   unless nom.empty? or corr.empty? or men.empty?
     ContactMailer.send_mail(nom,corr,men).deliver
   else
-    render js: "alert('Por favor complete todos los campos.')"
+    render js: "alert('Por favor complete todos los campos.'); normalSubmit();"
     return
   end
   render plain: "aceptado"

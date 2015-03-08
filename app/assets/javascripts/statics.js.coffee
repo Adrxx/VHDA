@@ -78,7 +78,16 @@ generateMenu = ->
   $('#nav-button').on "click", ->
     animateMenu(300)
 
+@normalSubmit = ->
+    $('#mail-form .submit').css "pointer-events", "initial"
+    $('#mail-form .submit').prop "value", "Enviar"
+  
 ready = ->
+  $('#mail-form .submit').on "click" , ->
+    if document.getElementById("correo").checkValidity()
+      $('#mail-form .submit').css "pointer-events", "none"
+      $('#mail-form .submit').prop "value", "Enviando..."
+
   $("[class^='contact-text']").on "keyup", ->
     nombreL = $('#mail-form #nombre').val().length
     correoL = $('#mail-form #correo').val().length
@@ -86,7 +95,7 @@ ready = ->
     if nombreL > 0 && correoL > 0 && mensajeL > 0
       $('#mail-form .submit').css "opacity", 1
     else
-      $('#mail-form .submit').prop "opacity", 0.3
+      $('#mail-form .submit').css "opacity", 0.3
 
   $("#mail-form").on("ajax:success", (e, data, status, xhr) ->
     showGracias= ->
@@ -96,6 +105,8 @@ ready = ->
       $('#contact-panel').fadeIn()
     $('#contact-panel').fadeOut("slow",showGracias) if xhr.responseText == "aceptado"
   ).on "ajax:error", (e, xhr, status, error) ->
+    $('#mail-form .submit').prop "disabled", false
+    $('#mail-form .submit').prop "Value", "Enviar"
 
   appliedGif2 = false
   appliedGif1 = false
