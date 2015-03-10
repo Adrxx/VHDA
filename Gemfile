@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'bcrypt'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
@@ -24,16 +23,16 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'paperclip'
 
-gem "cocoon"
+#gem "cocoon"
 
 # MYSQL FOR PRODUCTION
-gem 'mysql2', group: :production
+#gem 'mysql2', group: :production
 
 # SQLITE FOR DEVELOPMENT
-group :development, :test do
+#group :development, :test do
     gem 'sqlite3'
-    gem 'spring'
-end
+    #gem 'spring'
+#end
 
 
 # Use ActiveModel has_secure_password
