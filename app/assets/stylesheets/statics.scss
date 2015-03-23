@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-$footer-height:100px;
+$footer-height:70px;
 //Global to all page-sections
 [id^="page-section"]
 {
@@ -1482,34 +1482,49 @@ footer
   height: $footer-height;
   background-color: transparentize($color1, 0.0);
 
+  div
+  {
+    display: table;
+    height: 100%;
+    margin: 0px auto;
+    //background-color: red;
+  }
+
   p
   {
-    display: block;
+    display: inline-block;
     color: $aqua-pale-color;
-    padding-top: 20px;
+    //padding-top: 20px;
     @include main-font(400,14px,italic);
     text-align: center;
+    //background-color: red;
 
     &:after
     {
+      position: relative;
+      top:15px;
       content: "";
-      display: block;
-      width: 20%;
-      height: 1px;
-      margin: 5px auto;
+      display: inline-block;
+      height: 40px;
+      width: 1px;
+      margin: 0px auto;
+      margin-left:4px;
       background-color: transparentize(white, 0.7);
     }
   }
 
   .logo-ment
   {
-    display: block;
+    position:relative;
+    top: 15px;
+    left: 8px;
+    display: inline-block;
     background-image: image-url("ment.png");
-    background-position: center;
+    background-position: left;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 85%;
     height: 40px;
-    width: 100px;
+    width: 82px;
     //background-color: red;
     margin-right: auto;
     margin-left: auto;

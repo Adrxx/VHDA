@@ -26,14 +26,13 @@ gem 'paperclip'
 #gem "cocoon"
 
 # MYSQL FOR PRODUCTION
-#gem 'mysql2', group: :production
+gem 'mysql2', group: :production
 
 # SQLITE FOR DEVELOPMENT
-#group :development, :test do
+group :development, :test do
     gem 'sqlite3'
-    #gem 'spring'
-#end
-
+    gem 'spring'
+end
 
 # Use ActiveModel has_secure_password
 

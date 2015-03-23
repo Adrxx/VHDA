@@ -3,7 +3,7 @@
   <div id="experiences">
 
     <% @experiences.reverse.each do |exp| %>
-      <div class="experience-as-list">
+      <div class="experience-as-list" data-main-exp-link=' <%= edit_experience_path(exp) %> ' >
         <div class="info-static">
           <div class="title"><%= exp.title %></div>
           <div class="place"><%= exp.place %></div>

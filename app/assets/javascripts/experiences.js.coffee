@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = () ->
+  $(".experience-as-list").on "click", ->
+    window.location = $(this).data("main-exp-link")
+    #console.log "POR AQUI SUNSHINE"
+    #$(this).find("[data-main-exp-link]").
 
   $(".file-field").on "change", ->
     #console.log "HELLOOOO"
