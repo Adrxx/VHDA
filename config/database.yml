@@ -25,4 +25,5 @@ production:
   database: rails
   username: <%= ENV['DATABASE_USER'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: localhost
+  port: 3306
+  host: 127.0.0.1
