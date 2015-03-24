@@ -36,7 +36,6 @@ end
 
 # Use ActiveModel has_secure_password
 
-
 # Use unicorn as the app server
 # gem 'unicorn'
 
