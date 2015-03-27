@@ -114,14 +114,13 @@ ready = ->
   appliedMiniBar = false
   appliedNormalBar = false
   generateMenu()
-  $('a[href*=#]:not([href=#])').on "click", (event) ->
-    if $(this).data "smooth-scroll"
-      event.preventDefault();
-      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname)
-        target = $(this.hash);
-        if (target.length)
-          $('html,body').animate({ scrollTop: target.offset().top - 60 }, 1000);
-          animateMenu(300)
+  $('.smooth a[href^=#]').on "click", (event) ->
+    event.preventDefault();
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname)
+      target = $(this.hash);
+      if (target.length)
+        $('html,body').animate({ scrollTop: target.offset().top - 60 }, 1000);
+        animateMenu(300)
 
   $('#arrow').on "click", ->
     $('html,body').animate({ scrollTop: $('#page-section-2').offset().top + 20 }, 1000);

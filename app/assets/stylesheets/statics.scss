@@ -139,6 +139,7 @@ $nav-bar-mobile-height: 60px;
   background-size: 75%;
   background-position: bottom;
   background-repeat: no-repeat;
+  z-index: 200;
   //background-color: red;
   height: 95%;
   width: 170px;
@@ -503,6 +504,7 @@ $logo-container-width: 170px;
   background-color: transparent;
 
   height: calc( 100% + #{$mini-nav-bar-height} );
+  min-height: 800px;
 
   @include tablet
   {
@@ -552,8 +554,7 @@ $logo-container-width: 170px;
     color: white;
 
     //margin-top: 0px;
-    margin-bottom: 40px;
-
+    margin-bottom: 25px;
     @include tablet
     {
       position: static;
@@ -603,7 +604,7 @@ $logo-container-width: 170px;
     display: block;
     bottom:0px;
 
-    @include main-font(400,20px,italic);
+    @include main-font(400,24px,italic);
 
     margin-bottom: 20px;
     color: white;
@@ -654,6 +655,7 @@ $logo-container-width: 170px;
     p
     {
       text-align: right;
+
     }
 
   }
@@ -792,9 +794,9 @@ $logo-container-width: 170px;
       margin-left: auto;
       margin-right: 40px;
 
-      @include main-font(400,20px);
+      @include main-font(400,22px);
       color: white;
-      width: 650px;
+      width: 746px;
       text-align: right;
       line-height: 1.1em;
 
@@ -909,10 +911,10 @@ $logo-container-width: 170px;
 
     p
     {
-      @include main-font(400,18px,italic);
+      @include main-font(400,21px,italic);
       color: white;
-      padding: 0px 6vw;
-      line-height: 1.4em;
+      padding: 0px 5vw;
+      line-height: 1.3em;
       text-align: justify;
 
       @include smartphone
@@ -927,6 +929,8 @@ $logo-container-width: 170px;
   {
     float: left;
     @extend %mision-vision;
+
+
   }
   
   #vision
@@ -934,6 +938,22 @@ $logo-container-width: 170px;
 
     float: right;
     @extend %mision-vision;
+
+    &:after
+    {
+      position: relative;
+      top: 20px;
+      content: "";
+      display: inline-block;
+      height: 120px;
+      width: 1px;
+      background-color: transparentize($aqua-pale-color, 0.6);
+
+      @include tablet
+      {
+        display: none;
+      }
+    }
 
   }
 
@@ -1004,7 +1024,7 @@ $logo-container-width: 170px;
 
     p
     {
-      @include main-font(400,20px,italic);
+      @include main-font(400,21px,italic);
       color: white;
       padding: 0px 80px;
       text-align: center;
