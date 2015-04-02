@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = () ->
-  $(".experience-as-list").on "click", ->
+  $("[data-main-exp-link]").on "click", ->
     if ($(this).attr('data-main-exp-link'))
       window.location = $(this).data("main-exp-link")
       #console.log "POR AQUI SUNSHINE"
