@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119191743) do
+ActiveRecord::Schema.define(version: 20150624190037) do
 
   create_table "experiences", force: true do |t|
     t.string   "title"
     t.text     "description"
     t.string   "place"
-    t.string   "sphere"
+    t.text     "sphere",      limit: 255
     t.string   "date"
     t.datetime "created_at"
     t.datetime "updated_at"
