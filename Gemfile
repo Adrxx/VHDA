@@ -24,14 +24,14 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'paperclip'
 
 #gem "cocoon"
-
 # MYSQL FOR PRODUCTION
-gem 'mysql2', group: :production
+gem 'pg', group: :production
 
 # SQLITE FOR DEVELOPMENT
 group :development, :test do
     gem 'sqlite3'
     gem 'spring'
+    gem 'capistrano-rails'
 end
 
 # Use ActiveModel has_secure_password
